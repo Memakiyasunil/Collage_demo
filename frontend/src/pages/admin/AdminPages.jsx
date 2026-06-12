@@ -9,7 +9,9 @@ const AdminLayout = ({ children, onLogout }) => {
     <div className="flex min-h-screen bg-slate-50 font-sans">
       <div className="w-[260px] bg-slate-900 text-white flex flex-col shrink-0">
         <div className="p-6 border-b border-white/10">
-          <h2 className="text-[1.25rem] font-bold text-sky-400">Education Forge Admin</h2>
+          <h2 className="text-[1.25rem] font-bold">
+            <span className="text-white">Education</span> <span className="text-yellow-400">Forge</span> <span className="text-sky-400">Admin</span>
+          </h2>
         </div>
         <nav className="flex flex-col py-4 grow">
           <NavLink to="/admin" end className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>

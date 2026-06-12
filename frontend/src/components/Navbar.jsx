@@ -73,8 +73,8 @@ const Navbar = () => {
             <div className="absolute inset-0 bg-sky-500 blur-md opacity-20 group-hover:opacity-60 transition-opacity duration-500 rounded-full" />
             <img src={logo} alt="Education Forge Logo" className="h-10 w-10 object-cover rounded-full border border-white/20 relative z-10" />
           </div>
-          <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-400 to-indigo-400 bg-clip-text text-transparent group-hover:from-sky-300 group-hover:to-indigo-300 transition-all duration-300">
-            Education Forge
+          <span className="text-xl font-extrabold tracking-tight transition-all duration-300">
+            <span className="text-white group-hover:text-slate-200 transition-colors">Education</span> <span className="text-yellow-400 group-hover:text-yellow-400/80 transition-colors">Forge</span>
           </span>
         </Link>
 

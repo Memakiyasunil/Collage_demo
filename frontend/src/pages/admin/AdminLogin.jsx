@@ -23,7 +23,9 @@ const AdminLogin = ({ onLogin }) => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 p-8 font-sans">
       <div className="bg-white w-full max-w-[400px] rounded-xl shadow-2xl p-10">
         <div className="text-center mb-8">
-          <h2 className="text-slate-900 text-2xl font-extrabold mb-2">Education Forge Admin</h2>
+          <h2 className="text-2xl font-extrabold mb-2">
+            <span className="text-slate-900">Education</span> <span className="text-yellow-400">Forge</span> <span className="text-slate-900">Admin</span>
+          </h2>
           <p className="text-slate-500 text-[0.95rem]">Please login to your account</p>
         </div>
 
