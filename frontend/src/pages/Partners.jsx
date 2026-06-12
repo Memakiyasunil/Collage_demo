@@ -96,7 +96,7 @@ const Partners = () => {
                     </ul>
                   )}
 
-                  <Link to={`/partner/${partner.id}`} className="w-full bg-white/10 text-white border border-white/10 rounded-lg p-3.5 text-[0.9rem] font-semibold flex justify-center items-center gap-2 transition-colors duration-200 hover:bg-white/20 mt-auto no-underline">
+                  <Link to={`/partner/${partner.id}`} className="w-full bg-yellow-400 text-slate-900 border-none rounded-lg p-3.5 text-[0.9rem] font-bold flex justify-center items-center gap-2 transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(250,204,21,0.3)] mt-auto no-underline">
                     {partner.buttonText} <span className="font-normal">&gt;</span>
                   </Link>
                 </div>

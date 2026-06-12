@@ -97,7 +97,7 @@ const Careers = () => {
         <div className="bg-gradient-to-r from-sky-900/50 to-indigo-900/50 border border-white/10 text-white rounded-2xl py-10 md:py-12 px-5 md:px-8 text-center mb-20">
           <h2 className="text-2xl md:text-3xl font-extrabold mb-4">Don't see a fit?</h2>
           <p className="text-base md:text-lg opacity-80 mb-8">Send us your resume — we're always looking for talented people.</p>
-          <button className="bg-sky-500 text-white border-none py-3 px-6 rounded-lg text-base font-bold inline-flex items-center gap-2 cursor-pointer transition-colors duration-200 hover:bg-sky-400">
+          <button className="bg-yellow-400 text-slate-900 border-none py-3 px-6 rounded-lg text-base font-bold inline-flex items-center gap-2 cursor-pointer transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(250,204,21,0.3)]">
             <FileText size={18} /> Send Your Resume
           </button>
         </div>

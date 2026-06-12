@@ -39,22 +39,22 @@ const ProgramsSection = () => {
         
         <div className="flex justify-center gap-4 mb-12 flex-wrap">
           <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'UG' ? 'bg-sky-500 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'UG' ? 'bg-yellow-400 text-slate-900 shadow-[0_4px_20px_rgba(250,204,21,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
             onClick={() => setActiveTab('UG')}
           >
-            UG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'UG' ? 'text-white' : 'text-slate-400'}`}>{ugPrograms.length}</span>
+            UG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'UG' ? 'text-slate-900' : 'text-slate-400'}`}>{ugPrograms.length}</span>
           </button>
           <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'PG' ? 'bg-sky-500 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'PG' ? 'bg-yellow-400 text-slate-900 shadow-[0_4px_20px_rgba(250,204,21,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
             onClick={() => setActiveTab('PG')}
           >
-            PG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'PG' ? 'text-white' : 'text-slate-400'}`}>{pgPrograms.length}</span>
+            PG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'PG' ? 'text-slate-900' : 'text-slate-400'}`}>{pgPrograms.length}</span>
           </button>
           <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'INT' ? 'bg-sky-500 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'INT' ? 'bg-yellow-400 text-slate-900 shadow-[0_4px_20px_rgba(250,204,21,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
             onClick={() => setActiveTab('INT')}
           >
-            Integrated Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'INT' ? 'text-white' : 'text-slate-400'}`}>{intPrograms.length}</span>
+            Integrated Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'INT' ? 'text-slate-900' : 'text-slate-400'}`}>{intPrograms.length}</span>
           </button>
         </div>
       </div>
@@ -100,7 +100,7 @@ const ProgramsSection = () => {
                     </div>
                   </div>
                   
-                  <Link to={`/course/${prog.id}`} className="text-sky-400 font-semibold no-underline flex items-center gap-1 transition-colors hover:text-sky-300">
+                  <Link to={`/course/${prog.id}`} className="text-yellow-400 font-bold no-underline flex items-center gap-1 transition-colors hover:text-yellow-300">
                     Details <ChevronRight size={16} style={{ marginTop: '2px' }} />
                   </Link>
                 </div>

@@ -88,7 +88,7 @@ const ServiceDetail = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-indigo-500/10 pointer-events-none" />
             <h3 className="text-2xl md:text-[1.8rem] font-bold mb-4 relative z-10">Interested in this service?</h3>
             <p className="text-white/80 mb-8 text-[1.05rem] relative z-10">Get in touch with us to discuss how we can help your institution.</p>
-            <Link to="/contact" className="relative z-10 inline-block bg-sky-600 text-white py-3.5 px-8 rounded-lg font-semibold no-underline transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-500 hover:shadow-[0_10px_30px_rgba(14,165,233,0.3)]">Contact Us</Link>
+            <Link to="/contact" className="relative z-10 inline-block bg-yellow-400 text-slate-900 py-3.5 px-8 rounded-lg font-bold no-underline transition-all duration-200 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-[0_10px_30px_rgba(250,204,21,0.3)]">Contact Us</Link>
           </div>
         </motion.div>
       </div>

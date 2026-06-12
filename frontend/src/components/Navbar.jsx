@@ -120,8 +120,8 @@ const Navbar = () => {
         </ul>
 
         <div className="relative z-10 hidden md:block">
-          <Link to="/contact" className="relative group overflow-hidden bg-white/5 border border-white/10 text-white px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:border-sky-500/50 flex items-center justify-center">
-            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-sky-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+          <Link to="/contact" className="relative group overflow-hidden bg-yellow-400 text-slate-900 px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 shadow-[0_4px_15px_rgba(250,204,21,0.2)] hover:shadow-[0_4px_25px_rgba(250,204,21,0.4)] hover:-translate-y-0.5 flex items-center justify-center">
+            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-yellow-400 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
             Inquire Now
           </Link>
         </div>

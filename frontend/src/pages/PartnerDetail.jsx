@@ -41,7 +41,7 @@ const PartnerDetail = () => {
             Discover cutting-edge programs, world-class facilities, and exceptional career opportunities at {partner.name}.
           </p>
 
-          <button className="bg-white/10 text-white border border-white/20 rounded-full py-3 px-8 text-[0.95rem] font-semibold cursor-pointer transition-all duration-200 hover:bg-white/20">
+          <button className="bg-yellow-400 text-slate-900 border-none shadow-[0_4px_15px_rgba(250,204,21,0.2)] hover:shadow-[0_4px_25px_rgba(250,204,21,0.4)] hover:-translate-y-0.5 rounded-full py-3 px-8 text-[0.95rem] font-bold cursor-pointer transition-all duration-200 hover:bg-yellow-300">
             Apply Now &rarr;
           </button>
         </div>
@@ -149,7 +149,7 @@ const PartnerDetail = () => {
             <p className="text-[0.9rem] text-slate-300 leading-relaxed mb-6">
               Experience the vibrant campus life and world-class infrastructure at {partner.name}. Schedule a campus tour with our counselors.
             </p>
-            <button className="w-full bg-sky-600 text-white border-none rounded-lg p-4 font-bold cursor-pointer transition-colors hover:bg-sky-500">
+            <button className="w-full bg-yellow-400 text-slate-900 border-none rounded-lg p-4 font-bold cursor-pointer transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(250,204,21,0.3)]">
               Schedule Campus Tour
             </button>
           </div>

@@ -66,10 +66,10 @@ const Hero = () => {
           </motion.p>
           
           <motion.div className="flex gap-4 mb-12" variants={fadeInUp}>
-            <button className="flex items-center gap-2 bg-sky-500 text-white px-6 py-3.5 rounded-lg font-semibold transition-transform duration-200 hover:scale-105 hover:bg-sky-600">
+            <button className="flex items-center gap-2 bg-yellow-400 text-slate-900 px-6 py-3.5 rounded-lg font-bold transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(250,204,21,0.4)] hover:bg-yellow-300">
               Explore Programs <ArrowRight size={18} />
             </button>
-            <button className="bg-white/10 text-white px-6 py-3.5 rounded-lg font-semibold border border-white/10 transition-transform duration-200 hover:scale-105 hover:bg-white/20">
+            <button className="bg-white/10 text-white px-6 py-3.5 rounded-lg font-semibold border border-white/10 transition-transform duration-200 hover:-translate-y-1 hover:bg-white/20">
               Inquire Now
             </button>
           </motion.div>
@@ -133,7 +133,7 @@ const Hero = () => {
                 <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} className={inputClasses} />
               </div>
               
-              <button type="submit" className="flex items-center justify-center gap-2 bg-sky-500 text-white p-4 rounded-lg font-semibold mt-2 transition-colors duration-200 hover:bg-sky-600">
+              <button type="submit" className="flex items-center justify-center gap-2 bg-yellow-400 text-slate-900 p-4 rounded-lg font-bold mt-2 transition-all duration-200 hover:bg-yellow-300 hover:shadow-[0_4px_20px_rgba(250,204,21,0.4)] hover:-translate-y-1">
                 <FileDown size={18} />
                 Download Brochure & Get Callback
               </button>

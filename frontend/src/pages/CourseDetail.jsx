@@ -47,7 +47,7 @@ const CourseDetail = () => {
             {course.title.includes('Cyber Security') && <span className="text-sky-400"> Cyber Security & Cloud Technology</span>}
           </h1>
 
-          <button className="bg-white/10 text-white border border-white/20 rounded-full py-3 px-8 text-[0.95rem] font-semibold cursor-pointer transition-all duration-200 hover:bg-white/20">Apply Now &rarr;</button>
+          <button className="bg-yellow-400 text-slate-900 border-none shadow-[0_4px_15px_rgba(250,204,21,0.2)] hover:shadow-[0_4px_25px_rgba(250,204,21,0.4)] hover:-translate-y-0.5 rounded-full py-3 px-8 text-[0.95rem] font-bold cursor-pointer transition-all duration-200 hover:bg-yellow-300">Apply Now &rarr;</button>
         </div>
       </motion.div>
 
@@ -177,7 +177,7 @@ const CourseDetail = () => {
               </div>
             </div>
 
-            <button className="w-full bg-sky-600 text-white border-none rounded-lg p-4 font-bold cursor-pointer flex items-center justify-center transition-colors hover:bg-sky-500">Proceed to Apply <Send size={14} style={{ marginLeft: '5px' }} /></button>
+            <button className="w-full bg-yellow-400 text-slate-900 border-none rounded-lg p-4 font-bold cursor-pointer flex items-center justify-center transition-all duration-200 hover:bg-yellow-300 hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(250,204,21,0.3)]">Proceed to Apply <Send size={14} style={{ marginLeft: '5px' }} /></button>
           </div>
 
           <div className="bg-white/5 border border-white/10 rounded-xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mb-4">

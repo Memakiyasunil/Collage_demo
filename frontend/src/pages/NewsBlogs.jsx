@@ -84,19 +84,19 @@ const NewsBlogs = () => {
         {/* Filter Tabs */}
         <div className="flex gap-4 mb-12 flex-wrap">
           <button
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'ALL' ? 'bg-sky-500 text-white shadow-md' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'ALL' ? 'bg-emerald-500 text-slate-900 shadow-[0_4px_15px_rgba(16,185,129,0.3)]' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
             onClick={() => setFilter('ALL')}
           >
             <Grip size={18} /> All Updates
           </button>
           <button
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'BLOG' ? 'bg-sky-500 text-white shadow-md' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'BLOG' ? 'bg-emerald-500 text-slate-900 shadow-[0_4px_15px_rgba(16,185,129,0.3)]' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
             onClick={() => setFilter('BLOG')}
           >
             <FileText size={18} /> Blogs
           </button>
           <button
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'NEWS' ? 'bg-sky-500 text-white shadow-md' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'NEWS' ? 'bg-emerald-500 text-slate-900 shadow-[0_4px_15px_rgba(16,185,129,0.3)]' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
             onClick={() => setFilter('NEWS')}
           >
             <Newspaper size={18} /> News
@@ -121,7 +121,7 @@ const NewsBlogs = () => {
                 <div className="relative h-56 overflow-hidden">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-sky-500 text-white text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider">
+                    <span className="bg-emerald-500 text-slate-900 text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider shadow-sm">
                       {item.type}
                     </span>
                   </div>
@@ -131,7 +131,7 @@ const NewsBlogs = () => {
               <div className="p-8 flex flex-col grow">
                 {!item.image && (
                   <div className="mb-4">
-                    <span className="bg-sky-500 text-white text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider">
+                    <span className="bg-emerald-500 text-slate-900 text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider shadow-sm">
                       {item.type}
                     </span>
                   </div>
@@ -141,7 +141,7 @@ const NewsBlogs = () => {
                 </h3>
 
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-sm shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0">
                     {item.author.initials}
                   </div>
                   <div>
@@ -155,7 +155,7 @@ const NewsBlogs = () => {
                 </p>
 
                 <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/10">
-                  <span className="text-sky-400 font-bold flex items-center gap-1 text-sm cursor-pointer group-hover:gap-2 transition-all">
+                  <span className="text-yellow-400 font-bold flex items-center gap-1 text-sm cursor-pointer group-hover:gap-2 transition-all group-hover:text-yellow-300">
                     {item.type === 'BLOG' ? 'Read Article' : 'Read More'} <ArrowRight size={16} />
                   </span>
                   <span className="text-[0.65rem] font-bold text-slate-300 bg-white/5 px-2 py-1 rounded tracking-wider uppercase border border-white/10">

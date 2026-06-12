@@ -28,7 +28,7 @@ const Home = () => {
               <p className="text-lg text-slate-300 leading-relaxed mb-8">
                 Founded in 2015, Education Forge was born from a simple yet powerful vision: to make world-class IT education accessible to every aspiring student. We recognize the growing gap between traditional education and the rapidly evolving technology industry.
               </p>
-              <button className="bg-blue-600 text-white py-3 px-8 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_15px_-3px_rgba(37,99,235,0.4)] mt-4">Read Our Story</button>
+              <button className="bg-yellow-400 text-slate-900 py-3 px-8 rounded-lg font-bold transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-[0_10px_15px_-3px_rgba(250,204,21,0.4)] mt-4">Read Our Story</button>
             </motion.div>
             <motion.div
               className="w-full"

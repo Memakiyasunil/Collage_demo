@@ -43,6 +43,11 @@ const Footer = () => {
             <li><Link to="/courses" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Programs</Link></li>
             <li><Link to="#" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Life @ Education Forge</Link></li>
             <li><Link to="/contact" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Contact</Link></li>
+            <li className="mt-2">
+              <button className="bg-yellow-400 text-slate-900 px-6 py-3 rounded-lg font-bold transition-all duration-200 hover:bg-yellow-300 hover:shadow-[0_4px_15px_rgba(250,204,21,0.3)] hover:-translate-y-0.5">
+                Subscribe
+              </button>
+            </li>
           </ul>
         </div>
 
@@ -92,8 +97,8 @@ const Footer = () => {
       </div>
 
       {/* Scroll to Top */}
-      <button className="absolute left-8 -top-6 w-12 h-12 bg-sky-600 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(14,165,233,0.3)] transition-transform duration-200 hover:-translate-y-1 z-10" onClick={scrollToTop}>
-        <ArrowUp size={20} color="white" />
+      <button className="absolute left-8 -top-6 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-[0_4px_15px_rgba(250,204,21,0.3)] transition-transform duration-200 hover:-translate-y-1 z-10" onClick={scrollToTop}>
+        <ArrowUp size={20} className="text-slate-900" />
       </button>
     </footer>
   );

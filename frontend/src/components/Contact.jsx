@@ -151,7 +151,7 @@ const Contact = () => {
                   <textarea name="message" rows="4" placeholder="Tell us how we can help you..." value={formData.message} onChange={handleChange} className={inputClasses}></textarea>
                 </div>
 
-                <button type="submit" className="w-full bg-sky-600 text-white border-none rounded-lg p-4 text-base font-semibold cursor-pointer flex items-center justify-center gap-2 transition-colors hover:bg-sky-500">
+                <button type="submit" className="w-full bg-yellow-400 text-slate-900 border-none rounded-lg p-4 text-base font-bold cursor-pointer flex items-center justify-center gap-2 transition-all duration-200 hover:bg-yellow-300 hover:shadow-[0_4px_20px_rgba(250,204,21,0.3)] hover:-translate-y-0.5">
                   <Send size={16} /> Submit Enquiry
                 </button>
               </form>
