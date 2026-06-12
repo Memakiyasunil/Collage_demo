@@ -15,7 +15,7 @@ const Home = () => {
             <div className="section-content">
               <h2 className="section-title">Bridging Knowledge with Technology</h2>
               <p className="section-desc">
-                Founded in 2015, Swarnim Edutech was born from a simple yet powerful vision: to make world-class IT education accessible to every aspiring student. We recognize the growing gap between traditional education and the rapidly evolving technology industry.
+                Founded in 2015, Education Force was born from a simple yet powerful vision: to make world-class IT education accessible to every aspiring student. We recognize the growing gap between traditional education and the rapidly evolving technology industry.
               </p>
               <button className="btn-primary" style={{marginTop: '1rem'}}>Read Our Story</button>
             </div>

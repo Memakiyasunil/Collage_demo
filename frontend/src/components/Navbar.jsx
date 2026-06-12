@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
           <BrainCircuit className="logo-icon" size={32} />
-          <span className="logo-text">Swarnim</span>
+          <span className="logo-text">Education Force</span>
         </Link>
         
         <ul className="navbar-links">
@@ -24,9 +24,9 @@ const Navbar = () => {
               About <ChevronDown size={14} className="dropdown-icon" />
             </span>
             <div className="dropdown-menu">
-              <Link to="#" className="dropdown-item">About Us</Link>
-              <Link to="#" className="dropdown-item">Vision & Mission</Link>
-              <Link to="#" className="dropdown-item">Core Team</Link>
+              <Link to="/about" className="dropdown-item">About Us</Link>
+              <Link to="/about" className="dropdown-item">Vision & Mission</Link>
+              <Link to="/about" className="dropdown-item">Core Team</Link>
             </div>
           </li>
           
@@ -35,9 +35,9 @@ const Navbar = () => {
               Programs <ChevronDown size={14} className="dropdown-icon" />
             </span>
             <div className="dropdown-menu">
-              <Link to="#" className="dropdown-item">Integrate Programs</Link>
-              <Link to="#" className="dropdown-item">UG Programs</Link>
-              <Link to="#" className="dropdown-item">PG Programs</Link>
+              <Link to="/courses" className="dropdown-item">Integrate Programs</Link>
+              <Link to="/courses" className="dropdown-item">UG Programs</Link>
+              <Link to="/courses" className="dropdown-item">PG Programs</Link>
             </div>
           </li>
           
@@ -53,7 +53,7 @@ const Navbar = () => {
           </li>
           
           <li><Link to="#" className="nav-link">Partners</Link></li>
-          <li><Link to="#" className="nav-link">Life @ Swarnim</Link></li>
+          <li><Link to="#" className="nav-link">Life @ Education Force</Link></li>
           <li><Link to="#" className="nav-link">News & Blogs</Link></li>
           <li><Link to="#" className="nav-link">Careers</Link></li>
           <li>

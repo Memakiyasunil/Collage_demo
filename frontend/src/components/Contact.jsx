@@ -48,7 +48,7 @@ const Contact = () => {
               </div>
               <div className="info-details">
                 <h3>Email Us</h3>
-                <p>info@swarnimedutech.com<br/><span>We reply within 24 hours</span></p>
+                <p>info@educationforce.com<br/><span>We reply within 24 hours</span></p>
               </div>
             </div>
           </div>
