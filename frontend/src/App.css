@@ -1,6 +1,0 @@
-/* Empty App.css since we use component-specific css and index.css for global styles */
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}

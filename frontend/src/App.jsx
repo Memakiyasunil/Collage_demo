@@ -9,10 +9,12 @@ import About from './pages/About';
 import Vision from './pages/Vision';
 import CoreTeam from './pages/CoreTeam';
 import Courses from './pages/Courses';
+import CourseDetail from './pages/CourseDetail';
 import Partners from './pages/Partners';
+import ServiceDetail from './pages/ServiceDetail';
+import Careers from './pages/Careers';
 import AdminLogin from './pages/admin/AdminLogin';
 import { AdminDashboard, AdminCourses, AdminFooter, AdminPartners } from './pages/admin/AdminPages';
-import './App.css';
 
 // Simple Protected Route wrapper
 const ProtectedRoute = ({ isAuthenticated, children }) => {
@@ -28,10 +30,10 @@ function App() {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
-    <div className="app">
+    <div className="min-h-screen flex flex-col">
       {!isAdminRoute && <Navbar />}
       
-      <main className="main-content">
+      <main className="flex-1">
         <Routes>
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
@@ -39,7 +41,10 @@ function App() {
           <Route path="/vision" element={<Vision />} />
           <Route path="/core-team" element={<CoreTeam />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/course/:courseId" element={<CourseDetail />} />
           <Route path="/partners" element={<Partners />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/services/:serviceId" element={<ServiceDetail />} />
           <Route path="/contact" element={<Contact />} />
           
           {/* Admin Login Route */}

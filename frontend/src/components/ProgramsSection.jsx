@@ -1,134 +1,113 @@
-import React, { useState } from 'react';
-import { Book, Code, Shield, Cpu, Database, Cloud, Clock, CheckCircle } from 'lucide-react';
-import './Programs.css';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { Book, Code, Shield, Cpu, Database, Cloud, Clock, CheckCircle, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { CourseContext } from '../context/CourseContext';
+import { fadeInUp, staggerContainer } from '../utils/animations';
 
-// Generating Mock Data
-const generateMockPrograms = (type, count) => {
-  const titles = [
-    "Animation, VFX & Game Design",
-    "Artificial Intelligence & Machine Learning",
-    "Blockchain Technology",
-    "Cloud Automation",
-    "Cyber Security & Cloud Technology",
-    "Cyber Security & Digital Forensics",
-    "Data Analytics",
-    "Software & Mobile Application Development",
-    "Internet of Things (IoT)",
-    "Full Stack Web Development",
-    "Robotics and Automation",
-    "UI/UX Design & Engineering",
-    "Cloud Computing & DevOps",
-    "AR/VR Technology"
-  ];
+const ICONS = [Book, Code, Shield, Cpu, Database, Cloud];
 
-  const icons = [Book, Code, Shield, Cpu, Database, Cloud];
-  const universities = [
-    { name: "Vidhyadeep University", class: "uni-blue" },
-    { name: "Gandhinagar University", class: "uni-purple" },
-    { name: "Rai University", class: "uni-green" },
-    { name: "Shreyarth University", class: "uni-orange" }
-  ];
-
-  return Array.from({ length: count }).map((_, i) => {
-    const titleBase = titles[i % titles.length];
-    let fullTitle = "";
-    if (type === 'UG') fullTitle = `B.Sc. IT (Hons) ${titleBase}`;
-    if (type === 'PG') fullTitle = `M.Sc. IT ${titleBase}`;
-    if (type === 'INT') fullTitle = `Int. M.Sc. IT ${titleBase}`;
-
-    const IconComponent = icons[i % icons.length];
-    
-    // Pick 1 or 2 random universities
-    const numUnis = (i % 2) + 1;
-    const progUnis = [];
-    for(let j=0; j<numUnis; j++) {
-      progUnis.push(universities[(i + j) % universities.length]);
-    }
-
-    return {
-      id: `${type}-${i}`,
-      title: fullTitle,
-      type: type,
-      icon: IconComponent,
-      universities: progUnis,
-      description: `${fullTitle} designed to prepare you for the most in-demand tech careers.`,
-      duration: type === 'INT' ? "5 Years" : type === 'PG' ? "2 Years" : "4 Years",
-      eligibility: type === 'PG' ? "Graduation" : "12th Pass"
-    };
-  });
+const uniClasses = {
+  'uni-blue': 'bg-blue-50 text-blue-600',
+  'uni-orange': 'bg-orange-50 text-orange-600',
+  'uni-green': 'bg-emerald-50 text-emerald-600',
+  'uni-purple': 'bg-purple-50 text-purple-600',
 };
 
-const ugPrograms = generateMockPrograms('UG', 13);
-const pgPrograms = generateMockPrograms('PG', 9);
-const intPrograms = generateMockPrograms('INT', 4);
-
 const ProgramsSection = () => {
+  const { courses } = useContext(CourseContext);
   const [activeTab, setActiveTab] = useState('UG');
+
+  // Filter courses by tab
+  const ugPrograms = courses.filter(c => c.type === 'UG');
+  const pgPrograms = courses.filter(c => c.type === 'PG');
+  const intPrograms = courses.filter(c => c.type === 'INT');
 
   let currentPrograms = ugPrograms;
   if (activeTab === 'PG') currentPrograms = pgPrograms;
   if (activeTab === 'INT') currentPrograms = intPrograms;
 
   return (
-    <section className="programs-container">
-      <div className="programs-header-section">
-        <h4 className="programs-subtitle">OUR PROGRAMS</h4>
-        <h2 className="programs-main-title">Cutting-Edge IT Specializations</h2>
-        <p className="programs-desc">
+    <section className="py-20 px-8 bg-slate-50">
+      <div className="text-center mb-12">
+        <h4 className="text-blue-500 text-[0.85rem] font-bold tracking-widest uppercase mb-2">OUR PROGRAMS</h4>
+        <h2 className="text-4xl font-extrabold text-slate-900 mb-4">Cutting-Edge IT Specializations</h2>
+        <p className="text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
           Choose from our range of industry-aligned programs designed to prepare you for the most in-demand tech careers.
         </p>
         
-        <div className="programs-tabs">
+        <div className="flex justify-center gap-4 mb-12 flex-wrap">
           <button 
-            className={`tab-button ${activeTab === 'UG' ? 'active' : ''}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'UG' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'bg-slate-100 text-slate-600'}`}
             onClick={() => setActiveTab('UG')}
           >
-            UG Programs <span className="tab-badge">13</span>
+            UG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white ${activeTab === 'UG' ? 'text-blue-500' : 'text-slate-500'}`}>{ugPrograms.length}</span>
           </button>
           <button 
-            className={`tab-button ${activeTab === 'PG' ? 'active' : ''}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'PG' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'bg-slate-100 text-slate-600'}`}
             onClick={() => setActiveTab('PG')}
           >
-            PG Programs <span className="tab-badge">9</span>
+            PG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white ${activeTab === 'PG' ? 'text-blue-500' : 'text-slate-500'}`}>{pgPrograms.length}</span>
           </button>
           <button 
-            className={`tab-button ${activeTab === 'INT' ? 'active' : ''}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'INT' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'bg-slate-100 text-slate-600'}`}
             onClick={() => setActiveTab('INT')}
           >
-            Integrated Programs <span className="tab-badge">4</span>
+            Integrated Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white ${activeTab === 'INT' ? 'text-blue-500' : 'text-slate-500'}`}>{intPrograms.length}</span>
           </button>
         </div>
       </div>
 
-      <div className="programs-grid">
-        {currentPrograms.map((prog) => (
-          <div key={prog.id} className="prog-card">
-            <div className="prog-card-header">
-              <div className="prog-icon-box">
-                <prog.icon size={20} />
+      <motion.div 
+        key={activeTab}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={staggerContainer}
+      >
+        {currentPrograms.map((prog) => {
+          const IconComponent = ICONS[prog.iconIndex] || Book;
+
+          return (
+            <motion.div key={prog.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 flex flex-col transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl" variants={fadeInUp}>
+              <div className="bg-indigo-600 p-6 flex justify-between items-start text-white">
+                <div className="w-10 h-10 rounded-lg border border-white/30 flex items-center justify-center">
+                  <IconComponent size={20} />
+                </div>
+                <span className="bg-white/20 py-1 px-3 rounded-full text-xs font-bold tracking-wide">{prog.type}</span>
               </div>
-              <span className="prog-type-badge">{prog.type}</span>
-            </div>
-            <div className="prog-card-body">
-              <h3 className="prog-title">{prog.title}</h3>
-              <div className="prog-universities">
-                {prog.universities.map((uni, idx) => (
-                  <span key={idx} className={`uni-tag ${uni.class}`}>{uni.name}</span>
-                ))}
+              
+              <div className="p-6 grow flex flex-col">
+                <h3 className="text-lg font-bold text-slate-900 mb-4 leading-snug">{prog.title}</h3>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {prog.universities.map((uni, idx) => (
+                    <span key={idx} className={`text-[0.7rem] font-semibold py-1 px-2 rounded flex items-center gap-1 ${uniClasses[uni.class] || 'bg-slate-50 text-slate-600'}`}>{uni.name}</span>
+                  ))}
+                </div>
+                <p className="text-[0.85rem] text-slate-500 leading-relaxed mb-6 grow">
+                  {prog.description}
+                </p>
+              
+                <div className="pt-6 border-t border-slate-100 flex justify-between items-center text-slate-400 text-sm font-medium mt-auto">
+                  <div className="flex gap-4">
+                    <div className="flex items-center gap-1.5">
+                      <Clock size={16} /> {prog.duration}
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <CheckCircle size={16} /> {prog.eligibility}
+                    </div>
+                  </div>
+                  
+                  <Link to={`/course/${prog.id}`} className="text-blue-600 font-semibold no-underline flex items-center gap-1 transition-colors hover:text-blue-700">
+                    Details <ChevronRight size={16} style={{ marginTop: '2px' }} />
+                  </Link>
+                </div>
               </div>
-              <p className="prog-description">{prog.description}</p>
-            </div>
-            <div className="prog-card-footer">
-              <div className="prog-meta">
-                <Clock size={16} /> {prog.duration}
-              </div>
-              <div className="prog-meta">
-                <CheckCircle size={16} /> {prog.eligibility}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
     </section>
   );
 };

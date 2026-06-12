@@ -1,6 +1,7 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { CheckCircle2, GraduationCap } from 'lucide-react';
-import './Partners.css';
+import { staggerContainer, fadeInUp } from '../utils/animations';
 
 const partnersData = [
   {
@@ -79,60 +80,103 @@ const partnersData = [
   }
 ];
 
+const themeStyles = {
+  purple: {
+    bg: 'bg-gradient-to-br from-purple-500 to-purple-600',
+    icon: 'text-purple-600',
+    check: 'text-purple-200'
+  },
+  blue: {
+    bg: 'bg-gradient-to-br from-blue-500 to-blue-600',
+    icon: 'text-blue-600',
+    check: 'text-blue-200'
+  },
+  orange: {
+    bg: 'bg-gradient-to-br from-orange-500 to-orange-600',
+    icon: 'text-orange-600',
+    check: 'text-orange-200'
+  },
+  green: {
+    bg: 'bg-gradient-to-br from-emerald-500 to-emerald-600',
+    icon: 'text-emerald-600',
+    check: 'text-emerald-200'
+  },
+  pink: {
+    bg: 'bg-gradient-to-br from-pink-500 to-pink-600',
+    icon: 'text-pink-600',
+    check: 'text-pink-200'
+  },
+  teal: {
+    bg: 'bg-gradient-to-br from-cyan-500 to-cyan-600',
+    icon: 'text-cyan-600',
+    check: 'text-cyan-200'
+  }
+};
+
 const Partners = () => {
   return (
-    <div className="partners-page">
-      <div className="partners-header">
-        <div className="partners-title-section">
-          <span className="partners-label">OUR NETWORK</span>
-          <h1 className="partners-title">Partner <span className="highlight-blue">Universities</span></h1>
+    <div className="py-16 px-4 md:px-8 max-w-7xl mx-auto bg-slate-50 min-h-screen">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 pb-4 gap-4 md:gap-0">
+        <div>
+          <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">OUR NETWORK</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mt-2">Partner <span className="text-blue-600">Universities</span></h1>
         </div>
-        <div className="partners-desc-section">
-          <p>We partner with leading universities to bring you accredited, industry-aligned programs.</p>
+        <div className="md:max-w-[300px] text-left md:text-right">
+          <p className="text-slate-500 text-[0.9rem] leading-relaxed">We partner with leading universities to bring you accredited, industry-aligned programs.</p>
         </div>
       </div>
 
-      <div className="partners-grid-container">
-        <div className="partners-grid">
-          {partnersData.map((partner) => (
-            <div key={partner.id} className="partner-card">
-              {/* Card Top / Colored Section */}
-              <div className={`partner-card-top theme-${partner.colorTheme}`}>
-                <div className="partner-logo-placeholder">
-                  <GraduationCap size={24} className={`icon-${partner.colorTheme}`} />
+      <div className="w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {partnersData.map((partner) => {
+            const theme = themeStyles[partner.colorTheme];
+            return (
+              <motion.div 
+                key={partner.id} 
+                className="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col border border-slate-100 transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.1)]"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+              >
+                {/* Card Top / Colored Section */}
+                <div className={`p-8 text-white relative overflow-hidden min-h-[140px] ${theme.bg}`}>
+                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mb-4">
+                    <GraduationCap size={24} className={theme.icon} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-1">{partner.name}</h3>
+                  <p className="text-[0.85rem] font-medium opacity-90">{partner.programCount > 0 ? `${partner.programCount} Programs Available` : 'Programs Coming Soon'}</p>
+                  {/* Decorative circle in the top right corner */}
+                  <div className="absolute -top-5 -right-5 w-[100px] h-[100px] rounded-full bg-white opacity-10"></div>
                 </div>
-                <h3>{partner.name}</h3>
-                <p>{partner.programCount > 0 ? `${partner.programCount} Programs Available` : 'Programs Coming Soon'}</p>
-                {/* Decorative circle in the top right corner */}
-                <div className="decorative-circle"></div>
-              </div>
 
-              {/* Card Bottom / White Section */}
-              <div className="partner-card-bottom">
-                {partner.customMessage ? (
-                  <p className="custom-message">{partner.customMessage}</p>
-                ) : (
-                  <ul className="program-checklist">
-                    {partner.programs.map((prog, idx) => (
-                      <li key={idx}>
-                        <CheckCircle2 size={16} className={`check-${partner.colorTheme}`} />
-                        <span>{prog}</span>
-                      </li>
-                    ))}
-                    {partner.moreCount > 0 && (
-                      <li className="more-programs">
-                        +{partner.moreCount} more programs
-                      </li>
-                    )}
-                  </ul>
-                )}
+                {/* Card Bottom / White Section */}
+                <div className="p-8 flex flex-col grow">
+                  {partner.customMessage ? (
+                    <p className="text-slate-400 text-[0.9rem] italic grow mb-8">{partner.customMessage}</p>
+                  ) : (
+                    <ul className="list-none p-0 m-0 mb-8 grow">
+                      {partner.programs.map((prog, idx) => (
+                        <li key={idx} className="flex items-start gap-3 mb-3 text-[0.85rem] text-slate-600 leading-relaxed">
+                          <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${theme.check}`} />
+                          <span>{prog}</span>
+                        </li>
+                      ))}
+                      {partner.moreCount > 0 && (
+                        <li className="text-[0.8rem] text-slate-400 pl-7 italic mt-2">
+                          +{partner.moreCount} more programs
+                        </li>
+                      )}
+                    </ul>
+                  )}
 
-                <button className="btn-view-partner">
-                  {partner.buttonText} <span className="arrow">&gt;</span>
-                </button>
-              </div>
-            </div>
-          ))}
+                  <button className="w-full bg-slate-900 text-white border-none rounded-lg p-3.5 text-[0.9rem] font-semibold cursor-pointer flex justify-center items-center gap-2 transition-colors duration-200 hover:bg-slate-800 mt-auto">
+                    {partner.buttonText} <span className="font-normal">&gt;</span>
+                  </button>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </div>

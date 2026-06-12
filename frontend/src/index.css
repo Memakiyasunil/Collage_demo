@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
 :root {
   --font-main: 'Inter', sans-serif;
@@ -23,31 +24,10 @@
   --color-form-input-bg: rgba(255, 255, 255, 0.15);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: var(--font-main);
   background-color: var(--color-nav-bg);
   color: var(--color-nav-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  font-family: inherit;
-}
-
-ul {
-  list-style: none;
 }
