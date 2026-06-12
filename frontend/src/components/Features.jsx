@@ -41,10 +41,10 @@ const Features = () => {
     <section className="py-20 px-8 bg-slate-950 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h4 className="text-sky-400 text-[0.85rem] font-bold tracking-widest uppercase mb-2">WHY Education Forge</h4>
-          <h2 className="text-4xl font-extrabold text-white mb-4">What Makes Us Different</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+        <div className="text-center mb-20">
+          <span className="text-xs font-extrabold text-sky-400 tracking-[0.2em] uppercase mb-6 block">WHY EDUCATION <span className="text-yellow-400">FORGE</span></span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">What Makes Us Different</h2>
+          <p className="text-slate-300 max-w-2xl mx-auto text-lg font-light">
             We go beyond traditional education to create industry-ready professionals.
           </p>
         </div>

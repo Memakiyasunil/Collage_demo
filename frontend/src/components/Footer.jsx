@@ -20,7 +20,7 @@ const Footer = () => {
         {/* Column 1: Brand Info */}
         <div className="footer-col brand-col">
           <Link to="/" className="flex items-center gap-2 mb-6">
-            <img src={logo} alt="Education Forge Logo" className="h-12 w-auto object-contain bg-white rounded-md p-1" />
+            <img src={logo} alt="Eduforcetech Logo" className="h-12 w-auto object-contain bg-white rounded-md p-1" />
           </Link>
           <p className="leading-relaxed mb-6 max-w-sm">
             {footerData.description}
@@ -41,7 +41,7 @@ const Footer = () => {
             <li><Link to="/vision" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Vision & Mission</Link></li>
             <li><Link to="/core-team" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Core Team</Link></li>
             <li><Link to="/courses" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Programs</Link></li>
-            <li><Link to="#" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Life @ Education Forge</Link></li>
+            <li><Link to="#" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Life @ Education <span className="text-yellow-400">Forge</span></Link></li>
             <li><Link to="/contact" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Contact</Link></li>
             <li className="mt-2">
               <button className="bg-yellow-400 text-slate-900 px-6 py-3 rounded-lg font-bold transition-all duration-200 hover:bg-yellow-300 hover:shadow-[0_4px_15px_rgba(250,204,21,0.3)] hover:-translate-y-0.5">
@@ -88,7 +88,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-white/5 bg-slate-950">
         <div className="max-w-7xl mx-auto px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-          <p>&copy; {new Date().getFullYear()} Education Forge Charitable Foundation. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Education <span className="text-yellow-400">Forge</span> Charitable Foundation. All rights reserved.</p>
           <div className="flex gap-6">
             <Link to="#" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="#" className="text-slate-400 hover:text-white transition-colors">Terms</Link>

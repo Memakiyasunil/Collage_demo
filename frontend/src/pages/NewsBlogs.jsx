@@ -71,13 +71,17 @@ const NewsBlogs = () => {
   return (
     <div className="bg-slate-950 min-h-screen pb-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-slate-900 to-slate-950 pt-32 pb-16 px-8 text-center border-b border-white/10 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none" />
-        <h4 className="text-sky-300 font-bold tracking-widest text-sm uppercase mb-4">UPDATES</h4>
-        <h1 className="text-5xl font-extrabold text-white mb-6">News & Blogs</h1>
-        <p className="text-blue-100 max-w-2xl mx-auto text-lg leading-relaxed">
-          Everything happening at Education Forge plus insights from our experts.
-        </p>
+      <section className="bg-slate-900 pt-32 pb-24 px-8 text-center border-b border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-sky-900/20 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 to-indigo-500" />
+        <div className="max-w-3xl mx-auto relative z-10">
+          <span className="text-xs font-extrabold text-sky-400 tracking-[0.2em] uppercase mb-6 block">UPDATES</span>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">News & Blogs</h1>
+          <p className="text-xl text-slate-300 font-light leading-relaxed">
+            Everything happening at Education <span className="text-yellow-400">Forge</span> plus insights from our experts.
+          </p>
+        </div>
       </section>
 
       <div className="max-w-7xl mx-auto px-8 mt-12">

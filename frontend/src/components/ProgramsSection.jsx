@@ -71,9 +71,9 @@ const ProgramsSection = () => {
           const IconComponent = ICONS[prog.iconIndex] || Book;
 
           return (
-            <motion.div key={prog.id} className="bg-white/5 rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-white/10 flex flex-col transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)]" variants={fadeInUp}>
-              <div className="bg-gradient-to-r from-sky-600/50 to-indigo-600/50 border-b border-white/10 p-6 flex justify-between items-start text-white">
-                <div className="w-10 h-10 rounded-lg border border-white/30 flex items-center justify-center">
+            <motion.div key={prog.id} className="bg-slate-900/50 rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-slate-800 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(14,165,233,0.2)] hover:border-slate-700 group" variants={fadeInUp}>
+              <div className="bg-gradient-to-r from-sky-900/40 to-indigo-900/40 border-b border-slate-800 p-6 flex justify-between items-start text-white group-hover:from-sky-800/50 group-hover:to-indigo-800/50 transition-colors">
+                <div className="w-12 h-12 rounded-xl bg-slate-900/50 border border-slate-700/50 flex items-center justify-center shadow-inner group-hover:border-sky-500/30 transition-colors">
                   <IconComponent size={20} />
                 </div>
                 <span className="bg-white/20 py-1 px-3 rounded-full text-xs font-bold tracking-wide">{prog.type}</span>

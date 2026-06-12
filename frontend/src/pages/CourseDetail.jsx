@@ -30,21 +30,23 @@ const CourseDetail = () => {
     <div className="bg-slate-950 min-h-screen pb-20 font-sans">
       {/* Top Header */}
       <motion.div
-        className="bg-slate-900 py-12 pt-32 border-b border-white/10 mb-12 border-t-4 border-t-sky-500 relative overflow-hidden"
+        className="bg-slate-900 py-16 pt-32 mb-12 relative overflow-hidden"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInUp}
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-900/30 to-indigo-900/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-500/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-sky-400 to-indigo-500" />
         <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="text-xs font-bold text-slate-500 tracking-widest mb-8">
-            <Link to="/" className="text-slate-400 no-underline hover:text-white transition-colors">HOME</Link> / <Link to="/courses" className="text-slate-400 no-underline hover:text-white transition-colors">PROGRAMS</Link> / <span>{course.type === 'PG' ? 'POSTGRADUATE' : 'UNDERGRADUATE'}</span> / <span>IT</span>
+          <div className="text-xs font-bold text-sky-400 tracking-widest mb-6 uppercase">
+            <Link to="/" className="text-sky-500 no-underline hover:text-sky-300 transition-colors">HOME</Link> / <Link to="/courses" className="text-sky-500 no-underline hover:text-sky-300 transition-colors">PROGRAMS</Link> / <span className="text-slate-400">{course.type === 'PG' ? 'POSTGRADUATE' : 'UNDERGRADUATE'}</span> / <span className="text-slate-400">IT</span>
           </div>
 
-          <h1 className="text-4xl md:text-[2.8rem] font-extrabold text-white mb-8 max-w-4xl leading-tight">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-8 max-w-4xl leading-[1.1] tracking-tight">
             {course.title.replace('Cyber Security & Cloud Technology', '')}
-            {course.title.includes('Cyber Security') && <span className="text-sky-400"> Cyber Security & Cloud Technology</span>}
+            {course.title.includes('Cyber Security') && <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400"> Cyber Security & Cloud Technology</span>}
           </h1>
 
           <button className="bg-yellow-400 text-slate-900 border-none shadow-[0_4px_15px_rgba(250,204,21,0.2)] hover:shadow-[0_4px_25px_rgba(250,204,21,0.4)] hover:-translate-y-0.5 rounded-full py-3 px-8 text-[0.95rem] font-bold cursor-pointer transition-all duration-200 hover:bg-yellow-300">Apply Now &rarr;</button>
@@ -167,7 +169,7 @@ const CourseDetail = () => {
 
           <div className="bg-white/5 border border-white/10 rounded-xl p-8 shadow-[0_4px_20px_rgba(0,0,0,0.2)] mb-4">
             <h4 className="text-lg font-extrabold mb-2 text-white">Application Portal</h4>
-            <p className="text-[0.85rem] text-slate-400 mb-6">Secure your future with Education Forge. Connect with our academic counselors today.</p>
+            <p className="text-[0.85rem] text-slate-400 mb-6">Secure your future with Education <span className="text-yellow-400">Forge</span>. Connect with our academic counselors today.</p>
 
             <div className="bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-lg flex gap-4 items-start mb-6">
               <Calendar size={16} className="text-emerald-400 shrink-0 mt-0.5" />

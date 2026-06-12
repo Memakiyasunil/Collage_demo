@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Education Forge | Cutting-Edge IT Education</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Sora:wght@100..900&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Eduforcetech | Cutting-Edge IT Education</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Sora:wght@100..900&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -87,211 +94,275 @@
                         "body-md": ["Hanken Grotesk"]
                     },
                     "fontSize": {
-                        "headline-xl-mobile": ["40px", {"lineHeight": "1.1", "fontWeight": "800"}],
-                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
-                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                        "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
-                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                        "headline-xl-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "800" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
                     }
                 },
             },
         }
     </script>
-<style>
+    <style>
         body {
             background-color: #0b0f1a;
             color: #e0e3e5;
             -webkit-font-smoothing: antialiased;
         }
+
         .glass-panel {
             background: rgba(16, 20, 21, 0.7);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
         .glow-cyan {
             box-shadow: 0 0 15px rgba(0, 163, 255, 0.2);
         }
+
         .text-glow {
             text-shadow: 0 0 10px rgba(0, 163, 255, 0.4);
         }
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
 </head>
+
 <body class="font-body-md text-body-md overflow-x-hidden">
-<!-- Top Navigation Bar -->
-<header class="sticky top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-margin-mobile md:px-margin-desktop">
-<nav class="bg-surface/70 dark:bg-surface-container/70 backdrop-blur-xl rounded-full max-w-container-max mx-auto mt-gutter px-gutter py-4 border border-white/10 shadow-[0_0_15px_rgba(0,163,255,0.1)] shadow-lg flex items-center justify-between w-full">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center">
-<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">school</span>
-</div>
-<span class="font-headline-sm text-headline-sm font-extrabold text-on-surface dark:text-on-primary-fixed">Education Forge</span>
-</div>
-<!-- Desktop Links -->
-<div class="hidden md:flex items-center gap-8 font-headline-sm text-headline-sm font-semibold tracking-tight">
-<a class="text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full" href="#">Home</a>
-<a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors" href="#">Programs</a>
-<a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors" href="#">Admissions</a>
-<a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors" href="#">About Us</a>
-</div>
-<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-semibold hover:scale-95 transition-transform duration-300">
+    <!-- Top Navigation Bar -->
+    <header
+        class="sticky top-0 left-0 right-0 z-50 flex items-center justify-between w-full px-margin-mobile md:px-margin-desktop">
+        <nav
+            class="bg-surface/70 dark:bg-surface-container/70 backdrop-blur-xl rounded-full max-w-container-max mx-auto mt-gutter px-gutter py-4 border border-white/10 shadow-[0_0_15px_rgba(0,163,255,0.1)] shadow-lg flex items-center justify-between w-full">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary-container rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined text-on-primary-container"
+                        style="font-variation-settings: 'FILL' 1;">school</span>
+                </div>
+                <span
+                    class="font-headline-sm text-headline-sm font-extrabold text-on-surface dark:text-on-primary-fixed">Eduforcetech</span>
+            </div>
+            <!-- Desktop Links -->
+            <div
+                class="hidden md:flex items-center gap-8 font-headline-sm text-headline-sm font-semibold tracking-tight">
+                <a class="text-primary relative after:content-[''] after:absolute after:-bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full"
+                    href="#">Home</a>
+                <a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors"
+                    href="#">Programs</a>
+                <a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors"
+                    href="#">Admissions</a>
+                <a class="text-on-surface-variant dark:text-on-secondary-container hover:text-primary transition-colors"
+                    href="#">About Us</a>
+            </div>
+            <button
+                class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-semibold hover:scale-95 transition-transform duration-300">
                 Inquire Now
             </button>
-</nav>
-</header>
-<main class="relative">
-<!-- Background Decor -->
-<div class="absolute inset-0 -z-10 overflow-hidden">
-<div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-primary/10 rounded-full blur-[120px]"></div>
-<div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/5 rounded-full blur-[120px]"></div>
-<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 40px 40px;"></div>
-</div>
-<!-- Hero Section -->
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 md:pt-24 pb-32">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<!-- Left Column -->
-<div class="lg:col-span-7 space-y-8">
-<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 text-on-surface-variant">
-<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-<span class="font-label-md text-label-md">Admissions Open 2026-27</span>
-</div>
-<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-white">
-                        Transform Your Future with <span class="text-primary-container text-glow">Cutting-Edge IT Education</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                        Explore 30+ industry-aligned programs across 5 top universities. Get expert career guidance, detailed fee structure, and scholarship information — absolutely free.
+        </nav>
+    </header>
+    <main class="relative">
+        <!-- Background Decor -->
+        <div class="absolute inset-0 -z-10 overflow-hidden">
+            <div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-primary/10 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-secondary/5 rounded-full blur-[120px]">
+            </div>
+            <div class="absolute inset-0 opacity-10"
+                style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 40px 40px;">
+            </div>
+        </div>
+        <!-- Hero Section -->
+        <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 md:pt-24 pb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Column -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-highest/50 border border-outline-variant/30 text-on-surface-variant">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        <span class="font-label-md text-label-md">Admissions Open 2026-27</span>
+                    </div>
+                    <h1
+                        class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-white">
+                        Transform Your Future with <span class="text-primary-container text-glow">Cutting-Edge IT
+                            Education</span>
+                    </h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Explore 30+ industry-aligned programs across 5 top universities. Get expert career guidance,
+                        detailed fee structure, and scholarship information — absolutely free.
                     </p>
-<div class="flex flex-wrap gap-4 pt-4">
-<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-headline-sm text-headline-sm font-semibold flex items-center gap-2 glow-cyan hover:scale-[0.98] transition-all">
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button
+                            class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-headline-sm text-headline-sm font-semibold flex items-center gap-2 glow-cyan hover:scale-[0.98] transition-all">
                             Start Your Journey
                             <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-<button class="border border-outline-variant text-on-surface px-8 py-4 rounded-full font-headline-sm text-headline-sm font-semibold hover:bg-surface-variant/30 transition-all">
+                        </button>
+                        <button
+                            class="border border-outline-variant text-on-surface px-8 py-4 rounded-full font-headline-sm text-headline-sm font-semibold hover:bg-surface-variant/30 transition-all">
                             View Programs
                         </button>
-</div>
-<!-- Trust Badges -->
-<div class="pt-12 flex flex-col gap-6">
-<p class="font-label-md text-label-md uppercase tracking-widest text-outline">Partnered with Elite Institutions</p>
-<div class="flex flex-wrap items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
-<div class="h-8 w-24 bg-surface-variant rounded flex items-center justify-center text-xs font-bold italic tracking-tighter">TECH UNIVERSITY</div>
-<div class="h-8 w-28 bg-surface-variant rounded flex items-center justify-center text-xs font-bold italic tracking-tighter">GLOBAL CYBER ACADEMY</div>
-<div class="h-8 w-20 bg-surface-variant rounded flex items-center justify-center text-xs font-bold italic tracking-tighter">INNO-COLLEGE</div>
-</div>
-</div>
-</div>
-<!-- Right Column (Lead Form) -->
-<div class="lg:col-span-5 relative">
-<!-- Glassmorphism Lead Capture Card -->
-<div class="glass-panel p-8 md:p-12 rounded-[2rem] shadow-2xl relative z-10 overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-10">
-<span class="material-symbols-outlined text-[120px]">description</span>
-</div>
-<div class="flex flex-col items-center text-center space-y-4 mb-10">
-<div class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary-container">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">cloud_download</span>
-</div>
-<h2 class="font-headline-md text-headline-md text-white">Download Free Brochure</h2>
-<p class="text-primary-container/80 font-medium">Get detailed fee structure, curriculum & placement info</p>
-</div>
-<form class="space-y-6">
-<div class="group">
-<label class="block text-sm font-medium text-outline mb-2 ml-1">Your Name *</label>
-<input class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all placeholder:text-outline/50" placeholder="e.g. John Doe" type="text"/>
-</div>
-<div class="group">
-<label class="block text-sm font-medium text-outline mb-2 ml-1">Mobile Number *</label>
-<input class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all placeholder:text-outline/50" placeholder="+1 (555) 000-0000" type="tel"/>
-</div>
-<div class="group">
-<label class="block text-sm font-medium text-outline mb-2 ml-1">Email Address</label>
-<input class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all placeholder:text-outline/50" placeholder="john@university.edu" type="email"/>
-</div>
-<div class="group">
-<label class="block text-sm font-medium text-outline mb-2 ml-1">Select University</label>
-<select class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none appearance-none transition-all">
-<option>Select Option</option>
-<option>Tech Global University</option>
-<option>Cyber Institute of Arts</option>
-<option>State Tech Academy</option>
-</select>
-</div>
-<button class="w-full bg-primary-container text-on-primary-container font-bold py-4 rounded-xl mt-4 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20" type="submit">
+                    </div>
+                    <!-- Trust Badges -->
+                    <div class="pt-12 flex flex-col gap-6">
+                        <p class="font-label-md text-label-md uppercase tracking-widest text-outline">Partnered with
+                            Elite Institutions</p>
+                        <div
+                            class="flex flex-wrap items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
+                            <div
+                                class="h-8 w-24 bg-surface-variant rounded flex items-center justify-center text-xs font-bold italic tracking-tighter">
+                                TECH UNIVERSITY</div>
+                            <div
+                                class="h-8 w-28 bg-surface-variant rounded flex items-center justify-center text-xs font-bold italic tracking-tighter">
+                                GLOBAL CYBER ACADEMY</div>
+                            <div
+                                class="h-8 w-20 bg-surface-variant rounded flex items-center justify-center text-xs font-bold italic tracking-tighter">
+                                INNO-COLLEGE</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Column (Lead Form) -->
+                <div class="lg:col-span-5 relative">
+                    <!-- Glassmorphism Lead Capture Card -->
+                    <div class="glass-panel p-8 md:p-12 rounded-[2rem] shadow-2xl relative z-10 overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <span class="material-symbols-outlined text-[120px]">description</span>
+                        </div>
+                        <div class="flex flex-col items-center text-center space-y-4 mb-10">
+                            <div
+                                class="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary-container">
+                                <span class="material-symbols-outlined text-3xl"
+                                    style="font-variation-settings: 'FILL' 1;">cloud_download</span>
+                            </div>
+                            <h2 class="font-headline-md text-headline-md text-white">Download Free Brochure</h2>
+                            <p class="text-primary-container/80 font-medium">Get detailed fee structure, curriculum &
+                                placement info</p>
+                        </div>
+                        <form class="space-y-6">
+                            <div class="group">
+                                <label class="block text-sm font-medium text-outline mb-2 ml-1">Your Name *</label>
+                                <input
+                                    class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all placeholder:text-outline/50"
+                                    placeholder="e.g. John Doe" type="text" />
+                            </div>
+                            <div class="group">
+                                <label class="block text-sm font-medium text-outline mb-2 ml-1">Mobile Number *</label>
+                                <input
+                                    class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all placeholder:text-outline/50"
+                                    placeholder="+1 (555) 000-0000" type="tel" />
+                            </div>
+                            <div class="group">
+                                <label class="block text-sm font-medium text-outline mb-2 ml-1">Email Address</label>
+                                <input
+                                    class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none transition-all placeholder:text-outline/50"
+                                    placeholder="john@university.edu" type="email" />
+                            </div>
+                            <div class="group">
+                                <label class="block text-sm font-medium text-outline mb-2 ml-1">Select
+                                    University</label>
+                                <select
+                                    class="w-full bg-surface-container-lowest/80 border border-outline-variant/30 rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary-container focus:border-transparent outline-none appearance-none transition-all">
+                                    <option>Select Option</option>
+                                    <option>Tech Global University</option>
+                                    <option>Cyber Institute of Arts</option>
+                                    <option>State Tech Academy</option>
+                                </select>
+                            </div>
+                            <button
+                                class="w-full bg-primary-container text-on-primary-container font-bold py-4 rounded-xl mt-4 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20"
+                                type="submit">
                                 Send Brochure to Email
                             </button>
-<p class="text-center text-xs text-outline pt-2">
-                                By submitting, you agree to our <a class="text-primary-container hover:underline" href="#">Privacy Policy</a>
-</p>
-</form>
-</div>
-<!-- Floating decorative element -->
-<div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 blur-3xl -z-10"></div>
-</div>
-</div>
-</section>
-<!-- Social Bar -->
-<aside class="fixed right-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
-<a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container" href="#">
-<span class="material-symbols-outlined">face_nod</span>
-</a>
-<a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container" href="#">
-<span class="material-symbols-outlined">camera</span>
-</a>
-<a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container" href="#">
-<span class="material-symbols-outlined">link</span>
-</a>
-<a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container" href="#">
-<span class="material-symbols-outlined">video_library</span>
-</a>
-</aside>
-<!-- Floating WhatsApp Button -->
-<button class="fixed bottom-margin-mobile right-margin-mobile md:bottom-10 md:right-10 w-16 h-16 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center text-white z-50 hover:scale-110 active:scale-90 transition-transform">
-<svg class="w-10 h-10" fill="currentColor" viewbox="0 0 24 24"><path d="M12.031 6.172c-2.335 0-4.241 1.91-4.241 4.24 0 1.155.467 2.223 1.233 3.003l-.433 1.583 1.644-.43c.537.283 1.144.444 1.797.444 2.335 0 4.244-1.91 4.244-4.24 0-2.33-1.909-4.24-4.244-4.24zm3.332 6.035c-.137.402-.676.726-1.07.785-.393.06-1.398.244-2.85-.365-1.45-.61-2.352-2.1-2.42-2.2-.07-.1-.563-.75-.563-1.427 0-.677.342-.996.48-.1.136-.135.297-.17.397-.17s.198 0 .284.008c.086.008.198-.033.313.24.115.275.397.97.433 1.04.033.07.054.152.008.243-.045.093-.07.152-.137.23-.07.076-.144.17-.206.228-.063.06-.13.123-.056.248.07.125.32.527.685.852.47.42 1.05.682 1.173.743.123.06.195.05.267-.033.07-.083.308-.36.39-.48.082-.122.164-.102.277-.06.113.042.72.34.843.402.124.06.206.09.237.143.03.05.03.3-.107.702zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.97-1.425C8.423 21.438 10.15 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"></path></svg>
-</button>
-</main>
-<!-- Footer predicted earlier -->
-<footer class="bg-surface-dim dark:bg-surface-container-lowest border-t border-outline-variant/30 py-12 mt-20">
-<div class="w-full flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-8 md:space-y-0">
-<div class="flex flex-col items-center md:items-start space-y-4">
-<span class="font-headline-sm text-headline-sm font-bold text-primary">Education Forge</span>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-md text-center md:text-left">
-                    © 2024 Education Forge. Empowering the next generation of tech leaders.
+                            <p class="text-center text-xs text-outline pt-2">
+                                By submitting, you agree to our <a class="text-primary-container hover:underline"
+                                    href="#">Privacy Policy</a>
+                            </p>
+                        </form>
+                    </div>
+                    <!-- Floating decorative element -->
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </section>
+        <!-- Social Bar -->
+        <aside class="fixed right-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 z-40">
+            <a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container"
+                href="#">
+                <span class="material-symbols-outlined">face_nod</span>
+            </a>
+            <a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container"
+                href="#">
+                <span class="material-symbols-outlined">camera</span>
+            </a>
+            <a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container"
+                href="#">
+                <span class="material-symbols-outlined">link</span>
+            </a>
+            <a class="w-12 h-12 glass-panel rounded-full flex items-center justify-center hover:bg-primary/20 transition-all text-on-surface-variant hover:text-primary-container"
+                href="#">
+                <span class="material-symbols-outlined">video_library</span>
+            </a>
+        </aside>
+        <!-- Floating WhatsApp Button -->
+        <button
+            class="fixed bottom-margin-mobile right-margin-mobile md:bottom-10 md:right-10 w-16 h-16 bg-[#25D366] rounded-full shadow-2xl flex items-center justify-center text-white z-50 hover:scale-110 active:scale-90 transition-transform">
+            <svg class="w-10 h-10" fill="currentColor" viewbox="0 0 24 24">
+                <path
+                    d="M12.031 6.172c-2.335 0-4.241 1.91-4.241 4.24 0 1.155.467 2.223 1.233 3.003l-.433 1.583 1.644-.43c.537.283 1.144.444 1.797.444 2.335 0 4.244-1.91 4.244-4.24 0-2.33-1.909-4.24-4.244-4.24zm3.332 6.035c-.137.402-.676.726-1.07.785-.393.06-1.398.244-2.85-.365-1.45-.61-2.352-2.1-2.42-2.2-.07-.1-.563-.75-.563-1.427 0-.677.342-.996.48-.1.136-.135.297-.17.397-.17s.198 0 .284.008c.086.008.198-.033.313.24.115.275.397.97.433 1.04.033.07.054.152.008.243-.045.093-.07.152-.137.23-.07.076-.144.17-.206.228-.063.06-.13.123-.056.248.07.125.32.527.685.852.47.42 1.05.682 1.173.743.123.06.195.05.267-.033.07-.083.308-.36.39-.48.082-.122.164-.102.277-.06.113.042.72.34.843.402.124.06.206.09.237.143.03.05.03.3-.107.702zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.97-1.425C8.423 21.438 10.15 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z">
+                </path>
+            </svg>
+        </button>
+    </main>
+    <!-- Footer predicted earlier -->
+    <footer class="bg-surface-dim dark:bg-surface-container-lowest border-t border-outline-variant/30 py-12 mt-20">
+        <div
+            class="w-full flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-8 md:space-y-0">
+            <div class="flex flex-col items-center md:items-start space-y-4">
+                <span class="font-headline-sm text-headline-sm font-bold text-primary">Eduforcetech</span>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-md text-center md:text-left">
+                    © 2024 Eduforcetech. Empowering the next generation of tech leaders.
                 </p>
-</div>
-<div class="flex flex-wrap justify-center gap-6 font-body-md text-body-md">
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4" href="#">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4" href="#">Campus Map</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4" href="#">Careers</a>
-</div>
-</div>
-</footer>
-<!-- Bottom Nav for Mobile -->
-<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-surface-container-highest/90 dark:bg-surface-container-highest/90 backdrop-blur-lg border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
-<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-4 py-1" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-<span class="font-label-md text-label-md">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl" href="#">
-<span class="material-symbols-outlined">school</span>
-<span class="font-label-md text-label-md">Programs</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl" href="#">
-<span class="material-symbols-outlined">edit_document</span>
-<span class="font-label-md text-label-md">Apply</span>
-</a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl" href="#">
-<span class="material-symbols-outlined">person</span>
-<span class="font-label-md text-label-md">Profile</span>
-</a>
-</nav>
-<script>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 font-body-md text-body-md">
+                <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4"
+                    href="#">Privacy Policy</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4"
+                    href="#">Terms of Service</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4"
+                    href="#">Campus Map</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary underline-offset-4"
+                    href="#">Careers</a>
+            </div>
+        </div>
+    </footer>
+    <!-- Bottom Nav for Mobile -->
+    <nav
+        class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 md:hidden bg-surface-container-highest/90 dark:bg-surface-container-highest/90 backdrop-blur-lg border-t border-white/10 shadow-[0_-4px_12px_rgba(0,0,0,0.5)]">
+        <a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-xl px-4 py-1" href="#">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+            <span class="font-label-md text-label-md">Home</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl"
+            href="#">
+            <span class="material-symbols-outlined">school</span>
+            <span class="font-label-md text-label-md">Programs</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl"
+            href="#">
+            <span class="material-symbols-outlined">edit_document</span>
+            <span class="font-label-md text-label-md">Apply</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl"
+            href="#">
+            <span class="material-symbols-outlined">person</span>
+            <span class="font-label-md text-label-md">Profile</span>
+        </a>
+    </nav>
+    <script>
         // Simple micro-interactions
         document.querySelectorAll('button, a').forEach(el => {
             el.addEventListener('mousedown', () => {
@@ -315,4 +386,6 @@
             }
         });
     </script>
-</body></html>
+</body>
+
+</html>
