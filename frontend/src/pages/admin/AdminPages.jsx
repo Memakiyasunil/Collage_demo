@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LayoutDashboard, BookOpen, Users, Mail, LogOut, Settings, Plus, Edit2, Trash2, X } from 'lucide-react';
 import { CourseContext } from '../../context/CourseContext';
+import { SiteContext } from '../../context/SiteContext';
 
 const AdminLayout = ({ children, onLogout }) => {
   return (
@@ -239,13 +240,7 @@ export const AdminCourses = ({ onLogout }) => {
 };
 
 export const AdminFooter = ({ onLogout }) => {
-  const [footerData, setFooterData] = useState({
-    description: 'Education Force is a Section-8 non-profit organization committed to transforming IT education through industry-aligned programs and cutting-edge specializations.',
-    address: '18, Vithal Plaza, 4th Floor, Opp. GEB Office, Dehgam Rd, Nava Naroda, Ahmedabad 382330',
-    phone1: '+91 93775 77596',
-    phone2: '+91 93775 77597',
-    email: 'info@educationforce.com'
-  });
+  const { footerData, setFooterData } = useContext(SiteContext);
 
   const [isSaved, setIsSaved] = useState(false);
 

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, ArrowUp } from 'lucide-react';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import logo from '../assets/logo.jpg';
+import { SiteContext } from '../context/SiteContext';
 
 const Footer = () => {
+  const { footerData } = useContext(SiteContext);
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -20,7 +23,7 @@ const Footer = () => {
             <img src={logo} alt="Education Force Logo" className="h-12 w-auto object-contain bg-white rounded-md p-1" />
           </Link>
           <p className="leading-relaxed mb-6 max-w-sm">
-            Education Force is a Section-8 non-profit organization committed to transforming IT education through industry-aligned programs and cutting-edge specializations.
+            {footerData.description}
           </p>
           <div className="flex gap-3">
             <a href="#" className="w-9 h-9 bg-white/5 border border-white/10 rounded-md flex items-center justify-center text-slate-300 transition-all duration-200 hover:bg-sky-400 hover:text-white hover:border-sky-400"><FaFacebookF size={18} /></a>
@@ -61,15 +64,18 @@ const Footer = () => {
           <h4 className="text-white text-[0.95rem] font-bold mb-6 tracking-wide">CONTACT US</h4>
           <div className="flex gap-4 mb-6 items-start">
             <MapPin className="text-sky-400 mt-1 shrink-0" size={18} />
-            <p className="leading-relaxed">18, Vithal Plaza, 4th Floor, Opp. GEB Office, Dehgam Rd, Nava Naroda, Ahmedabad 382330</p>
+            <p className="leading-relaxed">{footerData.address}</p>
           </div>
           <div className="flex gap-4 mb-6 items-start">
             <Phone className="text-sky-400 mt-1 shrink-0" size={18} />
-            <p className="leading-relaxed">+91 93775 77596<br/>+91 93775 77597</p>
+            <p className="leading-relaxed">
+              {footerData.phone1}
+              {footerData.phone2 && <><br/>{footerData.phone2}</>}
+            </p>
           </div>
           <div className="flex gap-4 mb-6 items-start">
             <Mail className="text-sky-400 mt-1 shrink-0" size={18} />
-            <p className="leading-relaxed">info@educationforce.com</p>
+            <p className="leading-relaxed">{footerData.email}</p>
           </div>
         </div>
       </div>

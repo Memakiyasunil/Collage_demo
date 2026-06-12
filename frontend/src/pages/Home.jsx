@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import PartnerLogos from '../components/PartnerLogos';
 import ProgramsSection from '../components/ProgramsSection';
+import Features from '../components/Features';
 import { Users } from 'lucide-react';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../utils/animations';
 
@@ -45,6 +46,7 @@ const Home = () => {
 
       <PartnerLogos />
       <ProgramsSection />
+      <Features />
 
       {/* Stats Counter */}
       <motion.section 
