@@ -1,0 +1,222 @@
+.partners-page {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #fafafa;
+}
+
+.partners-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+}
+
+.partners-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.partners-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 0.5rem;
+}
+
+.highlight-blue {
+  color: #2563eb;
+}
+
+.partners-desc-section {
+  max-width: 300px;
+  text-align: right;
+}
+
+.partners-desc-section p {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.partners-grid-container {
+  width: 100%;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.partner-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f1f5f9;
+  transition: transform 0.2s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.partner-card-top {
+  padding: 2rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  min-height: 140px;
+}
+
+.decorative-circle {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.1;
+}
+
+.partner-logo-placeholder {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.partner-card-top h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.partner-card-top p {
+  font-size: 0.85rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Themes */
+.theme-purple { background: linear-gradient(135deg, #a855f7, #9333ea); }
+.theme-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.theme-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
+.theme-green { background: linear-gradient(135deg, #10b981, #059669); }
+.theme-pink { background: linear-gradient(135deg, #ec4899, #db2777); }
+.theme-teal { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+
+.icon-purple { color: #9333ea; }
+.icon-blue { color: #2563eb; }
+.icon-orange { color: #ea580c; }
+.icon-green { color: #059669; }
+.icon-pink { color: #db2777; }
+.icon-teal { color: #0891b2; }
+
+.check-purple { color: #e9d5ff; }
+.check-blue { color: #bfdbfe; }
+.check-orange { color: #fed7aa; }
+.check-green { color: #bbf7d0; }
+.check-pink { color: #fbcfe8; }
+.check-teal { color: #a5f3fc; }
+
+.partner-card-bottom {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.program-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  flex-grow: 1;
+}
+
+.program-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.program-checklist li span {
+  margin-top: 1px;
+}
+
+.more-programs {
+  font-size: 0.8rem !important;
+  color: #94a3b8 !important;
+  padding-left: 1.75rem;
+  font-style: italic;
+}
+
+.custom-message {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  font-style: italic;
+  flex-grow: 1;
+  margin-bottom: 2rem;
+}
+
+.btn-view-partner {
+  width: 100%;
+  background-color: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.875rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.btn-view-partner:hover {
+  background-color: #1e293b;
+}
+
+.arrow {
+  font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .partners-grid {
+    grid-template-columns: 1fr;
+  }
+  .partners-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .partners-desc-section {
+    text-align: left;
+  }
+}

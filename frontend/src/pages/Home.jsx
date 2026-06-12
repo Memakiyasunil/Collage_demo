@@ -1,5 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import PartnerLogos from '../components/PartnerLogos';
+import ProgramsSection from '../components/ProgramsSection';
 import { Award, Users, BookOpen, Monitor } from 'lucide-react';
 import './Pages.css';
 
@@ -28,28 +30,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Popular Programs */}
-      <section className="section">
-        <div className="section-container text-center">
-          <h2 className="section-title">Popular Programs</h2>
-          <p className="section-desc centered">Explore our industry-aligned programs designed to launch your career.</p>
-          
-          <div className="card-grid mt-4">
-            {[
-              { title: 'AI & Machine Learning', desc: 'Master the algorithms shaping the future.', icon: Monitor },
-              { title: 'Data Science', desc: 'Turn data into actionable insights.', icon: BookOpen },
-              { title: 'Cyber Security', desc: 'Protect systems from digital threats.', icon: Award }
-            ].map((prog, idx) => (
-              <div key={idx} className="program-card">
-                <div className="card-icon"><prog.icon size={32} /></div>
-                <h3>{prog.title}</h3>
-                <p>{prog.desc}</p>
-                <button className="btn-outline-sm">Learn More</button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartnerLogos />
+      <ProgramsSection />
 
       {/* Stats Counter */}
       <section className="section bg-dark text-white">
