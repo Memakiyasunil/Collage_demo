@@ -37,8 +37,9 @@ const Hero = () => {
   const inputClasses = "w-full px-5 py-4 bg-white/10 border border-white/10 rounded-lg text-white text-sm outline-none transition-all duration-200 focus:bg-white/15 focus:border-blue-500 placeholder-slate-400";
 
   return (
-    <section className="bg-gradient-to-br from-[#101c40] via-[#1c3b82] to-[#244b9e] min-h-[calc(100vh-80px)] flex items-center relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full items-center">
+    <section className="bg-gradient-to-b from-slate-900 to-slate-950 min-h-[calc(100vh-80px)] flex items-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-8 pt-32 pb-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full items-center relative z-10">
         
         {/* Left Content */}
         <motion.div 
@@ -55,7 +56,7 @@ const Hero = () => {
           
           <motion.h1 className="text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight" variants={fadeInUp}>
             Transform Your Future<br />
-            with <span className="text-blue-300">Cutting-Edge IT<br/>Education</span>
+            with <span className="text-sky-400">Cutting-Edge IT<br/>Education</span>
           </motion.h1>
           
           <motion.p className="text-lg leading-relaxed text-slate-300 mb-10 max-w-[90%]" variants={fadeInUp}>
@@ -65,7 +66,7 @@ const Hero = () => {
           </motion.p>
           
           <motion.div className="flex gap-4 mb-12" variants={fadeInUp}>
-            <button className="flex items-center gap-2 bg-blue-500 text-white px-6 py-3.5 rounded-lg font-semibold transition-transform duration-200 hover:scale-105 hover:bg-blue-600">
+            <button className="flex items-center gap-2 bg-sky-500 text-white px-6 py-3.5 rounded-lg font-semibold transition-transform duration-200 hover:scale-105 hover:bg-sky-600">
               Explore Programs <ArrowRight size={18} />
             </button>
             <button className="bg-white/10 text-white px-6 py-3.5 rounded-lg font-semibold border border-white/10 transition-transform duration-200 hover:scale-105 hover:bg-white/20">
@@ -97,11 +98,11 @@ const Hero = () => {
           variants={slideInRight}
         >
           <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 lg:p-10 w-full max-w-lg text-center shadow-2xl">
-            <div className="bg-blue-500/20 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6">
-              <FileDown size={20} className="text-blue-300" />
+            <div className="bg-sky-500/20 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-6">
+              <FileDown size={20} className="text-sky-400" />
             </div>
             <h3 className="text-white text-2xl font-bold mb-2">Download Free Brochure</h3>
-            <p className="text-blue-300 text-sm mb-8">Get detailed fee structure, curriculum & placement info</p>
+            <p className="text-sky-400 text-sm mb-8">Get detailed fee structure, curriculum & placement info</p>
             
             <form className="flex flex-col gap-4 text-left" onSubmit={handleSubmit}>
               {isSubmitted && <div className="text-[#4CAF50] bg-[#e8f5e9] p-3 rounded-md mb-2 text-sm font-medium border border-[#4CAF50] text-center">Thank you! Brochure downloading...</div>}
@@ -132,7 +133,7 @@ const Hero = () => {
                 <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} className={inputClasses} />
               </div>
               
-              <button type="submit" className="flex items-center justify-center gap-2 bg-blue-500 text-white p-4 rounded-lg font-semibold mt-2 transition-colors duration-200 hover:bg-blue-600">
+              <button type="submit" className="flex items-center justify-center gap-2 bg-sky-500 text-white p-4 rounded-lg font-semibold mt-2 transition-colors duration-200 hover:bg-sky-600">
                 <FileDown size={18} />
                 Download Brochure & Get Callback
               </button>

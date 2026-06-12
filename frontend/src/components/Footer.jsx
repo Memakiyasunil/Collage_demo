@@ -7,7 +7,7 @@ import { SiteContext } from '../context/SiteContext';
 
 const Footer = () => {
   const { footerData } = useContext(SiteContext);
-  
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -15,12 +15,12 @@ const Footer = () => {
   return (
     <footer className="bg-slate-900 text-slate-400 relative text-sm">
       <div className="h-1 bg-gradient-to-r from-sky-400 to-indigo-400"></div>
-      
+
       <div className="max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1.5fr] gap-12 lg:gap-8">
         {/* Column 1: Brand Info */}
         <div className="footer-col brand-col">
           <Link to="/" className="flex items-center gap-2 mb-6">
-            <img src={logo} alt="Education Force Logo" className="h-12 w-auto object-contain bg-white rounded-md p-1" />
+            <img src={logo} alt="Education Forge Logo" className="h-12 w-auto object-contain bg-white rounded-md p-1" />
           </Link>
           <p className="leading-relaxed mb-6 max-w-sm">
             {footerData.description}
@@ -41,7 +41,7 @@ const Footer = () => {
             <li><Link to="/vision" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Vision & Mission</Link></li>
             <li><Link to="/core-team" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Core Team</Link></li>
             <li><Link to="/courses" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Programs</Link></li>
-            <li><Link to="#" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Life @ Education Force</Link></li>
+            <li><Link to="#" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Life @ Education Forge</Link></li>
             <li><Link to="/contact" className="text-slate-400 transition-colors duration-200 hover:text-sky-400">Contact</Link></li>
           </ul>
         </div>
@@ -70,7 +70,7 @@ const Footer = () => {
             <Phone className="text-sky-400 mt-1 shrink-0" size={18} />
             <p className="leading-relaxed">
               {footerData.phone1}
-              {footerData.phone2 && <><br/>{footerData.phone2}</>}
+              {footerData.phone2 && <><br />{footerData.phone2}</>}
             </p>
           </div>
           <div className="flex gap-4 mb-6 items-start">
@@ -83,7 +83,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-white/5 bg-slate-950">
         <div className="max-w-7xl mx-auto px-8 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-          <p>&copy; {new Date().getFullYear()} Education Force Charitable Foundation. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Education Forge Charitable Foundation. All rights reserved.</p>
           <div className="flex gap-6">
             <Link to="#" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="#" className="text-slate-400 hover:text-white transition-colors">Terms</Link>
@@ -92,8 +92,8 @@ const Footer = () => {
       </div>
 
       {/* Scroll to Top */}
-      <button className="absolute left-8 -top-6 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(0,0,0,0.2)] transition-transform duration-200 hover:-translate-y-1 z-10" onClick={scrollToTop}>
-        <ArrowUp size={20} color="#0f172a" />
+      <button className="absolute left-8 -top-6 w-12 h-12 bg-sky-600 rounded-full flex items-center justify-center shadow-[0_4px_10px_rgba(14,165,233,0.3)] transition-transform duration-200 hover:-translate-y-1 z-10" onClick={scrollToTop}>
+        <ArrowUp size={20} color="white" />
       </button>
     </footer>
   );

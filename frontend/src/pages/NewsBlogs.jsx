@@ -69,33 +69,34 @@ const NewsBlogs = () => {
   });
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-20">
+    <div className="bg-slate-950 min-h-screen pb-20">
       {/* Hero Section */}
-      <section className="bg-[#1e3a8a] py-20 px-8 text-center border-b-[8px] border-sky-500">
+      <section className="bg-gradient-to-b from-slate-900 to-slate-950 pt-32 pb-16 px-8 text-center border-b border-white/10 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none" />
         <h4 className="text-sky-300 font-bold tracking-widest text-sm uppercase mb-4">UPDATES</h4>
         <h1 className="text-5xl font-extrabold text-white mb-6">News & Blogs</h1>
         <p className="text-blue-100 max-w-2xl mx-auto text-lg leading-relaxed">
-          Everything happening at Education Force plus insights from our experts.
+          Everything happening at Education Forge plus insights from our experts.
         </p>
       </section>
 
       <div className="max-w-7xl mx-auto px-8 mt-12">
         {/* Filter Tabs */}
         <div className="flex gap-4 mb-12 flex-wrap">
-          <button 
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'ALL' ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+          <button
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'ALL' ? 'bg-sky-500 text-white shadow-md' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
             onClick={() => setFilter('ALL')}
           >
             <Grip size={18} /> All Updates
           </button>
-          <button 
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'BLOG' ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+          <button
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'BLOG' ? 'bg-sky-500 text-white shadow-md' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
             onClick={() => setFilter('BLOG')}
           >
             <FileText size={18} /> Blogs
           </button>
-          <button 
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'NEWS' ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`}
+          <button
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'NEWS' ? 'bg-sky-500 text-white shadow-md' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
             onClick={() => setFilter('NEWS')}
           >
             <Newspaper size={18} /> News
@@ -103,7 +104,7 @@ const NewsBlogs = () => {
         </div>
 
         {/* Grid */}
-        <motion.div 
+        <motion.div
           key={filter}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
@@ -111,53 +112,53 @@ const NewsBlogs = () => {
           variants={staggerContainer}
         >
           {filteredData.map((item) => (
-            <motion.div 
-              key={item.id} 
-              className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl group"
+            <motion.div
+              key={item.id}
+              className="bg-white/5 rounded-2xl overflow-hidden shadow-sm border border-white/10 flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] group"
               variants={fadeInUp}
             >
               {item.image && (
                 <div className="relative h-56 overflow-hidden">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-blue-600 text-white text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider">
+                    <span className="bg-sky-500 text-white text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider">
                       {item.type}
                     </span>
                   </div>
                 </div>
               )}
-              
+
               <div className="p-8 flex flex-col grow">
                 {!item.image && (
-                   <div className="mb-4">
-                    <span className="bg-blue-600 text-white text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider">
+                  <div className="mb-4">
+                    <span className="bg-sky-500 text-white text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider">
                       {item.type}
                     </span>
-                   </div>
+                  </div>
                 )}
-                <h3 className="text-xl font-bold text-slate-900 mb-6 leading-tight group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-6 leading-tight group-hover:text-sky-400 transition-colors">
                   {item.title}
                 </h3>
-                
+
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-sm shrink-0">
                     {item.author.initials}
                   </div>
                   <div>
-                    <h5 className="font-bold text-slate-800 text-sm">{item.author.name}</h5>
-                    <p className="text-xs text-slate-500 font-medium">{item.author.date}</p>
+                    <h5 className="font-bold text-white text-sm">{item.author.name}</h5>
+                    <p className="text-xs text-slate-400 font-medium">{item.author.date}</p>
                   </div>
                 </div>
-                
-                <p className="text-slate-600 text-sm leading-relaxed mb-8 grow">
+
+                <p className="text-slate-300 text-sm leading-relaxed mb-8 grow">
                   {item.description}
                 </p>
-                
-                <div className="flex justify-between items-center mt-auto pt-6 border-t border-slate-100">
-                  <span className="text-blue-600 font-bold flex items-center gap-1 text-sm cursor-pointer group-hover:gap-2 transition-all">
+
+                <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/10">
+                  <span className="text-sky-400 font-bold flex items-center gap-1 text-sm cursor-pointer group-hover:gap-2 transition-all">
                     {item.type === 'BLOG' ? 'Read Article' : 'Read More'} <ArrowRight size={16} />
                   </span>
-                  <span className="text-[0.65rem] font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded tracking-wider uppercase border border-slate-100">
+                  <span className="text-[0.65rem] font-bold text-slate-300 bg-white/5 px-2 py-1 rounded tracking-wider uppercase border border-white/10">
                     {item.category}
                   </span>
                 </div>

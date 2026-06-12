@@ -38,17 +38,18 @@ const featuresData = [
 
 const Features = () => {
   return (
-    <section className="py-20 px-8 bg-slate-50">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-8 bg-slate-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-indigo-900/10 via-transparent to-transparent pointer-events-none" />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <h4 className="text-blue-500 text-[0.85rem] font-bold tracking-widest uppercase mb-2">WHY EDUCATION FORCE</h4>
-          <h2 className="text-4xl font-extrabold text-slate-900 mb-4">What Makes Us Different</h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg">
+          <h4 className="text-sky-400 text-[0.85rem] font-bold tracking-widest uppercase mb-2">WHY Education Forge</h4>
+          <h2 className="text-4xl font-extrabold text-white mb-4">What Makes Us Different</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
             We go beyond traditional education to create industry-ready professionals.
           </p>
         </div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           initial="hidden"
           whileInView="visible"
@@ -58,16 +59,16 @@ const Features = () => {
           {featuresData.map((feature, idx) => {
             const Icon = feature.icon;
             return (
-              <motion.div 
-                key={idx} 
-                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              <motion.div
+                key={idx}
+                className="bg-white/5 p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-white/10 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] transition-shadow duration-300 flex flex-col"
                 variants={fadeInUp}
               >
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center mb-6">
                   <Icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{feature.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">{feature.description}</p>
               </motion.div>
             );
           })}

@@ -9,27 +9,27 @@ const AdminLayout = ({ children, onLogout }) => {
     <div className="flex min-h-screen bg-slate-50 font-sans">
       <div className="w-[260px] bg-slate-900 text-white flex flex-col shrink-0">
         <div className="p-6 border-b border-white/10">
-          <h2 className="text-[1.25rem] font-bold text-sky-400">Education Force Admin</h2>
+          <h2 className="text-[1.25rem] font-bold text-sky-400">Education Forge Admin</h2>
         </div>
         <nav className="flex flex-col py-4 grow">
-          <NavLink to="/admin" end className={({isActive}) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
-            <LayoutDashboard size={20}/> Dashboard
+          <NavLink to="/admin" end className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
+            <LayoutDashboard size={20} /> Dashboard
           </NavLink>
-          <NavLink to="/admin/courses" className={({isActive}) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
-            <BookOpen size={20}/> Courses
+          <NavLink to="/admin/courses" className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
+            <BookOpen size={20} /> Courses
           </NavLink>
-          <NavLink to="/admin/inquiries" className={({isActive}) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
-            <Users size={20}/> Inquiries
+          <NavLink to="/admin/inquiries" className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
+            <Users size={20} /> Inquiries
           </NavLink>
-          <NavLink to="/admin/partners" className={({isActive}) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
-            <LayoutDashboard size={20}/> Partners
+          <NavLink to="/admin/partners" className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
+            <LayoutDashboard size={20} /> Partners
           </NavLink>
-          <NavLink to="/admin/footer" className={({isActive}) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
-            <Settings size={20}/> Footer Setup
+          <NavLink to="/admin/footer" className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
+            <Settings size={20} /> Footer Setup
           </NavLink>
         </nav>
         <div className="p-6 border-t border-white/10">
-          <button className="flex items-center gap-2 bg-transparent border-none cursor-pointer text-red-500 font-medium" onClick={onLogout}><LogOut size={20}/> Logout</button>
+          <button className="flex items-center gap-2 bg-transparent border-none cursor-pointer text-red-500 font-medium" onClick={onLogout}><LogOut size={20} /> Logout</button>
         </div>
       </div>
       <div className="flex-grow flex flex-col">
@@ -68,13 +68,13 @@ export const AdminDashboard = ({ onLogout }) => {
 
 export const AdminCourses = ({ onLogout }) => {
   const { courses, addCourse, updateCourse, deleteCourse } = useContext(CourseContext);
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingCourse, setEditingCourse] = useState(null);
-  
+
   // Default empty course
   const defaultCourse = {
-    title: '', type: 'UG', description: '', duration: '', eligibility: '', 
+    title: '', type: 'UG', description: '', duration: '', eligibility: '',
     totalSeats: '', format: '', status: '', overview: '',
     careerStats: { jobsInIndia: '', avgSalary: '', companiesHiring: '' },
     universities: [], eligibilityChecklist: [], salaryInsights: []
@@ -140,8 +140,8 @@ export const AdminCourses = ({ onLogout }) => {
                 <td className="text-slate-800 px-6 py-4 border-b border-slate-200">{course.duration}</td>
                 <td className="text-slate-800 px-6 py-4 border-b border-slate-200"><span className={course.status.includes('Accepting') ? 'text-emerald-500 font-semibold' : 'text-orange-500 font-semibold'}>{course.status}</span></td>
                 <td className="text-slate-800 px-6 py-4 border-b border-slate-200">
-                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-sky-500" onClick={() => openModal(course)}><Edit2 size={18}/></button>
-                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-red-500 ml-2" onClick={() => handleDelete(course.id)}><Trash2 size={18}/></button>
+                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-sky-500" onClick={() => openModal(course)}><Edit2 size={18} /></button>
+                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-red-500 ml-2" onClick={() => handleDelete(course.id)}><Trash2 size={18} /></button>
                 </td>
               </tr>
             ))}
@@ -154,18 +154,18 @@ export const AdminCourses = ({ onLogout }) => {
           <div className="bg-white w-full max-w-[800px] rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
               <h3 className="text-xl text-slate-900 font-bold">{editingCourse ? 'Edit Course Details' : 'Add New Course'}</h3>
-              <button className="bg-transparent border-none cursor-pointer text-slate-400 transition-colors hover:text-red-500" onClick={closeModal}><X size={20}/></button>
+              <button className="bg-transparent border-none cursor-pointer text-slate-400 transition-colors hover:text-red-500" onClick={closeModal}><X size={20} /></button>
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <h4 className="text-sky-500 font-bold -mb-2">Basic Info</h4>
               <div className="flex gap-6">
                 <div className="flex-2 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Course Title</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} />
                 </div>
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Program Type</label>
-                  <select className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 bg-white" required value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})}>
+                  <select className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 bg-white" required value={formData.type} onChange={e => setFormData({ ...formData, type: e.target.value })}>
                     <option value="UG">Undergraduate (UG)</option>
                     <option value="PG">Postgraduate (PG)</option>
                     <option value="INT">Integrated (INT)</option>
@@ -175,55 +175,55 @@ export const AdminCourses = ({ onLogout }) => {
 
               <div>
                 <label className="block font-semibold text-slate-600 mb-2 text-sm">Short Description (Card View)</label>
-                <textarea className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" rows="2" required value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})}></textarea>
+                <textarea className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" rows="2" required value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })}></textarea>
               </div>
 
               <h4 className="text-sky-500 font-bold mt-4 -mb-2">Course Details Page Data</h4>
-              
+
               <div className="flex gap-6">
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Duration</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.duration} onChange={e => setFormData({...formData, duration: e.target.value})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.duration} onChange={e => setFormData({ ...formData, duration: e.target.value })} />
                 </div>
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Basic Eligibility</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.eligibility} onChange={e => setFormData({...formData, eligibility: e.target.value})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.eligibility} onChange={e => setFormData({ ...formData, eligibility: e.target.value })} />
                 </div>
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Total Seats</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.totalSeats} onChange={e => setFormData({...formData, totalSeats: e.target.value})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.totalSeats} onChange={e => setFormData({ ...formData, totalSeats: e.target.value })} />
                 </div>
               </div>
 
               <div className="flex gap-6">
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Format</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.format} onChange={e => setFormData({...formData, format: e.target.value})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.format} onChange={e => setFormData({ ...formData, format: e.target.value })} />
                 </div>
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Status</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.status} onChange={e => setFormData({ ...formData, status: e.target.value })} />
                 </div>
               </div>
 
               <div>
                 <label className="block font-semibold text-slate-600 mb-2 text-sm">Program Overview</label>
-                <textarea className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" rows="6" required value={formData.overview} onChange={e => setFormData({...formData, overview: e.target.value})}></textarea>
+                <textarea className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" rows="6" required value={formData.overview} onChange={e => setFormData({ ...formData, overview: e.target.value })}></textarea>
               </div>
 
               <h4 className="text-sky-500 font-bold mt-4 -mb-2">Career Statistics</h4>
               <div className="flex gap-6">
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Jobs In India</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.careerStats?.jobsInIndia || ''} onChange={e => setFormData({...formData, careerStats: {...formData.careerStats, jobsInIndia: e.target.value}})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.careerStats?.jobsInIndia || ''} onChange={e => setFormData({ ...formData, careerStats: { ...formData.careerStats, jobsInIndia: e.target.value } })} />
                 </div>
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Average Salary</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.careerStats?.avgSalary || ''} onChange={e => setFormData({...formData, careerStats: {...formData.careerStats, avgSalary: e.target.value}})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.careerStats?.avgSalary || ''} onChange={e => setFormData({ ...formData, careerStats: { ...formData.careerStats, avgSalary: e.target.value } })} />
                 </div>
                 <div className="flex-1 w-full">
                   <label className="block font-semibold text-slate-600 mb-2 text-sm">Companies Hiring</label>
-                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.careerStats?.companiesHiring || ''} onChange={e => setFormData({...formData, careerStats: {...formData.careerStats, companiesHiring: e.target.value}})} />
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.careerStats?.companiesHiring || ''} onChange={e => setFormData({ ...formData, careerStats: { ...formData.careerStats, companiesHiring: e.target.value } })} />
                 </div>
               </div>
 
@@ -256,60 +256,60 @@ export const AdminFooter = ({ onLogout }) => {
       <h2 className="text-2xl font-bold text-slate-900 mb-6">Manage Footer Details</h2>
       <div className="bg-white p-8 rounded-lg shadow-sm border border-slate-200 max-w-3xl">
         {isSaved && <div className="bg-emerald-100 text-emerald-800 p-4 rounded-md mb-6 border border-emerald-200 font-medium">Footer details updated successfully!</div>}
-        
+
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div>
             <label className="block font-semibold text-slate-600 mb-2 text-sm">Footer Description</label>
-            <textarea 
+            <textarea
               className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
               rows="4"
-              value={footerData.description} 
-              onChange={e => setFooterData({...footerData, description: e.target.value})}
+              value={footerData.description}
+              onChange={e => setFooterData({ ...footerData, description: e.target.value })}
               required
             ></textarea>
           </div>
           <div>
             <label className="block font-semibold text-slate-600 mb-2 text-sm">Office Address</label>
-            <input 
+            <input
               className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
-              type="text" 
-              value={footerData.address} 
-              onChange={e => setFooterData({...footerData, address: e.target.value})}
+              type="text"
+              value={footerData.address}
+              onChange={e => setFooterData({ ...footerData, address: e.target.value })}
               required
             />
           </div>
           <div className="flex gap-6">
             <div className="w-1/2">
               <label className="block font-semibold text-slate-600 mb-2 text-sm">Phone Number 1</label>
-              <input 
+              <input
                 className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
-                type="text" 
-                value={footerData.phone1} 
-                onChange={e => setFooterData({...footerData, phone1: e.target.value})}
+                type="text"
+                value={footerData.phone1}
+                onChange={e => setFooterData({ ...footerData, phone1: e.target.value })}
                 required
               />
             </div>
             <div className="w-1/2">
               <label className="block font-semibold text-slate-600 mb-2 text-sm">Phone Number 2 (Optional)</label>
-              <input 
+              <input
                 className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
-                type="text" 
-                value={footerData.phone2} 
-                onChange={e => setFooterData({...footerData, phone2: e.target.value})}
+                type="text"
+                value={footerData.phone2}
+                onChange={e => setFooterData({ ...footerData, phone2: e.target.value })}
               />
             </div>
           </div>
           <div>
             <label className="block font-semibold text-slate-600 mb-2 text-sm">Email Address</label>
-            <input 
+            <input
               className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20"
-              type="email" 
-              value={footerData.email} 
-              onChange={e => setFooterData({...footerData, email: e.target.value})}
+              type="email"
+              value={footerData.email}
+              onChange={e => setFooterData({ ...footerData, email: e.target.value })}
               required
             />
           </div>
-          
+
           <button type="submit" className="bg-blue-600 text-white py-3 px-6 rounded-md font-bold transition-colors hover:bg-blue-700 border-none cursor-pointer mt-4 inline-block w-max">Save Changes</button>
         </form>
       </div>
@@ -322,10 +322,10 @@ export const AdminPartners = ({ onLogout }) => {
     { id: 1, name: 'Gandhinagar University', programCount: 12, colorTheme: 'purple' },
     { id: 2, name: 'Vidhyadeep University', programCount: 13, colorTheme: 'blue' }
   ]);
-  
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPartner, setEditingPartner] = useState(null);
-  
+
   const [formData, setFormData] = useState({ name: '', programCount: '', colorTheme: 'purple' });
 
   const openModal = (partner = null) => {
@@ -381,11 +381,11 @@ export const AdminPartners = ({ onLogout }) => {
             {partners.map(partner => (
               <tr key={partner.id}>
                 <td className="text-slate-800 px-6 py-4 border-b border-slate-200">{partner.name}</td>
-                <td className="text-slate-800 px-6 py-4 border-b border-slate-200"><span style={{textTransform:'capitalize'}}>{partner.colorTheme}</span></td>
+                <td className="text-slate-800 px-6 py-4 border-b border-slate-200"><span style={{ textTransform: 'capitalize' }}>{partner.colorTheme}</span></td>
                 <td className="text-slate-800 px-6 py-4 border-b border-slate-200">{partner.programCount} Programs</td>
                 <td className="text-slate-800 px-6 py-4 border-b border-slate-200">
-                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-sky-500" onClick={() => openModal(partner)}><Edit2 size={18}/></button>
-                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-red-500 ml-2" onClick={() => handleDelete(partner.id)}><Trash2 size={18}/></button>
+                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-sky-500" onClick={() => openModal(partner)}><Edit2 size={18} /></button>
+                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-red-500 ml-2" onClick={() => handleDelete(partner.id)}><Trash2 size={18} /></button>
                 </td>
               </tr>
             ))}
@@ -398,16 +398,16 @@ export const AdminPartners = ({ onLogout }) => {
           <div className="bg-white w-full max-w-[500px] rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
               <h3 className="text-xl text-slate-900 font-bold">{editingPartner ? 'Edit Partner' : 'Add New Partner'}</h3>
-              <button className="bg-transparent border-none cursor-pointer text-slate-400 transition-colors hover:text-red-500" onClick={closeModal}><X size={20}/></button>
+              <button className="bg-transparent border-none cursor-pointer text-slate-400 transition-colors hover:text-red-500" onClick={closeModal}><X size={20} /></button>
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div>
                 <label className="block font-semibold text-slate-600 mb-2 text-sm">University Name</label>
-                <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="e.g. Gandhinagar University" />
+                <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder="e.g. Gandhinagar University" />
               </div>
               <div>
                 <label className="block font-semibold text-slate-600 mb-2 text-sm">Theme Color</label>
-                <select className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 bg-white" required value={formData.colorTheme} onChange={e => setFormData({...formData, colorTheme: e.target.value})}>
+                <select className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 bg-white" required value={formData.colorTheme} onChange={e => setFormData({ ...formData, colorTheme: e.target.value })}>
                   <option value="purple">Purple</option>
                   <option value="blue">Blue</option>
                   <option value="orange">Orange</option>
@@ -418,7 +418,7 @@ export const AdminPartners = ({ onLogout }) => {
               </div>
               <div>
                 <label className="block font-semibold text-slate-600 mb-2 text-sm">Number of Programs</label>
-                <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="number" required value={formData.programCount} onChange={e => setFormData({...formData, programCount: e.target.value})} placeholder="e.g. 12" />
+                <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="number" required value={formData.programCount} onChange={e => setFormData({ ...formData, programCount: e.target.value })} placeholder="e.g. 12" />
               </div>
               <div className="flex justify-end gap-4 mt-8 pt-6 border-t border-slate-200">
                 <button type="button" className="bg-transparent border border-blue-500 text-blue-500 py-2 px-6 rounded-md font-semibold transition-colors hover:bg-blue-500 hover:text-white" onClick={closeModal}>Cancel</button>

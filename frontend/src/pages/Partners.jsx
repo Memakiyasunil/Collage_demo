@@ -3,82 +3,8 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, GraduationCap } from 'lucide-react';
 import { staggerContainer, fadeInUp } from '../utils/animations';
 
-const partnersData = [
-  {
-    id: 1,
-    name: "Gandhinagar University",
-    programCount: 12,
-    colorTheme: "purple",
-    programs: [
-      "Int. M.Sc. IT Animation, VFX & Game Design",
-      "Int. M.Sc. IT Cyber Security & Digital Forensics",
-      "Int. M.Sc. IT Software & Mobile Application Development"
-    ],
-    moreCount: 9,
-    buttonText: "View University"
-  },
-  {
-    id: 2,
-    name: "Vidhyadeep University",
-    programCount: 13,
-    colorTheme: "blue",
-    programs: [
-      "Integrated MBA - Data Science",
-      "M.Sc. IT Animation, VFX & Game Design",
-      "M.Sc. IT Artificial Intelligence & Machine Learning"
-    ],
-    moreCount: 10,
-    buttonText: "View University"
-  },
-  {
-    id: 3,
-    name: "Shreyarth University",
-    programCount: 4,
-    colorTheme: "orange",
-    programs: [
-      "B.Sc. IT (Hons) Artificial Intelligence & Machine Learning",
-      "B.Sc. IT (Hons) Data Analytics",
-      "B.Voc. Cyber Security & Cloud Technology"
-    ],
-    moreCount: 1,
-    buttonText: "View University"
-  },
-  {
-    id: 4,
-    name: "Rai University",
-    programCount: 3,
-    colorTheme: "green",
-    programs: [
-      "B.Sc. IT (Hons) Artificial Intelligence & Machine Learning",
-      "B.Sc. IT (Hons) Cyber Security & Cloud Technology",
-      "M.Sc. IT Cyber Security & Cloud Technology"
-    ],
-    moreCount: 0,
-    buttonText: "View University"
-  },
-  {
-    id: 5,
-    name: "Monark University",
-    programCount: 0,
-    colorTheme: "pink",
-    programs: [],
-    moreCount: 0,
-    customMessage: "Program details will be available soon.",
-    buttonText: "View University"
-  },
-  {
-    id: 6,
-    name: "The New Progressive College",
-    programCount: 2,
-    colorTheme: "teal",
-    programs: [
-      "Bachelor of Business Administration (BBA)",
-      "Bachelor of Computer Application (BCA)"
-    ],
-    moreCount: 0,
-    buttonText: "View College"
-  }
-];
+import { Link } from 'react-router-dom';
+import { partnersData } from '../data/partnersData';
 
 const themeStyles = {
   purple: {
@@ -115,11 +41,11 @@ const themeStyles = {
 
 const Partners = () => {
   return (
-    <div className="py-16 px-4 md:px-8 max-w-7xl mx-auto bg-slate-50 min-h-screen">
+    <div className="pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto bg-slate-950 min-h-screen">
       <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 pb-4 gap-4 md:gap-0">
         <div>
           <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">OUR NETWORK</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mt-2">Partner <span className="text-blue-600">Universities</span></h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mt-2">Partner <span className="text-sky-400">Universities</span></h1>
         </div>
         <div className="md:max-w-[300px] text-left md:text-right">
           <p className="text-slate-500 text-[0.9rem] leading-relaxed">We partner with leading universities to bring you accredited, industry-aligned programs.</p>
@@ -133,7 +59,7 @@ const Partners = () => {
             return (
               <motion.div 
                 key={partner.id} 
-                className="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col border border-slate-100 transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.1)]"
+                className="bg-white/5 rounded-xl overflow-hidden shadow-lg flex flex-col border border-white/10 transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)]"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -141,7 +67,7 @@ const Partners = () => {
               >
                 {/* Card Top / Colored Section */}
                 <div className={`p-8 text-white relative overflow-hidden min-h-[140px] ${theme.bg}`}>
-                  <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-4">
                     <GraduationCap size={24} className={theme.icon} />
                   </div>
                   <h3 className="text-xl font-bold mb-1">{partner.name}</h3>
@@ -157,7 +83,7 @@ const Partners = () => {
                   ) : (
                     <ul className="list-none p-0 m-0 mb-8 grow">
                       {partner.programs.map((prog, idx) => (
-                        <li key={idx} className="flex items-start gap-3 mb-3 text-[0.85rem] text-slate-600 leading-relaxed">
+                        <li key={idx} className="flex items-start gap-3 mb-3 text-[0.85rem] text-slate-300 leading-relaxed">
                           <CheckCircle2 size={16} className={`shrink-0 mt-0.5 ${theme.check}`} />
                           <span>{prog}</span>
                         </li>
@@ -170,9 +96,9 @@ const Partners = () => {
                     </ul>
                   )}
 
-                  <button className="w-full bg-slate-900 text-white border-none rounded-lg p-3.5 text-[0.9rem] font-semibold cursor-pointer flex justify-center items-center gap-2 transition-colors duration-200 hover:bg-slate-800 mt-auto">
+                  <Link to={`/partner/${partner.id}`} className="w-full bg-white/10 text-white border border-white/10 rounded-lg p-3.5 text-[0.9rem] font-semibold flex justify-center items-center gap-2 transition-colors duration-200 hover:bg-white/20 mt-auto no-underline">
                     {partner.buttonText} <span className="font-normal">&gt;</span>
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             );

@@ -11,6 +11,7 @@ import CoreTeam from './pages/CoreTeam';
 import Courses from './pages/Courses';
 import CourseDetail from './pages/CourseDetail';
 import Partners from './pages/Partners';
+import PartnerDetail from './pages/PartnerDetail';
 import ServiceDetail from './pages/ServiceDetail';
 import Careers from './pages/Careers';
 import NewsBlogs from './pages/NewsBlogs';
@@ -45,6 +46,7 @@ function App() {
           <Route path="/course/:courseId" element={<CourseDetail />} />
           <Route path="/news" element={<NewsBlogs />} />
           <Route path="/partners" element={<Partners />} />
+          <Route path="/partner/:partnerId" element={<PartnerDetail />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
           <Route path="/contact" element={<Contact />} />

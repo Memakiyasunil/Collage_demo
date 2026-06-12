@@ -21,9 +21,10 @@ const ServiceDetail = () => {
   const IconComponent = service.icon;
 
   return (
-    <div className="bg-white min-h-screen font-sans">
+    <div className="bg-slate-950 min-h-screen font-sans">
       {/* Top Blue Header Section */}
-      <div className="bg-gradient-to-br from-blue-900 to-blue-600 py-16 px-8 text-white">
+      <div className="bg-gradient-to-b from-slate-900 to-slate-950 pt-32 pb-16 px-8 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none" />
         <motion.div 
           className="max-w-6xl mx-auto"
           initial="hidden"
@@ -54,11 +55,11 @@ const ServiceDetail = () => {
           viewport={{ once: true, amount: 0.1 }}
           variants={slideInLeft}
         >
-          <p className="text-[1.05rem] text-slate-600 leading-relaxed mb-16 max-w-4xl">
+          <p className="text-[1.05rem] text-slate-300 leading-relaxed mb-16 max-w-4xl">
             {service.description}
           </p>
 
-          <h3 className="text-2xl font-extrabold text-slate-900 mb-8">What We Offer</h3>
+          <h3 className="text-2xl font-extrabold text-white mb-8">What We Offer</h3>
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
             initial="hidden"
@@ -67,7 +68,7 @@ const ServiceDetail = () => {
             variants={staggerContainer}
           >
             {service.offers.map((offer, idx) => (
-              <motion.div key={idx} className="bg-slate-50 p-5 rounded-lg flex items-start gap-4 text-[0.9rem] text-slate-700 leading-relaxed font-medium transition-transform hover:-translate-y-1 hover:shadow-md" variants={fadeInUp}>
+              <motion.div key={idx} className="bg-white/5 border border-white/10 p-5 rounded-lg flex items-start gap-4 text-[0.9rem] text-slate-300 leading-relaxed font-medium transition-transform hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)]" variants={fadeInUp}>
                 <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={20} />
                 <span>{offer}</span>
               </motion.div>
@@ -83,10 +84,11 @@ const ServiceDetail = () => {
           variants={slideInRight}
         >
           {/* Bottom CTA Banner */}
-          <div className="bg-blue-600 rounded-2xl py-12 md:py-16 px-8 text-center text-white mb-10">
-            <h3 className="text-2xl md:text-[1.8rem] font-bold mb-4">Interested in this service?</h3>
-            <p className="text-white/90 mb-8 text-[1.05rem]">Get in touch with us to discuss how we can help your institution.</p>
-            <Link to="/contact" className="inline-block bg-white text-blue-600 py-3.5 px-8 rounded-lg font-semibold no-underline transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(0,0,0,0.1)]">Contact Us</Link>
+          <div className="bg-white/5 border border-white/10 rounded-2xl py-12 md:py-16 px-8 text-center text-white mb-10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-indigo-500/10 pointer-events-none" />
+            <h3 className="text-2xl md:text-[1.8rem] font-bold mb-4 relative z-10">Interested in this service?</h3>
+            <p className="text-white/80 mb-8 text-[1.05rem] relative z-10">Get in touch with us to discuss how we can help your institution.</p>
+            <Link to="/contact" className="relative z-10 inline-block bg-sky-600 text-white py-3.5 px-8 rounded-lg font-semibold no-underline transition-all duration-200 hover:-translate-y-0.5 hover:bg-sky-500 hover:shadow-[0_10px_30px_rgba(14,165,233,0.3)]">Contact Us</Link>
           </div>
         </motion.div>
       </div>

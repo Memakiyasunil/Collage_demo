@@ -8,10 +8,10 @@ import { fadeInUp, staggerContainer } from '../utils/animations';
 const ICONS = [Book, Code, Shield, Cpu, Database, Cloud];
 
 const uniClasses = {
-  'uni-blue': 'bg-blue-50 text-blue-600',
-  'uni-orange': 'bg-orange-50 text-orange-600',
-  'uni-green': 'bg-emerald-50 text-emerald-600',
-  'uni-purple': 'bg-purple-50 text-purple-600',
+  'uni-blue': 'bg-sky-500/10 text-sky-400',
+  'uni-orange': 'bg-orange-500/10 text-orange-400',
+  'uni-green': 'bg-emerald-500/10 text-emerald-400',
+  'uni-purple': 'bg-purple-500/10 text-purple-400',
 };
 
 const ProgramsSection = () => {
@@ -28,39 +28,40 @@ const ProgramsSection = () => {
   if (activeTab === 'INT') currentPrograms = intPrograms;
 
   return (
-    <section className="py-20 px-8 bg-slate-50">
-      <div className="text-center mb-12">
-        <h4 className="text-blue-500 text-[0.85rem] font-bold tracking-widest uppercase mb-2">OUR PROGRAMS</h4>
-        <h2 className="text-4xl font-extrabold text-slate-900 mb-4">Cutting-Edge IT Specializations</h2>
-        <p className="text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+    <section className="py-20 px-8 bg-slate-950 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-sky-900/10 via-transparent to-transparent pointer-events-none" />
+      <div className="text-center mb-12 relative z-10">
+        <h4 className="text-sky-400 text-[0.85rem] font-bold tracking-widest uppercase mb-2">OUR PROGRAMS</h4>
+        <h2 className="text-4xl font-extrabold text-white mb-4">Cutting-Edge IT Specializations</h2>
+        <p className="text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
           Choose from our range of industry-aligned programs designed to prepare you for the most in-demand tech careers.
         </p>
         
         <div className="flex justify-center gap-4 mb-12 flex-wrap">
           <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'UG' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'bg-slate-100 text-slate-600'}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'UG' ? 'bg-sky-500 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
             onClick={() => setActiveTab('UG')}
           >
-            UG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white ${activeTab === 'UG' ? 'text-blue-500' : 'text-slate-500'}`}>{ugPrograms.length}</span>
+            UG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'UG' ? 'text-white' : 'text-slate-400'}`}>{ugPrograms.length}</span>
           </button>
           <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'PG' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'bg-slate-100 text-slate-600'}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'PG' ? 'bg-sky-500 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
             onClick={() => setActiveTab('PG')}
           >
-            PG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white ${activeTab === 'PG' ? 'text-blue-500' : 'text-slate-500'}`}>{pgPrograms.length}</span>
+            PG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'PG' ? 'text-white' : 'text-slate-400'}`}>{pgPrograms.length}</span>
           </button>
           <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'INT' ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/30' : 'bg-slate-100 text-slate-600'}`}
+            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'INT' ? 'bg-sky-500 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
             onClick={() => setActiveTab('INT')}
           >
-            Integrated Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white ${activeTab === 'INT' ? 'text-blue-500' : 'text-slate-500'}`}>{intPrograms.length}</span>
+            Integrated Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'INT' ? 'text-white' : 'text-slate-400'}`}>{intPrograms.length}</span>
           </button>
         </div>
       </div>
 
       <motion.div 
         key={activeTab}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -70,8 +71,8 @@ const ProgramsSection = () => {
           const IconComponent = ICONS[prog.iconIndex] || Book;
 
           return (
-            <motion.div key={prog.id} className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 flex flex-col transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl" variants={fadeInUp}>
-              <div className="bg-indigo-600 p-6 flex justify-between items-start text-white">
+            <motion.div key={prog.id} className="bg-white/5 rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-white/10 flex flex-col transition-transform duration-200 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)]" variants={fadeInUp}>
+              <div className="bg-gradient-to-r from-sky-600/50 to-indigo-600/50 border-b border-white/10 p-6 flex justify-between items-start text-white">
                 <div className="w-10 h-10 rounded-lg border border-white/30 flex items-center justify-center">
                   <IconComponent size={20} />
                 </div>
@@ -79,17 +80,17 @@ const ProgramsSection = () => {
               </div>
               
               <div className="p-6 grow flex flex-col">
-                <h3 className="text-lg font-bold text-slate-900 mb-4 leading-snug">{prog.title}</h3>
+                <h3 className="text-lg font-bold text-white mb-4 leading-snug">{prog.title}</h3>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {prog.universities.map((uni, idx) => (
-                    <span key={idx} className={`text-[0.7rem] font-semibold py-1 px-2 rounded flex items-center gap-1 ${uniClasses[uni.class] || 'bg-slate-50 text-slate-600'}`}>{uni.name}</span>
+                    <span key={idx} className={`text-[0.7rem] font-semibold py-1 px-2 rounded flex items-center gap-1 ${uniClasses[uni.class] || 'bg-white/10 text-slate-300'}`}>{uni.name}</span>
                   ))}
                 </div>
-                <p className="text-[0.85rem] text-slate-500 leading-relaxed mb-6 grow">
+                <p className="text-[0.85rem] text-slate-400 leading-relaxed mb-6 grow">
                   {prog.description}
                 </p>
               
-                <div className="pt-6 border-t border-slate-100 flex justify-between items-center text-slate-400 text-sm font-medium mt-auto">
+                <div className="pt-6 border-t border-white/10 flex justify-between items-center text-slate-400 text-sm font-medium mt-auto">
                   <div className="flex gap-4">
                     <div className="flex items-center gap-1.5">
                       <Clock size={16} /> {prog.duration}
@@ -99,7 +100,7 @@ const ProgramsSection = () => {
                     </div>
                   </div>
                   
-                  <Link to={`/course/${prog.id}`} className="text-blue-600 font-semibold no-underline flex items-center gap-1 transition-colors hover:text-blue-700">
+                  <Link to={`/course/${prog.id}`} className="text-sky-400 font-semibold no-underline flex items-center gap-1 transition-colors hover:text-sky-300">
                     Details <ChevronRight size={16} style={{ marginTop: '2px' }} />
                   </Link>
                 </div>

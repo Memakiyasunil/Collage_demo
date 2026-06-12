@@ -4,30 +4,30 @@
 :root {
   --font-main: 'Inter', sans-serif;
   
-  --color-primary: #1d4ed8;
-  --color-primary-hover: #1e40af;
-  --color-secondary: #7bb0ff;
-  --color-accent: #22c55e;
+  --color-primary: #0ea5e9;
+  --color-primary-hover: #0284c7;
+  --color-secondary: #6366f1;
+  --color-accent: #38bdf8;
   
-  --color-nav-bg: #ffffff;
-  --color-nav-text: #374151;
-  --color-nav-active-bg: #eff6ff;
-  --color-nav-active-text: #1d4ed8;
+  --color-nav-bg: rgba(15, 23, 42, 0.65);
+  --color-nav-text: #f8fafc;
+  --color-nav-active-bg: rgba(14, 165, 233, 0.15);
+  --color-nav-active-text: #38bdf8;
   
-  --color-hero-bg-start: #0a1128;
-  --color-hero-bg-end: #223f85;
+  --color-hero-bg-start: #020617;
+  --color-hero-bg-end: #0f172a;
   --color-hero-text: #ffffff;
-  --color-hero-subtext: #cbd5e1;
+  --color-hero-subtext: #94a3b8;
   
-  --color-form-bg: rgba(255, 255, 255, 0.1);
-  --color-form-border: rgba(255, 255, 255, 0.2);
-  --color-form-input-bg: rgba(255, 255, 255, 0.15);
+  --color-form-bg: rgba(255, 255, 255, 0.05);
+  --color-form-border: rgba(255, 255, 255, 0.1);
+  --color-form-input-bg: rgba(255, 255, 255, 0.08);
 }
 
 body {
   font-family: var(--font-main);
-  background-color: var(--color-nav-bg);
-  color: var(--color-nav-text);
+  background-color: #020617;
+  color: #f8fafc;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
