@@ -80,6 +80,12 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
+            <Link to="/news" className={getNavLinkClass('/news')}>
+              News & Blogs
+              <NavUnderline active={location.pathname === '/news'} />
+            </Link>
+          </li>
+          <li>
             <Link to="/careers" className={getNavLinkClass('/careers')}>
               Careers
               <NavUnderline active={location.pathname === '/careers'} />

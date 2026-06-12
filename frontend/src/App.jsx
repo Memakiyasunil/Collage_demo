@@ -13,6 +13,7 @@ import CourseDetail from './pages/CourseDetail';
 import Partners from './pages/Partners';
 import ServiceDetail from './pages/ServiceDetail';
 import Careers from './pages/Careers';
+import NewsBlogs from './pages/NewsBlogs';
 import AdminLogin from './pages/admin/AdminLogin';
 import { AdminDashboard, AdminCourses, AdminFooter, AdminPartners } from './pages/admin/AdminPages';
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/core-team" element={<CoreTeam />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/course/:courseId" element={<CourseDetail />} />
+          <Route path="/news" element={<NewsBlogs />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
