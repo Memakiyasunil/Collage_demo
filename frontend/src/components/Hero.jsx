@@ -56,7 +56,7 @@ const Hero = () => {
           
           <motion.h1 className="text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight" variants={fadeInUp}>
             Transform Your Future<br />
-            with <span className="text-sky-400">Cutting-Edge IT<br/>Education</span>
+            with <span className="text-yellow-400">Cutting-Edge IT<br/>Education</span>
           </motion.h1>
           
           <motion.p className="text-lg leading-relaxed text-slate-300 mb-10 max-w-[90%]" variants={fadeInUp}>

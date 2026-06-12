@@ -6,7 +6,6 @@ import logo from '../assets/logo.jpg';
 
 const Navbar = () => {
   const location = useLocation();
-  const [hoveredNav, setHoveredNav] = useState(null);
 
   const isActive = (path) => location.pathname === path;
 
@@ -14,22 +13,11 @@ const Navbar = () => {
     const active = isActive(path) || (dropdown && dropdown.some(d => isActive(d.path)));
 
     return (
-      <li
-        className="relative group/navitem z-10"
-        onMouseEnter={() => setHoveredNav(label)}
-        onMouseLeave={() => setHoveredNav(null)}
-      >
+      <li className="relative group/navitem z-10">
         {path ? (
           <Link to={path} className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors duration-300 ${active ? 'text-white' : 'text-slate-300 hover:text-white'}`}>
             <span className="relative z-10">{label}</span>
-            {hoveredNav === label && (
-              <motion.div
-                layoutId="nav-pill"
-                className="absolute inset-0 bg-white/10 rounded-full -z-0"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            {active && hoveredNav !== label && (
+            {active && (
               <motion.div
                 layoutId="nav-pill-active"
                 className="absolute inset-0 bg-sky-500/20 rounded-full -z-0 border border-sky-500/30"
@@ -40,14 +28,7 @@ const Navbar = () => {
         ) : (
           <div className={`relative flex items-center gap-1 px-4 py-2 text-sm font-medium cursor-pointer transition-colors duration-300 ${active ? 'text-white' : 'text-slate-300 hover:text-white'}`}>
             <span className="relative z-10 flex items-center gap-1">{label} <ChevronDown size={14} className="mt-[2px] opacity-70 group-hover/navitem:opacity-100 transition-opacity" /></span>
-            {hoveredNav === label && (
-              <motion.div
-                layoutId="nav-pill"
-                className="absolute inset-0 bg-white/10 rounded-full -z-0"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            {active && hoveredNav !== label && (
+            {active && (
               <motion.div
                 layoutId="nav-pill-active"
                 className="absolute inset-0 bg-sky-500/20 rounded-full -z-0 border border-sky-500/30"
@@ -56,16 +37,16 @@ const Navbar = () => {
             )}
 
             {dropdown && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible translate-y-2 group-hover/navitem:opacity-100 group-hover/navitem:visible group-hover/navitem:translate-y-0 transition-all duration-300">
-                <div className="bg-slate-900/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 rounded-2xl py-2 min-w-[220px] overflow-hidden relative">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover/navitem:opacity-100 group-hover/navitem:visible transition-all duration-300">
+                <div className="bg-slate-900/90 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50 rounded-2xl py-2 min-w-[220px] overflow-hidden relative translate-y-2 group-hover/navitem:translate-y-0 transition-transform duration-300">
                   <div className="absolute inset-0 bg-gradient-to-b from-sky-500/5 to-transparent pointer-events-none" />
                   {dropdown.map((item, idx) => (
                     <Link
                       key={idx}
                       to={item.path}
-                      className="block px-5 py-3 text-slate-300 text-sm font-medium transition-all duration-200 hover:bg-white/5 hover:text-sky-400 hover:pl-7 relative z-10"
+                      className="block px-5 py-3 text-slate-300 text-sm font-medium transition-all duration-200 hover:bg-white/5 hover:text-yellow-400 group/link relative z-10"
                     >
-                      {item.label}
+                      <span className="inline-block transition-transform duration-200 group-hover/link:translate-x-1.5">{item.label}</span>
                     </Link>
                   ))}
                 </div>

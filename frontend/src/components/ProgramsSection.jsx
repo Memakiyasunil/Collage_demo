@@ -32,7 +32,7 @@ const ProgramsSection = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-sky-900/10 via-transparent to-transparent pointer-events-none" />
       <div className="text-center mb-12 relative z-10">
         <h4 className="text-sky-400 text-[0.85rem] font-bold tracking-widest uppercase mb-2">OUR PROGRAMS</h4>
-        <h2 className="text-4xl font-extrabold text-white mb-4">Cutting-Edge IT Specializations</h2>
+        <h2 className="text-4xl font-extrabold text-white mb-4"><span className="text-yellow-400">Cutting-Edge</span> IT Specializations</h2>
         <p className="text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
           Choose from our range of industry-aligned programs designed to prepare you for the most in-demand tech careers.
         </p>
