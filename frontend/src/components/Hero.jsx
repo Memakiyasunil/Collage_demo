@@ -65,14 +65,20 @@ const Hero = () => {
           {/* CTA Buttons */}
           <motion.div
             variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-5 justify-center mb-16"
+            className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
           >
-            <button className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-bold hover:bg-yellow-300 transition-all duration-300 hover:scale-105">
-              Explore Programs
+            <button className="relative overflow-hidden group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(250,204,21,0.4)]">
+              <span className="relative z-10 flex items-center gap-2">
+                Explore Programs
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
             </button>
 
-            <button className="border border-white/30 px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300">
-              Contact Us
+            <button className="relative overflow-hidden group border border-white/30 px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:border-white/60 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+              <span className="relative z-10 flex items-center gap-2">
+                Contact Us
+              </span>
             </button>
           </motion.div>
 
@@ -82,34 +88,28 @@ const Hero = () => {
             variants={fadeInUp}
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto"
           >
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
-              <h2 className="text-4xl font-black text-yellow-400">
-                5000+
-              </h2>
-              <p className="text-gray-300 mt-2">
-                Happy Students
-              </p>
-            </div>
-
-
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
-              <h2 className="text-4xl font-black text-yellow-400">
-                30+
-              </h2>
-              <p className="text-gray-300 mt-2">
-                Professional Courses
-              </p>
-            </div>
-
-
-            <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
-              <h2 className="text-4xl font-black text-yellow-400">
-                100%
-              </h2>
-              <p className="text-gray-300 mt-2">
-                Career Support
-              </p>
-            </div>
+            {[
+              { number: "5000+", label: "Happy Students" },
+              { number: "30+", label: "Professional Courses" },
+              { number: "100%", label: "Career Support" }
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-yellow-400/30 hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/0 to-yellow-400/0 group-hover:from-yellow-400/5 group-hover:to-transparent transition-colors duration-300" />
+                
+                <h2 className="relative z-10 text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 drop-shadow-sm group-hover:scale-110 transition-transform duration-300 origin-left">
+                  {stat.number}
+                </h2>
+                <p className="relative z-10 text-slate-300 mt-3 font-medium tracking-wide group-hover:text-white transition-colors duration-300">
+                  {stat.label}
+                </p>
+                
+                <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-yellow-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </motion.div>
+            ))}
           </motion.div>
 
 

@@ -18,8 +18,8 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/swarnim_edu
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('MongoDB connected successfully'))
-.catch((err) => console.log('MongoDB connection error: ', err));
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => console.log('MongoDB connection error: ', err));
 
 // Routes
 app.use('/api/course', require('./routes/courseRoutes'));

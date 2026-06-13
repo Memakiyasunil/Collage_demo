@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import { ChevronDown, HeartPulse, Target, GraduationCap, Briefcase, FileText, Zap, Award, Users, Search } from 'lucide-react';
 
 const jobsData = [
-  { id: 1, title: 'Academic Counsellor', location: 'Ahmedabad', department: 'Counselling', type: 'Full-time', icon: <HeartPulse size={20} style={{color: '#4ade80'}} /> },
-  { id: 2, title: 'Business Development Executive', location: 'Ahmedabad', department: 'Sales', type: 'Full-time', icon: <Target size={20} style={{color: '#a855f7'}} /> },
-  { id: 3, title: 'Business Development Manager - Gujarat', location: 'Ahmedabad', department: 'Sales', type: 'Full-time', icon: <Target size={20} style={{color: '#a855f7'}} /> },
-  { id: 4, title: 'Business Head', location: 'Ahmedabad', department: 'Sales', type: 'Full-time', icon: <Briefcase size={20} style={{color: '#f59e0b'}} /> },
-  { id: 5, title: 'Faculty - MBA', location: 'Surat', department: 'Teaching', type: 'Full-time', icon: <GraduationCap size={20} style={{color: '#3b82f6'}} /> },
-  { id: 6, title: 'Faculty - B.Tech', location: 'Mahesana', department: 'Teaching', type: 'Full-time', icon: <GraduationCap size={20} style={{color: '#3b82f6'}} /> },
-  { id: 7, title: 'Admission Officer', location: 'Surat', department: 'Admissions', type: 'Full-time', icon: <Users size={20} style={{color: '#ec4899'}} /> },
+  { id: 1, title: 'Academic Counsellor', location: 'Ahmedabad', department: 'Counselling', type: 'Full-time', icon: <HeartPulse size={20} style={{ color: '#4ade80' }} /> },
+  { id: 2, title: 'Business Development Executive', location: 'Ahmedabad', department: 'Sales', type: 'Full-time', icon: <Target size={20} style={{ color: '#a855f7' }} /> },
+  { id: 3, title: 'Business Development Manager - Gujarat', location: 'Ahmedabad', department: 'Sales', type: 'Full-time', icon: <Target size={20} style={{ color: '#a855f7' }} /> },
+  { id: 4, title: 'Business Head', location: 'Ahmedabad', department: 'Sales', type: 'Full-time', icon: <Briefcase size={20} style={{ color: '#f59e0b' }} /> },
+  { id: 5, title: 'Faculty - MBA', location: 'Surat', department: 'Teaching', type: 'Full-time', icon: <GraduationCap size={20} style={{ color: '#3b82f6' }} /> },
+  { id: 6, title: 'Faculty - B.Tech', location: 'Mahesana', department: 'Teaching', type: 'Full-time', icon: <GraduationCap size={20} style={{ color: '#3b82f6' }} /> },
+  { id: 7, title: 'Admission Officer', location: 'Surat', department: 'Admissions', type: 'Full-time', icon: <Users size={20} style={{ color: '#ec4899' }} /> },
 ];
 
 const Careers = () => {
@@ -22,8 +22,8 @@ const Careers = () => {
     { name: 'Surat', count: 4 },
   ];
 
-  const filteredJobs = activeTab === 'All Positions' 
-    ? jobsData 
+  const filteredJobs = activeTab === 'All Positions'
+    ? jobsData
     : jobsData.filter(job => job.location === activeTab);
 
   return (
@@ -34,10 +34,10 @@ const Careers = () => {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-5">Join Swarnim Edutech</h1>
           <p className="text-lg md:text-xl opacity-90 leading-relaxed mb-10">
-            12 open positions across 3 cities. Find your role and help<br className="hidden md:block" />
+            24 open positions across 3 cities. Find your role and help<br className="hidden md:block" />
             shape the future of education.
           </p>
-          
+
           <div className="flex justify-center items-center gap-4 text-base md:text-lg flex-wrap">
             <span><strong className="font-bold">3</strong> Locations</span>
             <span className="opacity-50">|</span>
@@ -53,7 +53,7 @@ const Careers = () => {
         {/* Filter Tabs */}
         <div className="flex gap-8 border-b border-slate-200 mb-10 overflow-x-auto">
           {filterTabs.map((tab) => (
-            <button 
+            <button
               key={tab.name}
               className={`bg-transparent py-4 text-base font-semibold cursor-pointer flex items-center gap-2 whitespace-nowrap transition-colors border-b-2 ${activeTab === tab.name ? 'text-sky-400 border-sky-400' : 'text-slate-500 border-transparent hover:text-white'}`}
               onClick={() => setActiveTab(tab.name)}
@@ -66,8 +66,8 @@ const Careers = () => {
         {/* Jobs List */}
         <div className="flex flex-col gap-5 mb-16">
           {filteredJobs.map((job) => (
-            <motion.div 
-              key={job.id} 
+            <motion.div
+              key={job.id}
               className="bg-white/5 rounded-xl p-6 flex flex-col md:flex-row md:justify-between md:items-center shadow-sm border border-white/10 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)]"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ const Careers = () => {
         {/* Features Section */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl text-white font-extrabold mb-10">Why Join Swarnim?</h2>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className="bg-white/5 p-8 px-5 rounded-2xl shadow-sm border border-white/10">
               <div className="bg-sky-500/10 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5">
@@ -114,7 +114,7 @@ const Careers = () => {
               <h3 className="text-lg text-white font-bold mb-3">High Impact Work</h3>
               <p className="text-slate-400 text-[0.95rem] leading-relaxed">Shape the careers of thousands of students through cutting-edge education that matters.</p>
             </div>
-            
+
             <div className="bg-white/5 p-8 px-5 rounded-2xl shadow-sm border border-white/10">
               <div className="bg-sky-500/10 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5">
                 <Award size={24} className="text-sky-400" />
@@ -122,7 +122,7 @@ const Careers = () => {
               <h3 className="text-lg text-white font-bold mb-3">Grow With Purpose</h3>
               <p className="text-slate-400 text-[0.95rem] leading-relaxed">Continuous learning, certifications, and a clear growth path in a fast-scaling organisation.</p>
             </div>
-            
+
             <div className="bg-white/5 p-8 px-5 rounded-2xl shadow-sm border border-white/10">
               <div className="bg-sky-500/10 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5">
                 <Users size={24} className="text-sky-400" />
@@ -130,7 +130,7 @@ const Careers = () => {
               <h3 className="text-lg text-white font-bold mb-3">Collaborative Culture</h3>
               <p className="text-slate-400 text-[0.95rem] leading-relaxed">A tight-knit, diverse team where every voice counts and great ideas get championed.</p>
             </div>
-            
+
             <div className="bg-white/5 p-8 px-5 rounded-2xl shadow-sm border border-white/10">
               <div className="bg-sky-500/10 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-5">
                 <Search size={24} className="text-sky-400" />
@@ -140,7 +140,7 @@ const Careers = () => {
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   );
