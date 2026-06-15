@@ -91,6 +91,7 @@ const Navbar = () => {
             { path: '/courses', label: 'PG Programs' }
           ]} />
           <NavItem label="Services" dropdown={[
+            { path: '/all-services', label: 'All Professional Services' },
             { path: '/services/managed-campus', label: 'Managed Campus' },
             { path: '/services/corporate-connect', label: 'Corporate Connect' },
             { path: '/services/student-acquisition', label: 'Student Acquisition' }

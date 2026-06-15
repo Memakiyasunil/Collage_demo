@@ -76,6 +76,113 @@ const ServiceDetail = () => {
           </motion.div>
         </motion.div>
 
+        {/* Dynamic Context Sections */}
+        <motion.div 
+          className="w-full"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={slideInLeft}
+        >
+          {/* TEACHING & FACULTY - Process / Methodology */}
+          {(service.methodology || service.selectionProcess) && (
+            <div className="mb-16">
+              <h3 className="text-2xl font-extrabold text-white mb-8">Our Process</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {(service.methodology || service.selectionProcess).map((item, idx) => (
+                  <div key={idx} className="bg-slate-900 border border-slate-800 p-6 rounded-xl relative overflow-hidden group hover:border-sky-500/50 transition-colors">
+                    <div className="absolute top-0 right-0 w-16 h-16 bg-sky-500/10 rounded-bl-full flex items-start justify-end p-3">
+                      <span className="text-sky-500 font-extrabold text-xl group-hover:scale-110 transition-transform">{item.step}</span>
+                    </div>
+                    <h4 className="text-lg font-bold text-white mb-2">{item.title || item.action}</h4>
+                    {item.desc && <p className="text-slate-400 text-[0.9rem] leading-relaxed">{item.desc}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TRAINING - Technologies */}
+          {service.technologies && (
+            <div className="mb-16">
+              <h3 className="text-2xl font-extrabold text-white mb-8">Technologies We Cover</h3>
+              <div className="flex flex-wrap gap-3">
+                {service.technologies.map((tech, idx) => (
+                  <span key={idx} className="bg-sky-500/10 border border-sky-500/30 text-sky-400 px-5 py-2.5 rounded-full font-bold text-sm hover:bg-sky-500 hover:text-slate-900 transition-all cursor-default">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* BOOTCAMPS - Curriculum Highlights */}
+          {service.curriculumHighlights && (
+            <div className="mb-16">
+              <h3 className="text-2xl font-extrabold text-white mb-8">Curriculum Highlights</h3>
+              <div className="space-y-4">
+                {service.curriculumHighlights.map((curr, idx) => (
+                  <div key={idx} className="bg-white/5 border border-white/10 p-5 rounded-lg flex items-center gap-6 hover:bg-white/10 transition-colors">
+                    <span className="bg-yellow-400 text-slate-900 px-4 py-1.5 rounded font-extrabold text-sm min-w-[110px] text-center shadow-sm">{curr.week}</span>
+                    <span className="text-slate-300 font-medium text-[1.05rem]">{curr.focus}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TWO COLUMN MIXED METADATA */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+            {/* Outcomes */}
+            {(service.keyOutcomes || service.careerOutcomes) && (
+              <div>
+                <h3 className="text-xl font-extrabold text-white mb-6">Key Outcomes</h3>
+                <ul className="space-y-4 bg-white/5 border border-white/10 p-6 rounded-xl">
+                  {(service.keyOutcomes || service.careerOutcomes).map((outcome, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-slate-300 text-[0.95rem] font-medium"><CheckCircle2 className="text-yellow-400 shrink-0 mt-0.5" size={20} /> {outcome}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            {/* Target Audience / Alignment */}
+            {(service.targetAudience || service.industryAlignment) && (
+              <div>
+                <h3 className="text-xl font-extrabold text-white mb-6">Target Alignment</h3>
+                <div className="bg-gradient-to-br from-sky-900/40 to-indigo-900/40 border border-sky-500/20 p-6 rounded-xl h-full">
+                  <p className="text-slate-300 leading-relaxed text-[1rem]">
+                    {service.targetAudience || service.industryAlignment}
+                  </p>
+                </div>
+              </div>
+            )}
+            
+            {/* Platforms / Prerequisites */}
+            {(service.platformsUsed || service.prerequisites) && (
+              <div>
+                <h3 className="text-xl font-extrabold text-white mb-6">{service.platformsUsed ? 'Platforms Used' : 'Prerequisites'}</h3>
+                <ul className="space-y-4 bg-white/5 border border-white/10 p-6 rounded-xl">
+                  {(service.platformsUsed || service.prerequisites).map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-slate-300 text-[0.95rem] font-medium"><CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={20} /> {item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            {/* Domains / Expertise */}
+            {(service.guestSpeakerDomains || service.facultyDomains) && (
+              <div>
+                <h3 className="text-xl font-extrabold text-white mb-6">Expertise Domains</h3>
+                <div className="flex flex-wrap gap-2">
+                  {(service.guestSpeakerDomains || service.facultyDomains).map((domain, idx) => (
+                    <span key={idx} className="bg-white/10 border border-white/5 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors">{domain}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
         <motion.div 
           className="w-full"
           initial="hidden"

@@ -14,6 +14,18 @@ export const servicesData = {
       "Regular assessments and feedback",
       "Personalized student mentoring",
       "Project-based learning approach"
+    ],
+    methodology: [
+      { step: "1", title: "Diagnostic Assessment", desc: "Understanding student baselines to tailor instructional strategies." },
+      { step: "2", title: "Interactive Delivery", desc: "Using smart classrooms and multimedia to enhance engagement." },
+      { step: "3", title: "Continuous Evaluation", desc: "Weekly quizzes and assignments to track real-time progress." },
+      { step: "4", title: "Remedial Action", desc: "Dedicated sessions for doubt clearing and personalized support." }
+    ],
+    targetAudience: "Undergraduate and Postgraduate students seeking deep theoretical foundations paired with practical industry insights.",
+    keyOutcomes: [
+      "Enhanced conceptual clarity",
+      "Improved academic performance",
+      "Strong foundation for advanced studies"
     ]
   },
   "training": {
@@ -29,7 +41,23 @@ export const servicesData = {
       "Certification preparation programs",
       "Technical tool proficiency",
       "Real-world scenario simulations"
-    ]
+    ],
+    technologies: [
+      "React & Node.js",
+      "Python & Django",
+      "AWS & Cloud Ops",
+      "Data Analytics & PowerBI",
+      "Cybersecurity",
+      "UI/UX Design"
+    ],
+    certificationPath: [
+      "Skill Assessment & Gap Analysis",
+      "Intensive Hands-on Workshops",
+      "Live Project Implementation",
+      "Mock Interviews & Prep",
+      "Final Certification Awarded"
+    ],
+    industryAlignment: "All training modules are co-developed with leading IT firms to ensure 100% relevance to current job market demands."
   },
   "bootcamps": {
     id: "bootcamps",
@@ -44,6 +72,22 @@ export const servicesData = {
       "Mentorship from industry experts",
       "Portfolio building opportunities",
       "Career transition support"
+    ],
+    curriculumHighlights: [
+      { week: "Weeks 1-2", focus: "Foundations & Syntax Basics" },
+      { week: "Weeks 3-5", focus: "Advanced Concepts & Frameworks" },
+      { week: "Weeks 6-8", focus: "Database & Backend Integration" },
+      { week: "Weeks 9-12", focus: "Capstone Project & Deployment" }
+    ],
+    prerequisites: [
+      "Basic understanding of computer operations",
+      "Logical and analytical mindset",
+      "Commitment of 15-20 hours per week"
+    ],
+    careerOutcomes: [
+      "Junior Developer Roles",
+      "Technical Support Engineering",
+      "Freelance Opportunities"
     ]
   },
   "knowledge-sharing": {
@@ -59,6 +103,23 @@ export const servicesData = {
       "Industry insights and trend analysis",
       "Alumni networking events",
       "Open-source contribution guidance"
+    ],
+    platformsUsed: [
+      "Interactive Webinar Portals",
+      "Dedicated Discord Communities",
+      "Open Source Contribution Hubs",
+      "Internal Research Repositories"
+    ],
+    guestSpeakerDomains: [
+      "Artificial Intelligence & ML",
+      "FinTech & Blockchain",
+      "Tech Leadership & Agile",
+      "Startup Founders & VCs"
+    ],
+    communityBenefits: [
+      "Direct networking with industry leaders",
+      "Access to premium whitepapers and research",
+      "Opportunities for cross-disciplinary collaboration"
     ]
   },
   "faculty-provision": {
@@ -74,6 +135,24 @@ export const servicesData = {
       "Faculty training and development",
       "Performance evaluation and feedback",
       "Seamless integration into campus culture"
+    ],
+    selectionProcess: [
+      { step: "1", action: "Resume & Credential Screening" },
+      { step: "2", action: "Subject Matter Expert Technical Interview" },
+      { step: "3", action: "Live Demo Lecture Assessment" },
+      { step: "4", action: "Background & Reference Checks" },
+      { step: "5", action: "Onboarding & Institutional Alignment" }
+    ],
+    facultyDomains: [
+      "Computer Science & Engineering",
+      "Business Administration & Management",
+      "Data Science & Analytics",
+      "Cybersecurity & Cloud Computing"
+    ],
+    qualityAssurance: [
+      "Biannual performance reviews",
+      "Student feedback integration",
+      "Continuous faculty development programs"
     ]
   },
   "managed-campus": {

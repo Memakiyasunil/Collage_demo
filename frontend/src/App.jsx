@@ -13,10 +13,11 @@ import CourseDetail from './pages/CourseDetail';
 import Partners from './pages/Partners';
 import PartnerDetail from './pages/PartnerDetail';
 import ServiceDetail from './pages/ServiceDetail';
+import ServicesPage from './pages/ServicesPage';
 import Careers from './pages/Careers';
 import NewsBlogs from './pages/NewsBlogs';
 import AdminLogin from './pages/admin/AdminLogin';
-import { AdminDashboard, AdminCourses, AdminFooter, AdminPartners } from './pages/admin/AdminPages';
+import { AdminDashboard, AdminCourses, AdminFooter, AdminPartners, AdminServices } from './pages/admin/AdminPages';
 
 // Simple Protected Route wrapper
 const ProtectedRoute = ({ isAuthenticated, children }) => {
@@ -49,6 +50,7 @@ function App() {
           <Route path="/partner/:partnerId" element={<PartnerDetail />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
+          <Route path="/all-services" element={<ServicesPage />} />
           <Route path="/contact" element={<Contact />} />
           
           {/* Admin Login Route */}
@@ -73,6 +75,14 @@ function App() {
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
                 <AdminCourses onLogout={() => setIsAuthenticated(false)} />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/admin/services" 
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <AdminServices onLogout={() => setIsAuthenticated(false)} />
               </ProtectedRoute>
             } 
           />

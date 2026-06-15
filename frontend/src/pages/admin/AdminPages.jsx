@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, BookOpen, Users, Mail, LogOut, Settings, Plus, Edit2, Trash2, X } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Users, Mail, LogOut, Settings, Plus, Edit2, Trash2, X, Briefcase, Check, XCircle } from 'lucide-react';
 import { CourseContext } from '../../context/CourseContext';
 import { SiteContext } from '../../context/SiteContext';
 
@@ -19,6 +19,9 @@ const AdminLayout = ({ children, onLogout }) => {
           </NavLink>
           <NavLink to="/admin/courses" className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
             <BookOpen size={20} /> Courses
+          </NavLink>
+          <NavLink to="/admin/services" className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
+            <Briefcase size={20} /> Services
           </NavLink>
           <NavLink to="/admin/inquiries" className={({ isActive }) => `px-6 py-3.5 flex items-center gap-3 text-slate-400 transition-all duration-200 ${isActive ? 'bg-white/5 text-white border-l-4 border-sky-400' : 'hover:bg-white/5 hover:text-white border-l-4 border-transparent'}`}>
             <Users size={20} /> Inquiries
@@ -425,6 +428,210 @@ export const AdminPartners = ({ onLogout }) => {
               <div className="flex justify-end gap-4 mt-8 pt-6 border-t border-slate-200">
                 <button type="button" className="bg-transparent border border-blue-500 text-blue-500 py-2 px-6 rounded-md font-semibold transition-colors hover:bg-blue-500 hover:text-white" onClick={closeModal}>Cancel</button>
                 <button type="submit" className="bg-blue-600 text-white py-2 px-6 rounded-md font-semibold transition-colors hover:bg-blue-700 border-none cursor-pointer">Save Partner</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </AdminLayout>
+  );
+};
+
+export const AdminServices = ({ onLogout }) => {
+  const [services, setServices] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingService, setEditingService] = useState(null);
+
+  const defaultService = {
+    title: '', description: '', icon: 'Settings', image: '', isActive: true, features: []
+  };
+  const [formData, setFormData] = useState(defaultService);
+  const [featureInput, setFeatureInput] = useState('');
+
+  // Fetch services when component mounts
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
+  const fetchServices = async () => {
+    try {
+      const response = await fetch('/api/services');
+      const data = await response.json();
+      if (data.success) {
+        setServices(data.data);
+      }
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    }
+  };
+
+  const openModal = (service = null) => {
+    if (service) {
+      setEditingService(service);
+      setFormData(service);
+    } else {
+      setEditingService(null);
+      setFormData(defaultService);
+    }
+    setFeatureInput('');
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleAddFeature = () => {
+    if (featureInput.trim() !== '') {
+      setFormData({ ...formData, features: [...formData.features, featureInput.trim()] });
+      setFeatureInput('');
+    }
+  };
+
+  const handleRemoveFeature = (index) => {
+    const newFeatures = [...formData.features];
+    newFeatures.splice(index, 1);
+    setFormData({ ...formData, features: newFeatures });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (editingService) {
+        await fetch(`/api/services/update/${editingService._id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+      } else {
+        await fetch('/api/services/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+      }
+      fetchServices();
+      closeModal();
+    } catch (error) {
+      console.error('Error saving service:', error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this service?")) {
+      try {
+        await fetch(`/api/services/delete/${id}`, { method: 'DELETE' });
+        fetchServices();
+      } catch (error) {
+        console.error('Error deleting service:', error);
+      }
+    }
+  };
+
+  const handleToggleActive = async (service) => {
+    try {
+      await fetch(`/api/services/update/${service._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isActive: !service.isActive })
+      });
+      fetchServices();
+    } catch (error) {
+      console.error('Error toggling service status:', error);
+    }
+  };
+
+  return (
+    <AdminLayout onLogout={onLogout}>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-slate-900 mb-0">Manage Services</h2>
+        <button className="bg-blue-600 text-white border-none py-2 px-4 rounded-lg text-[0.95rem] font-bold cursor-pointer transition-colors duration-200 hover:bg-blue-700 inline-flex items-center gap-2" onClick={() => openModal()}><Plus size={16} /> Add New Service</button>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden">
+        <table className="w-full border-collapse text-left">
+          <thead>
+            <tr>
+              <th className="bg-slate-50 text-slate-600 font-semibold text-sm px-6 py-4 border-b border-slate-200">Service Title</th>
+              <th className="bg-slate-50 text-slate-600 font-semibold text-sm px-6 py-4 border-b border-slate-200">Icon</th>
+              <th className="bg-slate-50 text-slate-600 font-semibold text-sm px-6 py-4 border-b border-slate-200">Features</th>
+              <th className="bg-slate-50 text-slate-600 font-semibold text-sm px-6 py-4 border-b border-slate-200">Status</th>
+              <th className="bg-slate-50 text-slate-600 font-semibold text-sm px-6 py-4 border-b border-slate-200">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {services.length === 0 && (
+              <tr><td colSpan="5" className="text-slate-800 px-6 py-4 border-b border-slate-200 text-center">No services found.</td></tr>
+            )}
+            {services.map(service => (
+              <tr key={service._id}>
+                <td className="text-slate-800 px-6 py-4 border-b border-slate-200">{service.title}</td>
+                <td className="text-slate-800 px-6 py-4 border-b border-slate-200"><span className="bg-slate-100 text-slate-600 py-1 px-2.5 rounded-md text-xs font-mono">{service.icon}</span></td>
+                <td className="text-slate-800 px-6 py-4 border-b border-slate-200">{service.features?.length || 0} Features</td>
+                <td className="text-slate-800 px-6 py-4 border-b border-slate-200">
+                  <button onClick={() => handleToggleActive(service)} className={`px-3 py-1 rounded-full text-xs font-bold border-none cursor-pointer ${service.isActive ? 'bg-emerald-100 text-emerald-600' : 'bg-slate-100 text-slate-500'}`}>
+                    {service.isActive ? 'Active' : 'Disabled'}
+                  </button>
+                </td>
+                <td className="text-slate-800 px-6 py-4 border-b border-slate-200">
+                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-sky-500" onClick={() => openModal(service)}><Edit2 size={18} /></button>
+                  <button className="bg-transparent border-none cursor-pointer p-2 rounded-md inline-flex items-center justify-center transition-colors hover:bg-slate-100 text-red-500 ml-2" onClick={() => handleDelete(service._id)}><Trash2 size={18} /></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center z-[1000] p-4">
+          <div className="bg-white w-full max-w-[700px] rounded-xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-6 border-b border-slate-200 pb-4">
+              <h3 className="text-xl text-slate-900 font-bold">{editingService ? 'Edit Service' : 'Add New Service'}</h3>
+              <button className="bg-transparent border-none cursor-pointer text-slate-400 transition-colors hover:text-red-500" onClick={closeModal}><X size={20} /></button>
+            </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+              <div className="flex gap-6">
+                <div className="flex-[2] w-full">
+                  <label className="block font-semibold text-slate-600 mb-2 text-sm">Service Title</label>
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.title} onChange={e => setFormData({ ...formData, title: e.target.value })} placeholder="e.g. Industry-Oriented Technical Training" />
+                </div>
+                <div className="flex-[1] w-full">
+                  <label className="block font-semibold text-slate-600 mb-2 text-sm">Lucide Icon Name</label>
+                  <input className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" required value={formData.icon} onChange={e => setFormData({ ...formData, icon: e.target.value })} placeholder="e.g. Code, Database, Users" />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block font-semibold text-slate-600 mb-2 text-sm">Description</label>
+                <textarea className="w-full p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" rows="3" required value={formData.description} onChange={e => setFormData({ ...formData, description: e.target.value })} placeholder="Detailed description of the service"></textarea>
+              </div>
+
+              <div>
+                <label className="block font-semibold text-slate-600 mb-2 text-sm">Key Features</label>
+                <div className="flex gap-2 mb-3">
+                  <input className="flex-grow p-3 border border-slate-300 rounded-md text-sm outline-none transition-colors focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20" type="text" value={featureInput} onChange={e => setFeatureInput(e.target.value)} placeholder="Add a feature (e.g. Full Stack Development)" onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleAddFeature(); } }} />
+                  <button type="button" onClick={handleAddFeature} className="bg-slate-800 text-white px-4 rounded-md font-semibold text-sm hover:bg-slate-700 transition-colors">Add</button>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 rounded-md p-3 min-h-[80px] flex flex-col gap-2">
+                  {formData.features.length === 0 ? <p className="text-slate-400 text-sm text-center my-2 italic">No features added yet</p> : null}
+                  {formData.features.map((feature, idx) => (
+                    <div key={idx} className="flex justify-between items-center bg-white border border-slate-200 px-3 py-2 rounded text-sm text-slate-700 shadow-sm">
+                      <span className="flex items-center gap-2"><Check size={14} className="text-emerald-500" /> {feature}</span>
+                      <button type="button" onClick={() => handleRemoveFeature(idx)} className="text-red-400 hover:text-red-600 cursor-pointer bg-transparent border-none p-1"><Trash2 size={14} /></button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked={formData.isActive} onChange={e => setFormData({ ...formData, isActive: e.target.checked })} className="w-4 h-4 text-sky-500 rounded focus:ring-sky-500" />
+                  <span className="font-semibold text-slate-600 text-sm">Service is Active</span>
+                </label>
+              </div>
+
+              <div className="flex justify-end gap-4 mt-4 pt-6 border-t border-slate-200">
+                <button type="button" className="bg-transparent border border-slate-300 text-slate-600 py-2 px-6 rounded-md font-semibold transition-colors hover:bg-slate-100" onClick={closeModal}>Cancel</button>
+                <button type="submit" className="bg-blue-600 text-white py-2 px-6 rounded-md font-semibold transition-colors hover:bg-blue-700 border-none cursor-pointer">Save Service</button>
               </div>
             </form>
           </div>
