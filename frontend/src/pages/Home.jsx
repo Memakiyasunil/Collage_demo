@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import PartnerLogos from '../components/PartnerLogos';
 import ProgramsSection from '../components/ProgramsSection';
 import Features from '../components/Features';
+import CardSwap from '../components/CardSwap';
 import { Users } from 'lucide-react';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../utils/animations';
 
@@ -31,15 +32,67 @@ const Home = () => {
               <button className="bg-yellow-400 text-slate-900 py-3 px-8 rounded-lg font-bold transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-300 hover:shadow-[0_10px_15px_-3px_rgba(250,204,21,0.4)] mt-4">Read Our Story</button>
             </motion.div>
             <motion.div
-              className="w-full"
+              className="w-full flex justify-center items-center"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={slideInRight}
             >
-              <div className="bg-white/5 border border-white/10 rounded-2xl h-[400px] flex items-center justify-center w-full transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)]">
-                <Users size={64} className="text-sky-500/50" />
-              </div>
+              <CardSwap 
+                cards={[
+                  {
+                    id: 1,
+                    bgClass: "bg-gradient-to-br from-indigo-900 to-slate-900",
+                    content: (
+                      <>
+                        <div>
+                          <span className="bg-sky-500/20 text-sky-400 px-4 py-1 rounded-full text-xs font-bold tracking-widest">FEATURED</span>
+                          <h3 className="text-3xl font-extrabold text-white mt-4 mb-2">B.Tech in CS</h3>
+                          <p className="text-slate-300 font-medium leading-relaxed">Master full-stack development, AI, and cloud infrastructure with our flagship program.</p>
+                        </div>
+                        <div className="flex justify-between items-center border-t border-white/10 pt-4 mt-8">
+                          <span className="text-slate-400 text-sm font-bold">4 Years</span>
+                          <button className="bg-sky-500 hover:bg-sky-400 text-white px-4 py-2 rounded-lg font-bold transition-colors pointer-events-none">Explore</button>
+                        </div>
+                      </>
+                    )
+                  },
+                  {
+                    id: 2,
+                    bgClass: "bg-gradient-to-br from-orange-900 to-slate-900",
+                    content: (
+                      <>
+                        <div>
+                          <span className="bg-orange-500/20 text-orange-400 px-4 py-1 rounded-full text-xs font-bold tracking-widest">TOP RATED</span>
+                          <h3 className="text-3xl font-extrabold text-white mt-4 mb-2">MCA Specialization</h3>
+                          <p className="text-slate-300 font-medium leading-relaxed">Advance your career with master-level courses in Machine Learning and Data Science.</p>
+                        </div>
+                        <div className="flex justify-between items-center border-t border-white/10 pt-4 mt-8">
+                          <span className="text-slate-400 text-sm font-bold">2 Years</span>
+                          <button className="bg-orange-500 hover:bg-orange-400 text-white px-4 py-2 rounded-lg font-bold transition-colors pointer-events-none">Explore</button>
+                        </div>
+                      </>
+                    )
+                  },
+                  {
+                    id: 3,
+                    bgClass: "bg-gradient-to-br from-emerald-900 to-slate-900",
+                    content: (
+                      <>
+                        <div>
+                          <span className="bg-emerald-500/20 text-emerald-400 px-4 py-1 rounded-full text-xs font-bold tracking-widest">NEW</span>
+                          <h3 className="text-3xl font-extrabold text-white mt-4 mb-2">Cyber Security</h3>
+                          <p className="text-slate-300 font-medium leading-relaxed">Learn ethical hacking and network defense from industry professionals.</p>
+                        </div>
+                        <div className="flex justify-between items-center border-t border-white/10 pt-4 mt-8">
+                          <span className="text-slate-400 text-sm font-bold">1 Year</span>
+                          <button className="bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-lg font-bold transition-colors pointer-events-none">Explore</button>
+                        </div>
+                      </>
+                    )
+                  }
+                ]}
+              />
             </motion.div>
           </div>
         </div>

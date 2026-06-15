@@ -1,20 +1,21 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Book, Code, Shield, Cpu, Database, Cloud, Clock, CheckCircle, ChevronRight } from 'lucide-react';
+import { Book, Code, Shield, Cpu, Database, Cloud, Clock, CheckCircle, ChevronRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CourseContext } from '../context/CourseContext';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import { fadeInUp, staggerContainer, floatAnimation, scaleUp } from '../utils/animations';
+import GlassIcon from './GlassIcon';
 
 const ICONS = [Book, Code, Shield, Cpu, Database, Cloud];
 
 const uniClasses = {
-  'uni-blue': 'bg-sky-500/10 text-sky-400',
-  'uni-orange': 'bg-orange-500/10 text-orange-400',
-  'uni-green': 'bg-emerald-500/10 text-emerald-400',
-  'uni-purple': 'bg-purple-500/10 text-purple-400',
+  'uni-blue': 'bg-sky-500/10 text-sky-400 border border-sky-500/20',
+  'uni-orange': 'bg-orange-500/10 text-orange-400 border border-orange-500/20',
+  'uni-green': 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
+  'uni-purple': 'bg-purple-500/10 text-purple-400 border border-purple-500/20',
 };
 
-const ProgramsSection = () => {
+const ProgramsSection = ({ theme = 'dark' }) => {
   const { courses } = useContext(CourseContext);
   const [activeTab, setActiveTab] = useState('UG');
 
@@ -27,41 +28,71 @@ const ProgramsSection = () => {
   if (activeTab === 'PG') currentPrograms = pgPrograms;
   if (activeTab === 'INT') currentPrograms = intPrograms;
 
+  const isLight = theme === 'light';
+
   return (
-    <section className="py-20 px-8 bg-slate-950 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-sky-900/10 via-transparent to-transparent pointer-events-none" />
-      <div className="text-center mb-12 relative z-10">
-        <h4 className="text-sky-400 text-[0.85rem] font-bold tracking-widest uppercase mb-2">OUR PROGRAMS</h4>
-        <h2 className="text-4xl font-extrabold text-white mb-4"><span className="text-yellow-400">Cutting-Edge</span> IT Specializations</h2>
-        <p className="text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+    <section className={`py-24 px-8 relative overflow-hidden ${isLight ? 'bg-[#f8f5f2]' : 'bg-[#0b1120]'}`}>
+      {/* Abstract Backgrounds */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {isLight ? (
+          <>
+            <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-orange-200/50 rounded-full blur-[100px]"></div>
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[100px]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#0000000a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          </>
+        ) : (
+          <>
+            <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-sky-900/10 rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-[120px]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+          </>
+        )}
+      </div>
+
+      <div className="text-center mb-16 relative z-10 max-w-4xl mx-auto">
+        <motion.div variants={floatAnimation} initial="hidden" animate="visible" className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md mb-6 shadow-sm border ${isLight ? 'bg-orange-100 border-orange-200' : 'bg-slate-800/50 border-slate-700/50'}`}>
+          <Sparkles className={`w-4 h-4 ${isLight ? 'text-orange-500' : 'text-sky-400 animate-pulse'}`} />
+          <span className={`text-sm font-bold tracking-widest uppercase ${isLight ? 'text-orange-600' : 'text-sky-300'}`}>OUR PROGRAMS</span>
+        </motion.div>
+        
+        <h2 className={`text-5xl md:text-6xl font-extrabold mb-6 tracking-tight ${isLight ? 'text-slate-900' : 'text-white'}`}>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Cutting-Edge</span> IT Specializations
+        </h2>
+        <p className={`text-lg max-w-3xl mx-auto mb-12 leading-relaxed font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
           Choose from our range of industry-aligned programs designed to prepare you for the most in-demand tech careers.
         </p>
         
         <div className="flex justify-center gap-4 mb-12 flex-wrap">
-          <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'UG' ? 'bg-yellow-400 text-slate-900 shadow-[0_4px_20px_rgba(250,204,21,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
-            onClick={() => setActiveTab('UG')}
-          >
-            UG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'UG' ? 'text-slate-900' : 'text-slate-400'}`}>{ugPrograms.length}</span>
-          </button>
-          <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'PG' ? 'bg-yellow-400 text-slate-900 shadow-[0_4px_20px_rgba(250,204,21,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
-            onClick={() => setActiveTab('PG')}
-          >
-            PG Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'PG' ? 'text-slate-900' : 'text-slate-400'}`}>{pgPrograms.length}</span>
-          </button>
-          <button 
-            className={`py-3 px-6 rounded-full font-semibold cursor-pointer flex items-center gap-2 transition-all duration-200 ${activeTab === 'INT' ? 'bg-yellow-400 text-slate-900 shadow-[0_4px_20px_rgba(250,204,21,0.3)]' : 'bg-white/5 text-slate-300 hover:bg-white/10'}`}
-            onClick={() => setActiveTab('INT')}
-          >
-            Integrated Programs <span className={`text-xs py-0.5 px-2 rounded-full font-bold bg-white/20 ${activeTab === 'INT' ? 'text-slate-900' : 'text-slate-400'}`}>{intPrograms.length}</span>
-          </button>
+          {[
+            { id: 'UG', label: 'UG Programs', count: ugPrograms.length },
+            { id: 'PG', label: 'PG Programs', count: pgPrograms.length },
+            { id: 'INT', label: 'Integrated Programs', count: intPrograms.length }
+          ].map((tab) => (
+            <button 
+              key={tab.id}
+              className={`py-3 px-8 rounded-full font-bold cursor-pointer flex items-center gap-3 transition-all duration-300 ${
+                activeTab === tab.id 
+                ? (isLight ? 'bg-slate-900 text-white shadow-xl hover:-translate-y-1' : 'bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 shadow-[0_10px_25px_-5px_rgba(251,191,36,0.4)] hover:-translate-y-1') 
+                : (isLight ? 'bg-white text-slate-600 border border-slate-200 hover:border-orange-300 hover:text-orange-600' : 'bg-slate-800/50 border border-slate-700 text-slate-300 hover:bg-slate-700')
+              }`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {tab.label} 
+              <span className={`text-xs py-1 px-3 rounded-full font-black ${
+                activeTab === tab.id 
+                ? (isLight ? 'bg-white/20 text-white' : 'bg-black/20 text-slate-900') 
+                : (isLight ? 'bg-slate-100 text-slate-500' : 'bg-slate-700 text-slate-300')
+              }`}>
+                {tab.count}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
 
       <motion.div 
         key={activeTab}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto relative z-10"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -71,37 +102,56 @@ const ProgramsSection = () => {
           const IconComponent = ICONS[prog.iconIndex] || Book;
 
           return (
-            <motion.div key={prog.id} className="bg-slate-900/50 rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-slate-800 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(14,165,233,0.2)] hover:border-slate-700 group" variants={fadeInUp}>
-              <div className="bg-gradient-to-r from-sky-900/40 to-indigo-900/40 border-b border-slate-800 p-6 flex justify-between items-start text-white group-hover:from-sky-800/50 group-hover:to-indigo-800/50 transition-colors">
-                <div className="w-12 h-12 rounded-xl bg-slate-900/50 border border-slate-700/50 flex items-center justify-center shadow-inner group-hover:border-sky-500/30 transition-colors">
-                  <IconComponent size={20} />
-                </div>
-                <span className="bg-white/20 py-1 px-3 rounded-full text-xs font-bold tracking-wide">{prog.type}</span>
+            <motion.div 
+              key={prog.id} 
+              variants={scaleUp}
+              className={`relative rounded-[2rem] overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-3 group ${
+                isLight 
+                ? 'bg-white shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] border border-slate-100 hover:shadow-[0_30px_60px_-15px_rgba(249,115,22,0.15)] hover:border-orange-200' 
+                : 'bg-slate-800/40 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,0,0,0.3)] border border-slate-700/50 hover:border-amber-500/30'
+              }`}
+            >
+              {/* Header area */}
+              <div className={`p-8 pb-6 flex justify-between items-start ${isLight ? 'bg-slate-50' : 'bg-slate-800/50'}`}>
+                <GlassIcon 
+                  icon={IconComponent} 
+                  colorClass={isLight ? 'text-orange-500' : 'text-amber-400'} 
+                  bgClass={isLight ? 'bg-orange-500/10' : 'bg-amber-500/10'} 
+                />
+                <span className={`py-1.5 px-4 rounded-full text-xs font-black tracking-widest uppercase ${isLight ? 'bg-slate-200/50 text-slate-700' : 'bg-slate-700 text-slate-200'}`}>
+                  {prog.type}
+                </span>
               </div>
               
-              <div className="p-6 grow flex flex-col">
-                <h3 className="text-lg font-bold text-white mb-4 leading-snug">{prog.title}</h3>
-                <div className="flex flex-wrap gap-2 mb-4">
+              <div className="p-8 pt-6 grow flex flex-col relative z-10">
+                <h3 className={`text-2xl font-bold mb-4 leading-snug transition-colors duration-300 ${isLight ? 'text-slate-900 group-hover:text-orange-600' : 'text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amber-400 group-hover:to-orange-500'}`}>
+                  {prog.title}
+                </h3>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
                   {prog.universities.map((uni, idx) => (
-                    <span key={idx} className={`text-[0.7rem] font-semibold py-1 px-2 rounded flex items-center gap-1 ${uniClasses[uni.class] || 'bg-white/10 text-slate-300'}`}>{uni.name}</span>
+                    <span key={idx} className={`text-[0.75rem] font-bold py-1 px-3 rounded-full flex items-center gap-1 ${uniClasses[uni.class] || (isLight ? 'bg-slate-100 text-slate-600 border border-slate-200' : 'bg-slate-700 border border-slate-600 text-slate-300')}`}>
+                      {uni.name}
+                    </span>
                   ))}
                 </div>
-                <p className="text-[0.85rem] text-slate-400 leading-relaxed mb-6 grow">
+                
+                <p className={`text-[0.95rem] leading-relaxed mb-8 grow font-medium ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
                   {prog.description}
                 </p>
               
-                <div className="pt-6 border-t border-white/10 flex justify-between items-center text-slate-400 text-sm font-medium mt-auto">
-                  <div className="flex gap-4">
-                    <div className="flex items-center gap-1.5">
-                      <Clock size={16} /> {prog.duration}
+                <div className={`pt-6 flex justify-between items-center text-sm font-bold mt-auto ${isLight ? 'border-t border-slate-100 text-slate-500' : 'border-t border-slate-700/50 text-slate-400'}`}>
+                  <div className="flex gap-5">
+                    <div className="flex items-center gap-2">
+                      <Clock size={16} className={isLight ? 'text-slate-400' : 'text-slate-500'} /> {prog.duration}
                     </div>
-                    <div className="flex items-center gap-1.5">
-                      <CheckCircle size={16} /> {prog.eligibility}
+                    <div className="flex items-center gap-2">
+                      <CheckCircle size={16} className={isLight ? 'text-slate-400' : 'text-slate-500'} /> {prog.eligibility}
                     </div>
                   </div>
                   
-                  <Link to={`/course/${prog.id}`} className="text-yellow-400 font-bold no-underline flex items-center gap-1 transition-colors hover:text-yellow-300">
-                    Details <ChevronRight size={16} style={{ marginTop: '2px' }} />
+                  <Link to={`/course/${prog.id}`} className={`font-black no-underline flex items-center gap-1 transition-all duration-300 group-hover:translate-x-1 ${isLight ? 'text-orange-600 hover:text-orange-700' : 'text-amber-400 hover:text-amber-300'}`}>
+                    Details <ChevronRight size={18} />
                   </Link>
                 </div>
               </div>

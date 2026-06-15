@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import * as LucideIcons from 'lucide-react';
-import { slideInLeft, slideInRight, staggerContainer, fadeInUp, scaleUp } from '../utils/animations';
+import { slideInLeft, slideInRight, staggerContainer, fadeInUp, scaleUp, floatAnimation, rotateIn } from '../utils/animations';
+import GlassIcon from '../components/GlassIcon';
 
 // Hardcoded fallback data based on user prompt in case DB is empty
 const defaultServices = [
@@ -99,26 +100,35 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="bg-slate-950 min-h-screen font-sans overflow-hidden">
+    <div className="bg-[#0b1120] min-h-screen font-sans overflow-hidden">
       {/* Hero Section */}
       <div className="relative pt-32 pb-24 px-8 flex items-center justify-center text-center min-h-[60vh]">
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-sky-500/20 rounded-full blur-[120px]" />
-          <div className="absolute top-1/2 -left-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-[120px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+          <motion.div variants={floatAnimation} initial="hidden" animate="visible" className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-sky-600/20 rounded-full blur-[120px] mix-blend-screen" />
+          <motion.div variants={floatAnimation} initial="hidden" animate="visible" style={{ animationDelay: '2s' }} className="absolute top-1/2 -left-40 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] mix-blend-screen" />
         </div>
 
         <motion.div 
-          className="relative z-10 max-w-4xl mx-auto"
+          className="relative z-10 max-w-5xl mx-auto"
           initial="hidden" animate="visible" variants={fadeInUp}
         >
-          <span className="inline-block py-1.5 px-4 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 font-bold text-sm tracking-wider uppercase mb-6 shadow-[0_0_15px_rgba(14,165,233,0.3)]">
-            Our Expertise
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Empowering Future Professionals Through <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Technology & Education</span>
+          <motion.div variants={floatAnimation} className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-800/50 backdrop-blur-md border border-slate-700/50 mb-8 shadow-xl">
+            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+            <span className="text-sky-300 text-sm font-bold tracking-widest uppercase">Our Expertise</span>
+          </motion.div>
+          
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
+            Empowering Future Professionals Through <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 relative">
+              Technology & Education
+              <svg className="absolute w-full h-4 -bottom-1 left-0 text-sky-500" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 50 Q 50 100 100 50" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/>
+              </svg>
+            </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium mt-8">
             Transforming knowledge into career success. We bridge the gap between academic learning and industry innovation.
           </p>
         </motion.div>
@@ -126,9 +136,9 @@ const ServicesPage = () => {
 
       {/* Services Grid Section */}
       <div className="max-w-7xl mx-auto px-8 py-20 relative">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Our Professional Services</h2>
-          <p className="text-slate-400 text-lg">Comprehensive solutions for students and institutions.</p>
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Our Professional Services</h2>
+          <p className="text-slate-400 text-xl font-medium">Comprehensive solutions for students and institutions.</p>
         </div>
 
         <motion.div 
@@ -139,29 +149,34 @@ const ServicesPage = () => {
             <motion.div 
               key={service._id} 
               variants={fadeInUp}
-              className="group bg-slate-900 border border-slate-800 p-8 rounded-2xl hover:border-sky-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(14,165,233,0.2)] relative overflow-hidden"
+              className="group relative bg-slate-800/40 backdrop-blur-md border border-slate-700/50 p-10 rounded-[2rem] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(14,165,233,0.3)] overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-sky-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-sky-500/20 to-transparent rounded-bl-[4rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
               
-              <div className="w-14 h-14 bg-sky-500/10 rounded-xl flex items-center justify-center mb-6 text-sky-400 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
-                <DynamicIcon name={service.icon} size={28} />
+              <div className="mb-8">
+                <GlassIcon 
+                  icon={LucideIcons[service.icon] || LucideIcons['Settings']} 
+                  colorClass="text-sky-400" 
+                  bgClass="bg-sky-500/10" 
+                  size={32}
+                />
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-3 leading-snug">{service.title}</h3>
-              <p className="text-slate-400 text-[0.95rem] leading-relaxed mb-6 h-20 line-clamp-3">
+              <h3 className="text-2xl font-bold text-white mb-4 leading-snug group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-sky-400 group-hover:to-indigo-400 transition-all duration-300">{service.title}</h3>
+              <p className="text-slate-400 text-base leading-relaxed mb-8 font-medium">
                 {service.description}
               </p>
               
               {service.features && service.features.length > 0 && (
-                <div className="space-y-2 mt-auto">
+                <div className="space-y-3 mt-auto border-t border-slate-700/50 pt-6">
                   {service.features.slice(0, 4).map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <LucideIcons.CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={16} />
+                    <div key={idx} className="flex items-start gap-3">
+                      <LucideIcons.CheckCircle2 className="text-sky-500 shrink-0 mt-0.5" size={18} />
                       <span className="text-slate-300 text-sm font-medium">{feature}</span>
                     </div>
                   ))}
                   {service.features.length > 4 && (
-                    <div className="text-sky-400 text-sm font-bold mt-2">+ {service.features.length - 4} more features</div>
+                    <div className="text-sky-400 text-sm font-bold mt-4 pt-2">+ {service.features.length - 4} more features</div>
                   )}
                 </div>
               )}
@@ -171,19 +186,21 @@ const ServicesPage = () => {
       </div>
 
       {/* Timeline Section */}
-      <div className="bg-slate-900 py-24 relative overflow-hidden border-y border-slate-800">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">The Pathway to Excellence</h2>
-            <p className="text-slate-400 text-lg">Our proven methodology for transforming beginners into experts.</p>
+      <div className="bg-[#0f172a] py-32 relative overflow-hidden border-y border-slate-800/50">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-900/10 via-transparent to-transparent pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">The Pathway to Excellence</h2>
+            <p className="text-slate-400 text-xl font-medium">Our proven methodology for transforming beginners into experts.</p>
           </div>
 
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-4 gap-8 relative"
+            className="grid grid-cols-1 md:grid-cols-4 gap-12 relative"
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
           >
             {/* Connecting line for desktop */}
-            <div className="hidden md:block absolute top-[40px] left-[10%] right-[10%] h-0.5 bg-slate-800 z-0" />
+            <div className="hidden md:block absolute top-[48px] left-[12%] right-[12%] h-1 bg-gradient-to-r from-slate-800 via-sky-900 to-slate-800 z-0" />
             
             {[
               { step: '01', title: 'Learn', desc: 'Master core concepts through expert instruction', icon: 'BookOpen' },
@@ -192,12 +209,13 @@ const ServicesPage = () => {
               { step: '04', title: 'Achieve', desc: 'Secure placements and career growth', icon: 'Trophy' }
             ].map((item, idx) => (
               <motion.div key={idx} variants={scaleUp} className="relative z-10 flex flex-col items-center text-center group">
-                <div className="w-20 h-20 rounded-2xl bg-slate-950 border-2 border-slate-800 flex items-center justify-center mb-6 group-hover:border-sky-500 group-hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all duration-300">
-                  <DynamicIcon name={item.icon} size={32} className="text-sky-400 group-hover:scale-110 transition-transform duration-300" />
+                <div className="w-24 h-24 rounded-full bg-[#0b1120] border-4 border-slate-800 flex items-center justify-center mb-8 group-hover:border-sky-500 group-hover:shadow-[0_0_30px_rgba(14,165,233,0.3)] transition-all duration-500 relative">
+                  <div className="absolute inset-2 rounded-full bg-slate-800 group-hover:bg-sky-500/10 transition-colors duration-500" />
+                  <DynamicIcon name={item.icon} size={36} className="text-sky-400 group-hover:scale-110 transition-transform duration-500 relative z-10" />
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-sky-500 text-white font-bold text-xs flex items-center justify-center border-2 border-[#0b1120]">{item.step}</div>
                 </div>
-                <div className="text-sky-500 font-black text-xl mb-2">{item.step}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="text-2xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-slate-400 text-base leading-relaxed font-medium">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -205,23 +223,24 @@ const ServicesPage = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="max-w-7xl mx-auto px-8 py-20">
+      <div className="max-w-7xl mx-auto px-8 py-32">
         <motion.div 
-          className="bg-gradient-to-r from-sky-900/40 to-indigo-900/40 border border-white/10 rounded-3xl p-10 md:p-16 relative overflow-hidden"
+          className="bg-slate-800/40 backdrop-blur-xl border border-slate-700/50 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl"
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={slideInLeft}
         >
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-sky-500/20 to-indigo-500/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 relative z-10">
             {[
               { label: 'Students Trained', value: '5,000+' },
               { label: 'Industry Partners', value: '50+' },
               { label: 'Placement Rate', value: '94%' },
               { label: 'Expert Mentors', value: '120+' }
             ].map((stat, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-white mb-2 tracking-tight">{stat.value}</div>
-                <div className="text-sky-300 font-semibold text-sm uppercase tracking-wide">{stat.label}</div>
+              <div key={idx} className="text-center group">
+                <div className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400 mb-4 tracking-tight group-hover:scale-110 transition-transform duration-300 origin-bottom">{stat.value}</div>
+                <div className="text-slate-300 font-bold text-sm md:text-base uppercase tracking-widest">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -229,20 +248,20 @@ const ServicesPage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-4xl mx-auto px-8 py-16 mb-16 text-center">
+      <div className="max-w-4xl mx-auto px-8 py-16 mb-24 text-center relative z-10">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={scaleUp}>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6">
+          <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tight leading-tight">
             Start Your Journey Towards a <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">Successful Technology Career</span> Today
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">Successful Career</span> Today
           </h2>
-          <p className="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-slate-400 text-xl mb-12 max-w-2xl mx-auto font-medium">
             Join thousands of successful alumni who have transformed their careers through our industry-aligned programs and mentorship.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/courses" className="w-full sm:w-auto bg-sky-500 text-white font-bold py-4 px-8 rounded-full hover:bg-sky-400 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] transition-all duration-300 hover:-translate-y-1 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link to="/courses" className="w-full sm:w-auto bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-900 text-lg font-bold py-5 px-10 rounded-2xl hover:-translate-y-1 hover:shadow-[0_15px_30px_-10px_rgba(251,191,36,0.5)] transition-all duration-300 text-center">
               Explore Courses
             </Link>
-            <Link to="/contact" className="w-full sm:w-auto bg-slate-800 text-white font-bold py-4 px-8 rounded-full border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300 hover:-translate-y-1 text-center">
+            <Link to="/contact" className="w-full sm:w-auto bg-slate-800/80 backdrop-blur-md text-white text-lg font-bold py-5 px-10 rounded-2xl border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-center">
               Book Free Counseling
             </Link>
           </div>
