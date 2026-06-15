@@ -95,6 +95,13 @@ const Navbar = () => {
             { path: '/services/corporate-connect', label: 'Corporate Connect' },
             { path: '/services/student-acquisition', label: 'Student Acquisition' }
           ]} />
+          <NavItem label="Student Services" dropdown={[
+            { path: '/services/teaching', label: 'Teaching' },
+            { path: '/services/training', label: 'Training' },
+            { path: '/services/bootcamps', label: 'Bootcamps' },
+            { path: '/services/knowledge-sharing', label: 'Knowledge Sharing' },
+            { path: '/services/faculty-provision', label: 'Faculty Provision' }
+          ]} />
           <NavItem path="/partners" label="Partners" />
           <NavItem path="/news" label="News & Blogs" />
           <NavItem path="/careers" label="Careers" />
