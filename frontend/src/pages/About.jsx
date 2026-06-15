@@ -44,41 +44,6 @@ const institutes = [
 const About = () => {
   return (
     <div className="min-h-screen bg-slate-950 font-sans pt-24 pb-20">
-      <section className="py-20 px-8 overflow-hidden border-b border-white/5">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <motion.div 
-              className="w-full"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={slideInLeft}
-            >
-              <h2 className="text-4xl font-extrabold text-white mb-6">Vision & Mission</h2>
-              <p className="text-lg text-slate-300 leading-relaxed mb-8">
-                Our vision is to be the global leader in providing accessible, high-quality IT and management education. We strive to create an ecosystem where innovation thrives and students are equipped with real-world skills.
-              </p>
-              <p className="text-lg text-slate-300 leading-relaxed mb-8">
-                Our mission is to bridge the gap between academia and industry by offering updated curriculum, expert mentorship, and hands-on project experience.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              className="w-full"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={slideInRight}
-            >
-              <div className="bg-white/5 border border-white/10 rounded-2xl h-[400px] flex items-center justify-center w-full transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 to-indigo-500/10" />
-                <span className="text-slate-500 font-medium">Image Placeholder</span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* New Section for Institutes */}
       <section className="py-24 px-8 overflow-hidden relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-900/10 via-transparent to-transparent pointer-events-none" />

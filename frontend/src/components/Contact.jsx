@@ -12,7 +12,7 @@ const Contact = () => {
     university: '',
     message: ''
   });
-  
+
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
@@ -53,7 +53,7 @@ const Contact = () => {
       <section className="overflow-hidden" id="contact">
         <div className="max-w-6xl mx-auto px-4 lg:px-8 flex flex-col lg:flex-row gap-8 items-start relative z-10">
           {/* Contact Info (Left Side) */}
-          <motion.div 
+          <motion.div
             className="lg:flex-[0_0_350px] flex flex-col sm:flex-row sm:flex-wrap lg:flex-col gap-6 w-full"
             initial="hidden"
             whileInView="visible"
@@ -66,7 +66,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-[0.95rem] font-bold text-white mb-1">Visit Us</h3>
-                <p className="text-[0.85rem] text-slate-400 leading-relaxed">18, Vitthal Plaza, 4th Floor, Opp. GEB Office, Dehgam Road, Nava Naroda, Ahmedabad 382330<br/>Mon-Sat, 9 AM - 6 PM</p>
+                <p className="text-[0.85rem] text-slate-400 leading-relaxed">18, Vitthal Plaza, 4th Floor, Opp. GEB Office, Dehgam Road, Nava Naroda, Ahmedabad 382330<br />Mon-Sat, 9 AM - 6 PM</p>
               </div>
             </div>
 
@@ -76,7 +76,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-[0.95rem] font-bold text-white mb-1">Call Us</h3>
-                <p className="text-[0.85rem] text-slate-400 leading-relaxed">+91 93775 77596<br/>+91 93775 77597</p>
+                <p className="text-[0.85rem] text-slate-400 leading-relaxed">+91 93775 77596<br />+91 93775 77597</p>
               </div>
             </div>
 
@@ -86,13 +86,13 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="text-[0.95rem] font-bold text-white mb-1">Email Us</h3>
-                <p className="text-[0.85rem] text-slate-400 leading-relaxed">info@educationforce.com<br/>We reply within 24 hours</p>
+                <p className="text-[0.85rem] text-slate-400 leading-relaxed">info@educationforce.com<br />We reply within 24 hours</p>
               </div>
             </div>
           </motion.div>
 
           {/* Contact Form (Right Side) */}
-          <motion.div 
+          <motion.div
             className="flex-1 w-full"
             initial="hidden"
             whileInView="visible"
@@ -102,7 +102,7 @@ const Contact = () => {
             <div className="bg-white/5 p-6 lg:p-10 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.2)] border border-white/10">
               <h2 className="text-2xl font-extrabold text-white mb-1">Send Us a Message</h2>
               <p className="text-sm text-slate-400 mb-8">Fill in your details and our team will reach out to you within 24 hours.</p>
-              
+
               {isSubmitted && <div className="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 p-4 rounded-lg mb-6 font-medium text-sm text-center">Thank you! Your message has been sent successfully.</div>}
 
               <form onSubmit={handleSubmit}>
@@ -141,7 +141,7 @@ const Contact = () => {
                       <option value="The New Progressive College" className="bg-slate-800 text-white">The New Progressive College</option>
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                     </div>
                   </div>
                 </div>
