@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import PartnerLogos from '../components/PartnerLogos';
-import ProgramsSection from '../components/ProgramsSection';
+import FeaturedPrograms from '../components/FeaturedPrograms';
 import Features from '../components/Features';
 import CardSwap from '../components/CardSwap';
 import { Users } from 'lucide-react';
@@ -99,7 +99,7 @@ const Home = () => {
       </section>
 
       <PartnerLogos />
-      <ProgramsSection />
+      <FeaturedPrograms />
       <Features />
 
       {/* Stats Counter */}

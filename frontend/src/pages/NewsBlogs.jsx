@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, FileText, Newspaper, Grip } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
@@ -57,11 +57,48 @@ const blogsData = [
     description: "Batch processing is dead for modern analytics. Here's how Apache Kafka and Flink power the real-time data pipelines behind industry leaders.",
     category: 'DATA ANALYTICS',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 7,
+    type: 'NEWS',
+    title: 'Google DeepMind Open-Sources New Quantum Error Correction Framework',
+    author: { name: 'Dr. Anita Desai', initials: 'AD', date: '5 Feb 2026' },
+    description: 'A major breakthrough in quantum computing as DeepMind releases a robust error correction framework for the developer community.',
+    category: 'QUANTUM COMPUTING',
+    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 8,
+    type: 'BLOG',
+    title: 'Why Rust is Replacing C++ in High-Performance Trading Systems',
+    author: { name: 'Rahul Sharma', initials: 'RS', date: '2 Feb 2026' },
+    description: 'An in-depth look at how top quantitative trading firms are migrating legacy C++ infrastructure to Rust for memory safety and speed.',
+    category: 'SOFTWARE ENGINEERING',
+    image: null
+  },
+  {
+    id: 9,
+    type: 'NEWS',
+    title: 'New SEBI Regulations Mandate AI-Driven Fraud Detection for Brokers',
+    author: { name: 'Prof. Sandip Jadav', initials: 'PS', date: '28 Jan 2026' },
+    description: 'Starting Q3 2026, all major Indian stockbrokers must implement certified AI models for real-time market manipulation detection.',
+    category: 'FINTECH',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 10,
+    type: 'BLOG',
+    title: 'Mastering Kubernetes: 5 Common Anti-Patterns to Avoid',
+    author: { name: 'Prof. Hardik Patel', initials: 'PH', date: '15 Jan 2026' },
+    description: 'Are you over-provisioning your clusters? Avoid these 5 common Kubernetes anti-patterns that skyrocket cloud costs.',
+    category: 'CLOUD NATIVE',
+    image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&auto=format&fit=crop&q=60'
   }
 ];
 
 const NewsBlogs = () => {
   const [filter, setFilter] = useState('ALL');
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const filteredData = blogsData.filter(item => {
     if (filter === 'ALL') return true;
@@ -84,9 +121,9 @@ const NewsBlogs = () => {
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-8 mt-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-12">
         {/* Filter Tabs */}
-        <div className="flex gap-4 mb-12 flex-wrap">
+        <div className="flex gap-4 mb-16 flex-wrap justify-center">
           <button
             className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-200 ${filter === 'ALL' ? 'bg-emerald-500 text-slate-900 shadow-[0_4px_15px_rgba(16,185,129,0.3)]' : 'bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10'}`}
             onClick={() => setFilter('ALL')}
@@ -107,69 +144,146 @@ const NewsBlogs = () => {
           </button>
         </div>
 
-        {/* Grid */}
-        <motion.div
-          key={filter}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          {filteredData.map((item) => (
-            <motion.div
-              key={item.id}
-              className="bg-white/5 rounded-2xl overflow-hidden shadow-sm border border-white/10 flex flex-col transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgba(14,165,233,0.15)] group"
-              variants={fadeInUp}
-            >
-              {item.image && (
-                <div className="relative h-56 overflow-hidden">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-emerald-500 text-slate-900 text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider shadow-sm">
-                      {item.type}
-                    </span>
-                  </div>
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1rem)); }
+          }
+          .animate-marquee {
+            animation: marquee 40s linear infinite;
+          }
+          .animate-marquee:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+
+        {/* Sliding Cards Marquee */}
+        <div className="relative w-full overflow-hidden h-[650px] flex items-end pb-10">
+          <div className="flex gap-8 w-max animate-marquee">
+            {[...filteredData, ...filteredData].map((item, index) => {
+              const uniqueKey = `${item.id}-${index}`;
+              const isHovered = hoveredIndex === uniqueKey;
+
+              return (
+                <div 
+                  key={uniqueKey}
+                  className="relative h-[280px] w-[350px] shrink-0 flex items-end justify-center group z-10 hover:z-50"
+                  onMouseEnter={() => setHoveredIndex(uniqueKey)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  {/* Background Card 1 (Deepest) */}
+                  <motion.div
+                    className="absolute bottom-0 w-[85%] h-[240px] bg-indigo-950/80 border border-indigo-500/20 rounded-[2rem] shadow-xl backdrop-blur-sm"
+                    animate={{ 
+                      rotate: isHovered ? -6 : -2,
+                      y: isHovered ? -25 : -8,
+                      x: isHovered ? -15 : 0
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+                  
+                  {/* Background Card 2 (Middle) */}
+                  <motion.div
+                    className="absolute bottom-0 w-[92%] h-[260px] bg-sky-950/90 border border-sky-500/30 rounded-[2rem] shadow-xl backdrop-blur-md"
+                    animate={{ 
+                      rotate: isHovered ? 6 : 2,
+                      y: isHovered ? -15 : -4,
+                      x: isHovered ? 15 : 0
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  />
+
+                  {/* Main Front Card */}
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ 
+                      layout: { type: "spring", stiffness: 300, damping: 25 },
+                      opacity: { duration: 0.5, delay: (index % filteredData.length) * 0.1 } 
+                    }}
+                    style={{
+                      height: isHovered ? 'auto' : '280px', 
+                      width: '100%'
+                    }}
+                    className={`absolute bottom-0 rounded-[2rem] overflow-hidden flex flex-col bg-slate-900 border transition-colors duration-500 ${
+                      isHovered ? 'border-sky-500/50 shadow-[0_30px_60px_-15px_rgba(14,165,233,0.3)] z-20' : 'border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-10'
+                    }`}
+                  >
+                    {/* Always Visible Header Area (Top 280px) */}
+                    <motion.div layout className="shrink-0 flex flex-col h-[280px] relative z-10 bg-slate-900">
+                      {item.image ? (
+                        <div className="relative h-40 overflow-hidden shrink-0">
+                          <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
+                          <div className="absolute top-4 left-4">
+                            <span className="bg-emerald-500 text-slate-900 text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider shadow-sm">
+                              {item.type}
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="h-10 pt-6 px-6 shrink-0">
+                          <span className="bg-emerald-500 text-slate-900 text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider shadow-sm">
+                            {item.type}
+                          </span>
+                        </div>
+                      )}
+
+                      <div className="px-6 flex-1 flex flex-col justify-center">
+                        <h3 className="text-lg font-bold text-white leading-snug group-hover:text-sky-400 transition-colors line-clamp-3">
+                          {item.title}
+                        </h3>
+                        
+                        {/* Gradient overlay to indicate more content when collapsed */}
+                        {!isHovered && (
+                          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-slate-900 to-transparent z-20" />
+                        )}
+                      </div>
+                    </motion.div>
+                    
+                    {/* Expanded Content (Hidden initially, revealed on hover) */}
+                    <AnimatePresence>
+                      {isHovered && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.3, delay: 0.1 }}
+                          className="p-6 pt-2 grow flex flex-col relative z-10 bg-slate-900 border-t border-white/5"
+                        >
+                          <div className="flex items-center gap-3 mb-4 shrink-0">
+                            <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[0.65rem] shrink-0">
+                              {item.author.initials}
+                            </div>
+                            <div>
+                              <h5 className="font-bold text-white text-xs">{item.author.name}</h5>
+                              <p className="text-[0.65rem] text-slate-400 font-medium">{item.author.date}</p>
+                            </div>
+                          </div>
+
+                          <p className="text-[0.85rem] leading-relaxed mb-6 grow font-medium text-slate-300 line-clamp-4">
+                            {item.description}
+                          </p>
+                        
+                          <div className="pt-4 flex justify-between items-center text-sm font-bold mt-auto border-t border-slate-700/50">
+                            <span className="text-yellow-400 font-bold flex items-center gap-1 text-sm cursor-pointer hover:text-yellow-300 transition-colors hover:translate-x-1">
+                              {item.type === 'BLOG' ? 'Read Article' : 'Read More'} <ArrowRight size={16} />
+                            </span>
+                            <span className="text-[0.65rem] font-bold text-slate-300 bg-white/5 px-2 py-1 rounded tracking-wider uppercase border border-white/10">
+                              {item.category}
+                            </span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
-              )}
-
-              <div className="p-8 flex flex-col grow">
-                {!item.image && (
-                  <div className="mb-4">
-                    <span className="bg-emerald-500 text-slate-900 text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider shadow-sm">
-                      {item.type}
-                    </span>
-                  </div>
-                )}
-                <h3 className="text-xl font-bold text-white mb-6 leading-tight group-hover:text-sky-400 transition-colors">
-                  {item.title}
-                </h3>
-
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0">
-                    {item.author.initials}
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-white text-sm">{item.author.name}</h5>
-                    <p className="text-xs text-slate-400 font-medium">{item.author.date}</p>
-                  </div>
-                </div>
-
-                <p className="text-slate-300 text-sm leading-relaxed mb-8 grow">
-                  {item.description}
-                </p>
-
-                <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/10">
-                  <span className="text-yellow-400 font-bold flex items-center gap-1 text-sm cursor-pointer group-hover:gap-2 transition-all group-hover:text-yellow-300">
-                    {item.type === 'BLOG' ? 'Read Article' : 'Read More'} <ArrowRight size={16} />
-                  </span>
-                  <span className="text-[0.65rem] font-bold text-slate-300 bg-white/5 px-2 py-1 rounded tracking-wider uppercase border border-white/10">
-                    {item.category}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -60,10 +60,17 @@ const Footer = () => {
             <span className="w-2 h-2 rounded-full bg-sky-500"></span> Quick Links
           </h4>
           <ul className="flex flex-col gap-4">
-            {['About Us', 'Vision & Mission', 'Core Team', 'Programs', 'Life @ Eduforgetech', 'Contact'].map((link, i) => (
+            {[
+              { name: 'About Us', path: '/about' },
+              { name: 'Vision & Mission', path: '/vision' },
+              { name: 'Core Team', path: '/core-team' },
+              { name: 'Programs', path: '/courses' },
+              { name: 'Careers', path: '/careers' },
+              { name: 'Contact Us', path: '/contact' }
+            ].map((link, i) => (
               <li key={i}>
-                <Link to="#" className="text-slate-400 font-medium transition-all duration-200 hover:text-sky-400 hover:translate-x-1 flex items-center gap-2 group">
-                  <span className="text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity text-xs">▸</span> {link}
+                <Link to={link.path} onClick={scrollToTop} className="text-slate-400 font-medium transition-all duration-200 hover:text-sky-400 hover:translate-x-1 flex items-center gap-2 group">
+                  <span className="text-sky-500 opacity-0 group-hover:opacity-100 transition-opacity text-xs">▸</span> {link.name}
                 </Link>
               </li>
             ))}
@@ -83,7 +90,7 @@ const Footer = () => {
           <ul className="flex flex-col gap-4">
             {['AI & Machine Learning', 'Cyber Security & DF', 'Data Analytics', 'Web & Mobile App', 'BCA', 'BBA'].map((link, i) => (
               <li key={i}>
-                <Link to="/courses" className="text-slate-400 font-medium transition-all duration-200 hover:text-indigo-400 hover:translate-x-1 flex items-center gap-2 group">
+                <Link to="/courses" onClick={scrollToTop} className="text-slate-400 font-medium transition-all duration-200 hover:text-indigo-400 hover:translate-x-1 flex items-center gap-2 group">
                   <span className="text-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity text-xs">▸</span> {link}
                 </Link>
               </li>
