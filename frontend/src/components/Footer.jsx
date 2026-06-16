@@ -32,7 +32,7 @@ const Footer = () => {
               <img src={logo} alt="Eduforcetech Logo" className="h-14 w-auto object-contain bg-slate-900 rounded-2xl p-2 border border-slate-700 relative z-10 group-hover:border-sky-500/50 transition-colors" />
             </div>
             <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-slate-200 transition-colors">
-              Eduforge<span className="text-yellow-400 group-hover:text-yellow-300">tech</span>
+              Edu<span className="text-yellow-400 group-hover:text-yellow-300">forge</span>
             </span>
           </Link>
           <p className="leading-relaxed mb-8 max-w-sm text-[0.95rem] font-medium text-slate-400">

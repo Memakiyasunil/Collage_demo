@@ -58,4 +58,4 @@ const PartnerLogos = () => {
   );
 };
 
-export default PartnerLogos;
+export default React.memo(PartnerLogos);

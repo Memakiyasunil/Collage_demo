@@ -131,7 +131,7 @@ const Hero = () => {
               <div className="flex -space-x-3">
                 {[1,2,3,4].map((i) => (
                   <div key={i} className={`w-10 h-10 rounded-full border-2 border-[#0b1120] bg-slate-700 flex items-center justify-center overflow-hidden z-[${5-i}]`}>
-                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Student" className="w-full h-full object-cover" />
+                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Student" loading="lazy" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>
@@ -218,4 +218,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default React.memo(Hero);

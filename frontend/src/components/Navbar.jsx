@@ -102,10 +102,10 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-3 relative z-10 group">
           <div className="relative">
             <div className="absolute inset-0 bg-sky-500 blur-md opacity-20 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500 rounded-full" />
-            <img src={logo} alt="Eduforcetech Logo" className="h-10 w-10 object-cover rounded-full border border-white/20 relative z-10 group-hover:border-white/40 transition-colors duration-300" />
+            <img src={logo} alt="Eduforge Logo" className="h-10 w-10 object-cover rounded-full border border-white/20 relative z-10 group-hover:border-white/40 transition-all duration-700 group-hover:rotate-[360deg]" />
           </div>
           <span className="text-xl font-extrabold tracking-tight transition-all duration-300">
-            <span className="text-white group-hover:text-slate-200 transition-colors">Eduforge</span><span className="text-yellow-400 group-hover:text-yellow-300 transition-colors">tech</span>
+            <span className="text-white group-hover:text-slate-200 transition-colors">Edu</span><span className="text-yellow-400 group-hover:text-yellow-300 transition-colors">forge</span>
           </span>
         </Link>
 

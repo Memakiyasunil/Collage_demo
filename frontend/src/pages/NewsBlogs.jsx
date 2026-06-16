@@ -215,7 +215,7 @@ const NewsBlogs = () => {
                     <motion.div layout className="shrink-0 flex flex-col h-[280px] relative z-10 bg-slate-900">
                       {item.image ? (
                         <div className="relative h-40 overflow-hidden shrink-0">
-                          <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                          <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
                           <div className="absolute top-4 left-4">
                             <span className="bg-emerald-500 text-slate-900 text-[0.65rem] font-bold px-3 py-1.5 rounded-full tracking-wider shadow-sm">
