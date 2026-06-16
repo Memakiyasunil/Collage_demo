@@ -1,15 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.jpg';
 
+const navLinks = [
+  { path: "/", label: "Home" },
+  { 
+    label: "About", 
+    dropdown: [
+      { path: '/about', label: 'About Us' },
+      { path: '/vision', label: 'Vision & Mission' },
+      { path: '/core-team', label: 'Core Team' },
+      { path: '/student-reviews', label: 'Student Reviews' }
+    ]
+  },
+  { 
+    label: "Programs", 
+    dropdown: [
+      { path: '/courses', label: 'Integrate Programs' },
+      { path: '/courses', label: 'UG Programs' },
+      { path: '/courses', label: 'PG Programs' },
+      { path: '/placements', label: 'Placements' }
+    ]
+  },
+  { 
+    label: "Services", 
+    dropdown: [
+      { path: '/all-services', label: 'All Professional Services' },
+      { path: '/services/managed-campus', label: 'Managed Campus' },
+      { path: '/services/corporate-connect', label: 'Corporate Connect' },
+      { path: '/services/student-acquisition', label: 'Student Acquisition' }
+    ]
+  },
+  { 
+    label: "Student Services", 
+    dropdown: [
+      { path: '/services/teaching', label: 'Teaching' },
+      { path: '/services/training', label: 'Training' },
+      { path: '/services/bootcamps', label: 'Bootcamps' },
+      { path: '/services/knowledge-sharing', label: 'Knowledge Sharing' },
+      { path: '/services/faculty-provision', label: 'Faculty Provision' },
+      { path: '/hackathons', label: 'Hackathons' },
+      { path: '/interview-questions', label: 'Interview Questions' }
+    ]
+  },
+  { path: "/partners", label: "Partners" },
+  { path: "/news", label: "News & Blogs" },
+  { path: "/careers", label: "Careers" }
+];
+
 const Navbar = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeMobileDropdown, setActiveMobileDropdown] = useState(null);
 
   const isActive = (path) => location.pathname === path;
 
-  const NavItem = ({ path, label, dropdown }) => {
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setActiveMobileDropdown(null);
+  }, [location.pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isMobileMenuOpen]);
+
+  const DesktopNavItem = ({ item }) => {
+    const { path, label, dropdown } = item;
     const active = isActive(path) || (dropdown && dropdown.some(d => isActive(d.path)));
     const [isHovered, setIsHovered] = useState(false);
 
@@ -62,7 +127,7 @@ const Navbar = () => {
                     <div className="bg-slate-900/90 backdrop-blur-2xl border border-slate-700 shadow-[0_20px_40px_rgba(0,0,0,0.5)] rounded-2xl py-3 min-w-[240px] overflow-hidden relative">
                       <div className="absolute inset-0 bg-gradient-to-b from-sky-500/10 to-transparent pointer-events-none" />
                       
-                      {dropdown.map((item, idx) => (
+                      {dropdown.map((subItem, idx) => (
                         <motion.div
                           key={idx}
                           initial={{ opacity: 0, x: -10 }}
@@ -70,11 +135,11 @@ const Navbar = () => {
                           transition={{ delay: idx * 0.05, type: "spring", stiffness: 300 }}
                         >
                           <Link
-                            to={item.path}
+                            to={subItem.path}
                             className="flex items-center px-6 py-3 text-slate-300 text-sm font-semibold transition-all duration-200 hover:bg-slate-800/80 hover:text-yellow-400 group/link relative z-10"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-sky-500 mr-3 opacity-0 scale-0 group-hover/link:opacity-100 group-hover/link:scale-100 transition-all duration-300"></span>
-                            <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">{item.label}</span>
+                            <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-1">{subItem.label}</span>
                           </Link>
                         </motion.div>
                       ))}
@@ -90,67 +155,130 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 inset-x-0 z-[100] flex justify-center p-6 pointer-events-none">
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
-        className="pointer-events-auto bg-[#0b1120]/80 backdrop-blur-2xl border border-slate-700/50 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] rounded-full px-8 py-3 flex items-center justify-between w-full max-w-7xl relative"
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-indigo-500/10 pointer-events-none rounded-full" />
+    <>
+      <div className="fixed top-0 inset-x-0 z-[100] flex justify-center p-4 md:p-6 pointer-events-none">
+        <motion.nav
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
+          className="pointer-events-auto bg-[#0b1120]/80 backdrop-blur-2xl border border-slate-700/50 shadow-[0_8px_32px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] rounded-full px-6 md:px-8 py-3 flex items-center justify-between w-full max-w-7xl relative"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-transparent to-indigo-500/10 pointer-events-none rounded-full" />
 
-        <Link to="/" className="flex items-center gap-3 relative z-10 group">
-          <div className="relative">
-            <div className="absolute inset-0 bg-sky-500 blur-md opacity-20 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500 rounded-full" />
-            <img src={logo} alt="Edufordge Logo" className="h-10 w-10 object-cover rounded-full border border-white/20 relative z-10 group-hover:border-white/40 transition-all duration-700 group-hover:rotate-[360deg]" />
-          </div>
-          <span className="text-xl font-extrabold tracking-tight transition-all duration-300">
-            <span className="text-white group-hover:text-slate-200 transition-colors">Edu</span><span className="text-yellow-400 group-hover:text-yellow-300 transition-colors">fordge</span>
-          </span>
-        </Link>
-
-        <ul className="flex items-center gap-1 hidden lg:flex">
-          <NavItem path="/" label="Home" />
-          <NavItem label="About" dropdown={[
-            { path: '/about', label: 'About Us' },
-            { path: '/vision', label: 'Vision & Mission' },
-            { path: '/core-team', label: 'Core Team' },
-            { path: '/student-reviews', label: 'Student Reviews' }
-          ]} />
-          <NavItem label="Programs" dropdown={[
-            { path: '/courses', label: 'Integrate Programs' },
-            { path: '/courses', label: 'UG Programs' },
-            { path: '/courses', label: 'PG Programs' },
-            { path: '/placements', label: 'Placements' }
-          ]} />
-          <NavItem label="Services" dropdown={[
-            { path: '/all-services', label: 'All Professional Services' },
-            { path: '/services/managed-campus', label: 'Managed Campus' },
-            { path: '/services/corporate-connect', label: 'Corporate Connect' },
-            { path: '/services/student-acquisition', label: 'Student Acquisition' }
-          ]} />
-          <NavItem label="Student Services" dropdown={[
-            { path: '/services/teaching', label: 'Teaching' },
-            { path: '/services/training', label: 'Training' },
-            { path: '/services/bootcamps', label: 'Bootcamps' },
-            { path: '/services/knowledge-sharing', label: 'Knowledge Sharing' },
-            { path: '/services/faculty-provision', label: 'Faculty Provision' },
-            { path: '/hackathons', label: 'Hackathons' },
-            { path: '/interview-questions', label: 'Interview Questions' }
-          ]} />
-          <NavItem path="/partners" label="Partners" />
-          <NavItem path="/news" label="News & Blogs" />
-          <NavItem path="/careers" label="Careers" />
-        </ul>
-
-        <div className="relative z-10 hidden md:block">
-          <Link to="/contact" className="relative group overflow-hidden bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 shadow-[0_4px_15px_rgba(250,204,21,0.2)] hover:shadow-[0_4px_25px_rgba(250,204,21,0.5)] hover:-translate-y-0.5 flex items-center justify-center border border-amber-300">
-            <span className="absolute inset-0 w-full h-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10">Inquire Now</span>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 relative z-10 group">
+            <div className="relative">
+              <div className="absolute inset-0 bg-sky-500 blur-md opacity-20 group-hover:opacity-60 group-hover:scale-110 transition-all duration-500 rounded-full" />
+              <img src={logo} alt="Edufordge Logo" className="h-10 w-10 object-cover rounded-full border border-white/20 relative z-10 group-hover:border-white/40 transition-all duration-700 group-hover:rotate-[360deg]" />
+            </div>
+            <span className="text-xl font-extrabold tracking-tight transition-all duration-300">
+              <span className="text-white group-hover:text-slate-200 transition-colors">Edu</span><span className="text-yellow-400 group-hover:text-yellow-300 transition-colors">fordge</span>
+            </span>
           </Link>
-        </div>
-      </motion.nav>
-    </div>
+
+          {/* Desktop Navigation */}
+          <ul className="items-center gap-1 hidden lg:flex">
+            {navLinks.map((item, idx) => (
+              <DesktopNavItem key={idx} item={item} />
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-4 relative z-10">
+            {/* Desktop CTA */}
+            <div className="hidden md:block">
+              <Link to="/contact" className="relative group overflow-hidden bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 shadow-[0_4px_15px_rgba(250,204,21,0.2)] hover:shadow-[0_4px_25px_rgba(250,204,21,0.5)] hover:-translate-y-0.5 flex items-center justify-center border border-amber-300">
+                <span className="absolute inset-0 w-full h-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">Inquire Now</span>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <button 
+              className="lg:hidden p-2 text-slate-300 hover:text-white transition-colors bg-slate-800/50 rounded-full border border-slate-700"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </motion.nav>
+      </div>
+
+      {/* Mobile Navigation Sheet */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 z-[90] bg-[#0b1120] pt-28 pb-10 px-6 overflow-y-auto lg:hidden"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none" />
+            
+            <ul className="flex flex-col gap-4 relative z-10">
+              {navLinks.map((item, idx) => (
+                <li key={idx} className="border-b border-slate-800/50 pb-4">
+                  {item.path ? (
+                    <Link 
+                      to={item.path}
+                      className={`text-2xl font-bold transition-colors ${isActive(item.path) ? 'text-sky-400' : 'text-slate-300 hover:text-white'}`}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <div>
+                      <button 
+                        onClick={() => setActiveMobileDropdown(activeMobileDropdown === idx ? null : idx)}
+                        className="w-full flex items-center justify-between text-2xl font-bold text-slate-300 hover:text-white transition-colors"
+                      >
+                        {item.label}
+                        <ChevronDown 
+                          className={`transition-transform duration-300 ${activeMobileDropdown === idx ? 'rotate-180 text-sky-400' : ''}`} 
+                        />
+                      </button>
+                      
+                      <AnimatePresence>
+                        {activeMobileDropdown === idx && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <ul className="pt-4 pb-2 pl-4 flex flex-col gap-4 border-l-2 border-slate-800 ml-2 mt-2">
+                              {item.dropdown.map((subItem, sIdx) => (
+                                <li key={sIdx}>
+                                  <Link 
+                                    to={subItem.path}
+                                    className={`text-lg font-medium flex items-center gap-2 transition-colors ${isActive(subItem.path) ? 'text-yellow-400' : 'text-slate-400 hover:text-white'}`}
+                                  >
+                                    {isActive(subItem.path) ? <ChevronRight size={16} /> : <span className="w-1.5 h-1.5 rounded-full bg-slate-600"></span>}
+                                    {subItem.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8">
+              <Link 
+                to="/contact" 
+                className="w-full bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-900 px-6 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2"
+              >
+                Inquire Now <ChevronRight size={20} />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
