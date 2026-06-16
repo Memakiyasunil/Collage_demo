@@ -10,7 +10,7 @@ const AdminLayout = ({ children, onLogout }) => {
       <div className="w-[260px] bg-slate-900 text-white flex flex-col shrink-0">
         <div className="p-6 border-b border-white/10">
           <h2 className="text-[1.25rem] font-bold">
-            <span className="text-white">Eduforge</span><span className="text-yellow-400">tech</span> <span className="text-sky-400">Admin</span>
+            <span className="text-white">Edufordge</span> <span className="text-sky-400">Admin</span>
           </h2>
         </div>
         <nav className="flex flex-col py-4 grow">

@@ -29,10 +29,10 @@ const Footer = () => {
           <Link to="/" className="flex items-center gap-4 mb-8 group">
             <div className="relative">
               <div className="absolute inset-0 bg-sky-500 blur-md opacity-20 group-hover:opacity-60 transition-opacity duration-500 rounded-2xl" />
-              <img src={logo} alt="Eduforcetech Logo" className="h-14 w-auto object-contain bg-slate-900 rounded-2xl p-2 border border-slate-700 relative z-10 group-hover:border-sky-500/50 transition-colors" />
+              <img src={logo} alt="Edufordge Logo" className="h-14 w-auto object-contain bg-slate-900 rounded-2xl p-2 border border-slate-700 relative z-10 group-hover:border-sky-500/50 transition-colors" />
             </div>
             <span className="text-2xl font-extrabold tracking-tight text-white group-hover:text-slate-200 transition-colors">
-              Edu<span className="text-yellow-400 group-hover:text-yellow-300">forge</span>
+              Edufordge
             </span>
           </Link>
           <p className="leading-relaxed mb-8 max-w-sm text-[0.95rem] font-medium text-slate-400">

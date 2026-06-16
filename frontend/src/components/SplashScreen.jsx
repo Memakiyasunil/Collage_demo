@@ -44,7 +44,7 @@ const SplashScreen = ({ onComplete }) => {
           <div className="absolute inset-0 bg-sky-500 blur-xl opacity-40 animate-pulse rounded-full" />
           <img 
             src={logo} 
-            alt="Eduforcetech Logo" 
+            alt="Edufordge Logo" 
             className="w-32 h-32 object-cover rounded-3xl border-2 border-white/20 shadow-2xl relative z-10 bg-slate-900 p-2"
           />
         </motion.div>
@@ -56,15 +56,7 @@ const SplashScreen = ({ onComplete }) => {
           transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
           className="text-5xl md:text-6xl font-extrabold tracking-tight flex items-center gap-1"
         >
-          <span className="text-white">Eduforge</span>
-          <motion.span 
-            className="text-yellow-400"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.6 }}
-          >
-            tech
-          </motion.span>
+          <span className="text-white">Edufordge</span>
         </motion.h1>
 
         {/* Loading Indicator */}
