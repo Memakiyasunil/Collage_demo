@@ -23,6 +23,10 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const Careers = lazy(() => import('./pages/Careers'));
 const NewsBlogs = lazy(() => import('./pages/NewsBlogs'));
+const Placements = lazy(() => import('./pages/Placements'));
+const Hackathons = lazy(() => import('./pages/Hackathons'));
+const InterviewQuestions = lazy(() => import('./pages/InterviewQuestions'));
+const StudentReviews = lazy(() => import('./pages/StudentReviews'));
 const Contact = lazy(() => import('./components/Contact')); // Note: it's in components
 
 // Lazy Loaded Admin Pages
@@ -71,11 +75,15 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/vision" element={<Vision />} />
                 <Route path="/core-team" element={<CoreTeam />} />
+                <Route path="/student-reviews" element={<StudentReviews />} />
                 <Route path="/courses" element={<Courses />} />
                 <Route path="/course/:courseId" element={<CourseDetail />} />
                 <Route path="/news" element={<NewsBlogs />} />
                 <Route path="/partners" element={<Partners />} />
                 <Route path="/partner/:partnerId" element={<PartnerDetail />} />
+                <Route path="/placements" element={<Placements />} />
+                <Route path="/hackathons" element={<Hackathons />} />
+                <Route path="/interview-questions" element={<InterviewQuestions />} />
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/services/:serviceId" element={<ServiceDetail />} />
                 <Route path="/all-services" element={<ServicesPage />} />

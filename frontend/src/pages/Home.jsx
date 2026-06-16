@@ -5,6 +5,7 @@ import PartnerLogos from '../components/PartnerLogos';
 import FeaturedPrograms from '../components/FeaturedPrograms';
 import Features from '../components/Features';
 import CardSwap from '../components/CardSwap';
+import JourneySection from '../components/JourneySection';
 import { Users } from 'lucide-react';
 import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../utils/animations';
 
@@ -97,6 +98,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <JourneySection />
 
       <PartnerLogos />
       <FeaturedPrograms />

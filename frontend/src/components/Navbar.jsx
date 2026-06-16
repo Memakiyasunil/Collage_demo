@@ -114,12 +114,14 @@ const Navbar = () => {
           <NavItem label="About" dropdown={[
             { path: '/about', label: 'About Us' },
             { path: '/vision', label: 'Vision & Mission' },
-            { path: '/core-team', label: 'Core Team' }
+            { path: '/core-team', label: 'Core Team' },
+            { path: '/student-reviews', label: 'Student Reviews' }
           ]} />
           <NavItem label="Programs" dropdown={[
             { path: '/courses', label: 'Integrate Programs' },
             { path: '/courses', label: 'UG Programs' },
-            { path: '/courses', label: 'PG Programs' }
+            { path: '/courses', label: 'PG Programs' },
+            { path: '/placements', label: 'Placements' }
           ]} />
           <NavItem label="Services" dropdown={[
             { path: '/all-services', label: 'All Professional Services' },
@@ -132,7 +134,9 @@ const Navbar = () => {
             { path: '/services/training', label: 'Training' },
             { path: '/services/bootcamps', label: 'Bootcamps' },
             { path: '/services/knowledge-sharing', label: 'Knowledge Sharing' },
-            { path: '/services/faculty-provision', label: 'Faculty Provision' }
+            { path: '/services/faculty-provision', label: 'Faculty Provision' },
+            { path: '/hackathons', label: 'Hackathons' },
+            { path: '/interview-questions', label: 'Interview Questions' }
           ]} />
           <NavItem path="/partners" label="Partners" />
           <NavItem path="/news" label="News & Blogs" />
