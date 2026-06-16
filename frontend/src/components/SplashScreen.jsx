@@ -56,7 +56,15 @@ const SplashScreen = ({ onComplete }) => {
           transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
           className="text-5xl md:text-6xl font-extrabold tracking-tight flex items-center gap-1"
         >
-          <span className="text-white">Edufordge</span>
+          <span className="text-white">Edu</span>
+          <motion.span 
+            className="text-yellow-400"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.6 }}
+          >
+            fordge
+          </motion.span>
         </motion.h1>
 
         {/* Loading Indicator */}

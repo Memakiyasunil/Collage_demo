@@ -24,7 +24,7 @@ const AdminLogin = ({ onLogin }) => {
       <div className="bg-white w-full max-w-[400px] rounded-xl shadow-2xl p-10">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-extrabold mb-2">
-            <span className="text-slate-900">Edufordge</span> <span className="text-slate-900">Admin</span>
+            <span className="text-slate-900">Edu</span><span className="text-yellow-400">fordge</span> <span className="text-slate-900">Admin</span>
           </h2>
           <p className="text-slate-500 text-[0.95rem]">Please login to your account</p>
         </div>
