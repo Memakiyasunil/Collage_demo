@@ -85,6 +85,28 @@ const About = () => {
           </motion.p>
         </motion.div>
 
+        {/* Premium Graphic Section */}
+        <motion.div 
+          className="mb-24 relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeInUp}
+        >
+          <div className="aspect-[21/9] md:aspect-[21/7] relative group">
+            <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80" alt="Modern University" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-transparent to-transparent opacity-90" />
+            
+            <div className="absolute bottom-0 left-0 w-full p-8 md:p-12">
+              <div className="max-w-3xl">
+                <span className="text-amber-400 font-bold tracking-widest uppercase text-sm mb-2 block">Our Legacy</span>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">Empowering Generations of Innovators</h2>
+                <p className="text-slate-300 text-lg">With a network spanning across the country, we have successfully trained over 50,000+ professionals who are now leading the tech industry globally.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Dynamic Grid Section */}
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"

@@ -105,6 +105,56 @@ const Home = () => {
       <FeaturedPrograms />
       <Features />
 
+      {/* Premium Graphic / Image Section */}
+      <motion.section 
+        className="py-32 px-8 relative overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={staggerContainer}
+      >
+        <div className="absolute inset-0 z-0">
+          <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80" alt="Campus Life" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-950/80 to-slate-900" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div variants={slideInLeft}>
+            <span className="text-sky-400 font-bold tracking-widest uppercase text-sm mb-4 block">Immersive Learning</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">State-of-the-Art <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">Campus Facilities</span></h2>
+            <p className="text-lg text-slate-300 leading-relaxed mb-8 max-w-lg">
+              Experience learning in our ultra-modern campus equipped with the latest technology, collaborative workspaces, and dedicated research labs. We provide an environment that fosters innovation and creativity.
+            </p>
+            <div className="flex gap-4">
+              <button className="bg-sky-500 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-sky-400 transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:-translate-y-1">Take a Virtual Tour</button>
+            </div>
+          </motion.div>
+          
+          <motion.div variants={slideInRight} className="relative hidden lg:block">
+            <div className="grid grid-cols-2 gap-6">
+              <motion.div variants={fadeInUp} className="flex flex-col gap-6 mt-12">
+                <div className="rounded-3xl overflow-hidden h-64 border border-white/10 shadow-2xl group">
+                  <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Students collaborating" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <div className="bg-slate-800/80 backdrop-blur-xl p-6 rounded-3xl border border-slate-700 shadow-xl">
+                  <h4 className="text-white font-bold text-xl mb-2">24/7 Access</h4>
+                  <p className="text-slate-400 text-sm">Round the clock access to libraries and coding labs.</p>
+                </div>
+              </motion.div>
+              <motion.div variants={fadeInUp} className="flex flex-col gap-6">
+                <div className="bg-gradient-to-br from-indigo-900/80 to-purple-900/80 backdrop-blur-xl p-6 rounded-3xl border border-indigo-500/30 shadow-xl">
+                  <h4 className="text-white font-bold text-xl mb-2">Global Network</h4>
+                  <p className="text-indigo-200 text-sm">Connect with alumni worldwide.</p>
+                </div>
+                <div className="rounded-3xl overflow-hidden h-80 border border-white/10 shadow-2xl group">
+                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Tech Seminar" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* Stats Counter */}
       <motion.section
         className="py-24 px-8 bg-slate-900 border-t border-b border-white/5 text-white relative overflow-hidden"

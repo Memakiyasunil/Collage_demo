@@ -1,163 +1,283 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '../utils/animations';
-import { ChevronDown, Code, Server, Database, Users, HelpCircle } from 'lucide-react';
+import { staggerContainer, fadeInUp, slideInLeft, slideInRight } from '../utils/animations';
+import { ChevronDown, Code, Server, Database, Users, HelpCircle, Zap, BookOpen, ArrowRight, Search } from 'lucide-react';
 
 const categories = [
-  { id: 'frontend', name: 'Frontend', icon: Code, color: 'text-sky-400', bg: 'bg-sky-500/10' },
-  { id: 'backend', name: 'Backend', icon: Server, color: 'text-emerald-400', bg: 'bg-emerald-500/10' },
-  { id: 'dsa', name: 'Data Structures', icon: Database, color: 'text-amber-400', bg: 'bg-amber-500/10' },
-  { id: 'hr', name: 'HR / Behavioral', icon: Users, color: 'text-fuchsia-400', bg: 'bg-fuchsia-500/10' },
+  { id: 'frontend', name: 'Frontend Dev', icon: Code, color: 'from-sky-500 to-blue-600', glow: 'rgba(14,165,233,0.3)', count: 3 },
+  { id: 'backend', name: 'Backend Dev', icon: Server, color: 'from-emerald-500 to-teal-600', glow: 'rgba(16,185,129,0.3)', count: 3 },
+  { id: 'dsa', name: 'Data Structures', icon: Database, color: 'from-amber-500 to-orange-600', glow: 'rgba(245,158,11,0.3)', count: 3 },
+  { id: 'hr', name: 'HR / Behavioral', icon: Users, color: 'from-fuchsia-500 to-purple-600', glow: 'rgba(192,38,211,0.3)', count: 3 },
 ];
 
 const questionsData = {
   frontend: [
-    { q: "Explain the Virtual DOM in React.", a: "The Virtual DOM is a lightweight copy of the actual DOM. React uses it to improve performance by calculating the difference (diffing) between the new Virtual DOM and the old one, and only updating the real DOM where necessary." },
-    { q: "What is CSS Flexbox?", a: "Flexbox is a one-dimensional layout model in CSS that allows responsive elements within a container to be automatically arranged depending upon viewport size." },
-    { q: "What are React Hooks?", a: "Hooks are functions that let you 'hook into' React state and lifecycle features from function components (e.g., useState, useEffect)." }
+    {
+      q: "Explain the Virtual DOM in React and how it improves performance.",
+      a: "The Virtual DOM is a lightweight in-memory copy of the actual DOM. React keeps a virtual tree of UI components. When state changes, React creates a new virtual DOM, diffs it against the previous one (reconciliation), and only applies the minimal set of real DOM updates needed. This avoids costly full-page re-renders and makes React apps feel snappy.",
+      difficulty: "Mid",
+      tag: "React",
+    },
+    {
+      q: "What is CSS Flexbox and how does it differ from CSS Grid?",
+      a: "Flexbox is a one-dimensional layout model — it lays items in a row or a column. Grid is two-dimensional — it places items in both rows and columns simultaneously. Use Flexbox for component-level layout (navbar, card content), and Grid for page-level layout (overall page structure).",
+      difficulty: "Basic",
+      tag: "CSS",
+    },
+    {
+      q: "What are React Hooks and when were they introduced?",
+      a: "React Hooks (introduced in v16.8) let you use state and lifecycle features in function components. Key hooks: useState (local state), useEffect (side effects like data fetching), useContext (global state), useMemo/useCallback (performance), useRef (DOM access/mutable values).",
+      difficulty: "Mid",
+      tag: "React",
+    },
   ],
   backend: [
-    { q: "Explain RESTful API architecture.", a: "REST (Representational State Transfer) is an architectural style for designing networked applications. It relies on a stateless, client-server communication protocol, almost always HTTP." },
-    { q: "What is the difference between SQL and NoSQL?", a: "SQL databases are relational, table-based, and have a predefined schema. NoSQL databases are non-relational, document/key-value/graph based, and have dynamic schemas for unstructured data." },
-    { q: "What is middleware in Express.js?", a: "Middleware functions are functions that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle." }
+    {
+      q: "Explain RESTful API architecture and its core principles.",
+      a: "REST (Representational State Transfer) is an architectural style using HTTP. Core constraints: Stateless (each request is self-contained), Client-Server separation, Cacheable, Uniform Interface (standard HTTP methods GET/POST/PUT/DELETE), Layered System. Resources are identified by URLs; representations are typically JSON.",
+      difficulty: "Mid",
+      tag: "APIs",
+    },
+    {
+      q: "What is the difference between SQL and NoSQL databases?",
+      a: "SQL databases (MySQL, PostgreSQL) are relational, table-based, use fixed schemas, support ACID transactions, and scale vertically. NoSQL databases (MongoDB, Cassandra, Redis) are non-relational, store data as documents/key-value/graph, have flexible schemas, and scale horizontally. Choose SQL for complex joins; NoSQL for high-velocity, unstructured data.",
+      difficulty: "Basic",
+      tag: "Databases",
+    },
+    {
+      q: "What is middleware in Express.js and how does it work?",
+      a: "Middleware are functions that execute in the request-response cycle between the client and the final route handler. They have access to (req, res, next). Types: application-level, router-level, error-handling, built-in (express.json()), and third-party (cors, helmet). Call next() to pass control to the next middleware.",
+      difficulty: "Mid",
+      tag: "Node.js",
+    },
   ],
   dsa: [
-    { q: "What is the time complexity of Binary Search?", a: "The time complexity of Binary Search is O(log n) because it halves the search space during each step." },
-    { q: "Explain a Hash Table.", a: "A Hash Table is a data structure that implements an associative array abstract data type, a structure that can map keys to values. It uses a hash function to compute an index into an array of buckets or slots." },
-    { q: "What is Dynamic Programming?", a: "Dynamic Programming is an algorithmic technique for solving an optimization problem by breaking it down into simpler subproblems and utilizing the fact that the optimal solution to the overall problem depends upon the optimal solution to its subproblems." }
+    {
+      q: "What is the time complexity of Binary Search and when can you use it?",
+      a: "Binary Search has O(log n) time complexity and O(1) space. It works ONLY on sorted arrays by repeatedly halving the search space. Key variants: searching for a value, finding insertion position, finding first/last occurrence. Always ask in interviews: 'is the array sorted?' before proposing it.",
+      difficulty: "Basic",
+      tag: "Searching",
+    },
+    {
+      q: "Explain a Hash Table and describe a collision resolution strategy.",
+      a: "A Hash Table maps keys to values using a hash function to compute an array index. Collision strategies: (1) Separate Chaining — each bucket holds a linked list of entries; (2) Open Addressing (Linear Probing) — probe the next slot on collision. Average O(1) for get/put; worst case O(n) with many collisions. JavaScript's Map uses a hash table internally.",
+      difficulty: "Mid",
+      tag: "Data Structures",
+    },
+    {
+      q: "What is Dynamic Programming? Explain with an example.",
+      a: "DP is an optimization technique that breaks a problem into overlapping subproblems, solves each once, and stores results (memoization/tabulation). Classic example: Fibonacci — naive recursion is O(2^n); with memoization it's O(n). Key signs you need DP: optimal substructure + overlapping subproblems. Common problems: Knapsack, LCS, Coin Change.",
+      difficulty: "Hard",
+      tag: "Algorithms",
+    },
   ],
   hr: [
-    { q: "Tell me about yourself.", a: "Focus on your professional journey, highlight your technical skills relevant to the job, mention a key achievement, and explain why you are interested in this specific role." },
-    { q: "Why do you want to work here?", a: "Show that you've researched the company. Mention their products, culture, or recent news, and align your own career goals with their mission." },
-    { q: "Describe a time you faced a difficult challenge.", a: "Use the STAR method (Situation, Task, Action, Result) to clearly explain the context, what you did to solve it, and the positive outcome." }
-  ]
+    {
+      q: "Tell me about yourself.",
+      a: "Structure: Current role/education → 2-3 key technical skills → a notable achievement → why you're excited about this opportunity. Keep it under 2 minutes. Tailor it to the company — mention tech they use, products you admire. End with a forward-looking statement: 'That's why this role at [company] is the perfect next step.'",
+      difficulty: "Basic",
+      tag: "Intro",
+    },
+    {
+      q: "Why do you want to work at this company?",
+      a: "Research the company before the interview. Reference: (1) a specific product/feature you use/admire, (2) their tech stack or engineering blog, (3) their culture or recent news. Avoid generic answers. Example: 'I've been using your recommendation engine and I read your ML blog post on embeddings — I'd love to work on problems at that scale.'",
+      difficulty: "Basic",
+      tag: "Motivation",
+    },
+    {
+      q: "Describe a time you faced a difficult technical challenge and how you solved it.",
+      a: "Use the STAR method: Situation (context), Task (your responsibility), Action (specific steps you took — be detailed about your individual contribution), Result (measurable outcome). Choose a challenge that shows problem-solving, collaboration, and learning. Mention what you'd do differently in hindsight.",
+      difficulty: "Mid",
+      tag: "STAR Method",
+    },
+  ],
+};
+
+const difficultyConfig = {
+  "Basic": { color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20" },
+  "Mid": { color: "text-amber-400 bg-amber-500/10 border-amber-500/20" },
+  "Hard": { color: "text-rose-400 bg-rose-500/10 border-rose-500/20" },
 };
 
 const InterviewQuestions = () => {
   const [activeCategory, setActiveCategory] = useState('frontend');
   const [expandedId, setExpandedId] = useState(null);
 
-  const toggleQuestion = (idx) => {
-    if (expandedId === idx) {
-      setExpandedId(null);
-    } else {
-      setExpandedId(idx);
-    }
-  };
+  const currentCat = categories.find(c => c.id === activeCategory);
+  const questions = questionsData[activeCategory];
 
   return (
-    <div className="min-h-screen bg-[#0b1120] font-sans pt-32 pb-20 overflow-hidden relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-sky-600/10 blur-[150px]"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-indigo-600/10 blur-[150px]"></div>
-      </div>
+    <div className="min-h-screen bg-[#060b14] font-sans overflow-hidden text-white">
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        
-        <motion.div 
-          className="text-center mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50 mb-6">
-            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-            <span className="text-sky-300 text-sm font-bold tracking-widest uppercase">Placement Prep</span>
+      {/* ── HERO ─────────────────────────────────────────── */}
+      <section className="relative pt-32 pb-20 px-8 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1920&q=80"
+            alt="Interview Prep" className="w-full h-full object-cover opacity-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#060b14]/70 to-[#060b14]" />
+        </div>
+        <div className="absolute top-20 left-1/3 w-96 h-96 bg-sky-600/15 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-600/15 rounded-full blur-[110px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer}>
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-500/10 border border-sky-500/30 mb-8">
+              <Zap size={14} className="text-sky-400" />
+              <span className="text-sky-300 text-sm font-bold tracking-widest uppercase">Placement Prep Hub</span>
+            </motion.div>
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-6 tracking-tight">
+              Crack the<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-400 to-fuchsia-500">
+                Technical Interview
+              </span>
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl mx-auto">
+              Master the most frequently asked questions by top recruiters — from FAANG to product startups — across all major domains.
+            </motion.p>
+
+            {/* Stats strip */}
+            <motion.div variants={fadeInUp} className="flex justify-center gap-6 flex-wrap">
+              {[
+                { v: "12+", l: "Questions" },
+                { v: "4", l: "Domains" },
+                { v: "100%", l: "Industry-Relevant" },
+                { v: "Free", l: "Access" },
+              ].map((s, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">{s.v}</div>
+                  <div className="text-slate-500 text-xs uppercase tracking-widest font-bold">{s.l}</div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
-          <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
-            Crack the <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">Technical Interview</span>
-          </motion.h1>
-          <motion.p variants={fadeInUp} className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Master the most frequently asked questions by top recruiters across all major domains.
-          </motion.p>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Top Image Banner */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16 relative h-64 md:h-80 rounded-[2rem] overflow-hidden border border-slate-700 shadow-2xl"
-        >
-          <img 
-            src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1200&q=80" 
-            alt="Interview Preparation" 
-            className="w-full h-full object-cover opacity-70"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0b1120] to-transparent"></div>
-        </motion.div>
+      {/* ── MAIN CONTENT ─────────────────────────────────── */}
+      <section className="py-10 px-8 pb-24">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
 
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Categories Sidebar */}
-          <div className="w-full md:w-1/3">
-            <div className="sticky top-32 space-y-4">
-              <h3 className="text-white font-bold text-xl mb-6">Categories</h3>
-              {categories.map((cat) => {
-                const Icon = cat.icon;
-                const isActive = activeCategory === cat.id;
-                return (
-                  <button
-                    key={cat.id}
-                    onClick={() => { setActiveCategory(cat.id); setExpandedId(null); }}
-                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300 border ${
-                      isActive 
-                        ? 'bg-slate-800 border-slate-600 shadow-lg' 
-                        : 'bg-transparent border-transparent hover:bg-slate-800/50 hover:border-slate-700'
-                    }`}
-                  >
-                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isActive ? cat.bg : 'bg-slate-800'} ${isActive ? cat.color : 'text-slate-400'}`}>
-                      <Icon size={20} />
-                    </div>
-                    <span className={`font-bold text-lg ${isActive ? 'text-white' : 'text-slate-400'}`}>
-                      {cat.name}
-                    </span>
-                  </button>
-                );
-              })}
+          {/* Sidebar */}
+          <div className="lg:w-72 shrink-0">
+            <div className="sticky top-32">
+              <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-4">Select Domain</p>
+              <div className="flex flex-col gap-3">
+                {categories.map((cat) => {
+                  const isActive = activeCategory === cat.id;
+                  return (
+                    <motion.button
+                      key={cat.id}
+                      onClick={() => { setActiveCategory(cat.id); setExpandedId(null); }}
+                      whileHover={{ scale: 1.02, x: 4 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`group w-full flex items-center gap-4 px-5 py-4 rounded-2xl border transition-all duration-300 text-left ${isActive
+                        ? `bg-slate-800/80 border-slate-600 shadow-[0_0_20px_${cat.glow}]`
+                        : 'bg-slate-800/20 border-slate-700/40 hover:bg-slate-800/50 hover:border-slate-600'
+                        }`}
+                      style={isActive ? { boxShadow: `0 0 25px ${cat.glow}` } : {}}
+                    >
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${isActive ? `bg-gradient-to-br ${cat.color} shadow-lg` : 'bg-slate-700/60 group-hover:bg-slate-700'}`}>
+                        <cat.icon size={20} className={isActive ? 'text-white' : 'text-slate-400'} />
+                      </div>
+                      <div>
+                        <div className={`font-bold transition-colors ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'}`}>{cat.name}</div>
+                        <div className="text-slate-500 text-xs">{cat.count} questions</div>
+                      </div>
+                      {isActive && (
+                        <motion.div layoutId="activeDot" className={`ml-auto w-2 h-2 rounded-full bg-gradient-to-br ${cat.color}`} />
+                      )}
+                    </motion.button>
+                  );
+                })}
+              </div>
+
+              {/* CTA Card */}
+              <div className="mt-6 bg-gradient-to-br from-sky-900/40 to-indigo-900/40 border border-sky-500/20 p-6 rounded-2xl">
+                <BookOpen size={24} className="text-sky-400 mb-3" />
+                <h4 className="text-white font-bold mb-2">Need More Prep?</h4>
+                <p className="text-slate-400 text-sm mb-4">Book a 1:1 mock interview with an industry expert.</p>
+                <button className="w-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold py-2.5 rounded-xl text-sm hover:-translate-y-0.5 transition-all">
+                  Book Mock Interview
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Questions Accordion */}
-          <div className="w-full md:w-2/3">
-            <div className="bg-slate-900 border border-slate-700 rounded-3xl p-8 shadow-xl">
-              <div className="flex items-center gap-3 mb-8 pb-6 border-b border-slate-800">
-                <HelpCircle className="text-sky-400" size={28} />
-                <h2 className="text-2xl font-bold text-white capitalize">
-                  {categories.find(c => c.id === activeCategory)?.name} Questions
-                </h2>
+          {/* Questions Panel */}
+          <div className="flex-1">
+            {/* Panel Header */}
+            <motion.div
+              key={activeCategory + 'header'}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`flex items-center gap-4 mb-6 p-6 rounded-2xl bg-gradient-to-r ${currentCat.color} bg-opacity-10 border border-white/10`}
+              style={{ background: `linear-gradient(135deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1))` }}
+            >
+              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${currentCat.color} flex items-center justify-center shadow-lg`}>
+                <currentCat.icon size={26} className="text-white" />
               </div>
+              <div>
+                <h2 className="text-2xl font-extrabold text-white">{currentCat.name} Questions</h2>
+                <p className="text-slate-400 text-sm">{currentCat.count} questions — Click to expand answers</p>
+              </div>
+            </motion.div>
 
-              <div className="space-y-4">
-                {questionsData[activeCategory].map((qa, idx) => {
-                  const isExpanded = expandedId === idx;
+            <AnimatePresence mode="popLayout">
+              <motion.div key={activeCategory} className="flex flex-col gap-4">
+                {questions.map((qa, idx) => {
+                  const isOpen = expandedId === idx;
                   return (
-                    <motion.div 
+                    <motion.div
                       key={idx}
-                      initial={false}
-                      className={`border rounded-2xl overflow-hidden transition-colors duration-300 ${isExpanded ? 'border-sky-500/50 bg-slate-800/50' : 'border-slate-700/50 bg-slate-800/20 hover:bg-slate-800/40'}`}
+                      layout
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.08 }}
+                      className={`group border rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 ${isOpen
+                        ? `border-sky-500/50 bg-slate-800/60 shadow-[0_10px_30px_rgba(14,165,233,0.15)]`
+                        : 'border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/50 hover:border-slate-600 hover:shadow-[0_8px_25px_rgba(0,0,0,0.3)]'
+                        }`}
+                      onClick={() => setExpandedId(isOpen ? null : idx)}
                     >
-                      <button 
-                        onClick={() => toggleQuestion(idx)}
-                        className="w-full flex items-center justify-between p-6 text-left"
-                      >
-                        <span className="font-semibold text-slate-200 pr-8">{qa.q}</span>
-                        <ChevronDown 
-                          size={20} 
-                          className={`text-slate-400 transition-transform duration-300 shrink-0 ${isExpanded ? 'rotate-180 text-sky-400' : ''}`} 
-                        />
-                      </button>
+                      <div className="p-6 flex items-start justify-between gap-4">
+                        <div className="flex items-start gap-4 flex-1">
+                          <span className={`shrink-0 text-xs font-black px-3 py-1.5 rounded-full border ${difficultyConfig[qa.difficulty].color}`}>
+                            {qa.difficulty}
+                          </span>
+                          <div>
+                            <span className={`text-base font-semibold leading-snug transition-colors ${isOpen ? 'text-sky-300' : 'text-white group-hover:text-sky-200'}`}>
+                              {qa.q}
+                            </span>
+                            <div className="mt-2">
+                              <span className="text-xs text-slate-500 bg-slate-700/50 px-2 py-1 rounded-md font-medium">{qa.tag}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <motion.div
+                          animate={{ rotate: isOpen ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                          className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-sky-500/20 text-sky-400' : 'bg-slate-700/60 text-slate-400 group-hover:bg-slate-700'}`}
+                        >
+                          <ChevronDown size={18} />
+                        </motion.div>
+                      </div>
+
                       <AnimatePresence>
-                        {isExpanded && (
+                        {isOpen && (
                           <motion.div
                             initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
+                            animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.35 }}
+                            className="overflow-hidden"
                           >
-                            <div className="px-6 pb-6 text-slate-400 leading-relaxed border-t border-slate-700/50 pt-4 mt-2">
-                              {qa.a}
+                            <div className="px-6 pb-6 border-t border-white/5 pt-5">
+                              <div className="flex items-center gap-2 mb-3">
+                                <HelpCircle size={14} className="text-sky-400" />
+                                <span className="text-sky-400 text-xs font-bold uppercase tracking-wider">Model Answer</span>
+                              </div>
+                              <p className="text-slate-300 leading-relaxed text-[0.95rem]">{qa.a}</p>
                             </div>
                           </motion.div>
                         )}
@@ -165,12 +285,11 @@ const InterviewQuestions = () => {
                     </motion.div>
                   );
                 })}
-              </div>
-            </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
-
-      </div>
+      </section>
     </div>
   );
 };

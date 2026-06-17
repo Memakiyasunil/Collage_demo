@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { ReactLenis } from 'lenis/react';
@@ -21,6 +21,7 @@ const Partners = lazy(() => import('./pages/Partners'));
 const PartnerDetail = lazy(() => import('./pages/PartnerDetail'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const LabDetail = lazy(() => import('./pages/LabDetail'));
 const Careers = lazy(() => import('./pages/Careers'));
 const NewsBlogs = lazy(() => import('./pages/NewsBlogs'));
 const Placements = lazy(() => import('./pages/Placements'));
@@ -28,6 +29,18 @@ const Hackathons = lazy(() => import('./pages/Hackathons'));
 const InterviewQuestions = lazy(() => import('./pages/InterviewQuestions'));
 const StudentReviews = lazy(() => import('./pages/StudentReviews'));
 const Contact = lazy(() => import('./components/Contact')); // Note: it's in components
+const DiplomaCourses = lazy(() => import('./pages/DiplomaCourses'));
+const IndustryIntegratedPrograms = lazy(() => import('./pages/IndustryIntegratedPrograms'));
+const OnlineLearningPrograms = lazy(() => import('./pages/OnlineLearningPrograms'));
+const CaseStudies = lazy(() => import('./pages/CaseStudies'));
+const DownloadBrochure = lazy(() => import('./pages/DownloadBrochure'));
+const FAQs = lazy(() => import('./pages/FAQs'));
+const Bootcamps = lazy(() => import('./pages/Bootcamps'));
+const InternshipSupport = lazy(() => import('./pages/InternshipSupport'));
+const CareerCounselling = lazy(() => import('./pages/CareerCounselling'));
+const ResumeBuilding = lazy(() => import('./pages/ResumeBuilding'));
+const MockInterviews = lazy(() => import('./pages/MockInterviews'));
+const TechnicalCommunity = lazy(() => import('./pages/TechnicalCommunity'));
 
 // Lazy Loaded Admin Pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
@@ -53,6 +66,11 @@ function App() {
   const [showSplash, setShowSplash] = useState(true);
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+
+  // Ensure page scrolls to top on route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
   return (
     <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothTouch: true }}>
@@ -87,7 +105,20 @@ function App() {
                 <Route path="/careers" element={<Careers />} />
                 <Route path="/services/:serviceId" element={<ServiceDetail />} />
                 <Route path="/all-services" element={<ServicesPage />} />
+                <Route path="/labs/:labId" element={<LabDetail />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/diploma-courses" element={<DiplomaCourses />} />
+                <Route path="/industry-integrated-programs" element={<IndustryIntegratedPrograms />} />
+                <Route path="/online-learning-programs" element={<OnlineLearningPrograms />} />
+                <Route path="/case-studies" element={<CaseStudies />} />
+                <Route path="/download-brochure" element={<DownloadBrochure />} />
+                <Route path="/faqs" element={<FAQs />} />
+                <Route path="/bootcamps" element={<Bootcamps />} />
+                <Route path="/internship-support" element={<InternshipSupport />} />
+                <Route path="/career-counselling" element={<CareerCounselling />} />
+                <Route path="/resume-building" element={<ResumeBuilding />} />
+                <Route path="/mock-interviews" element={<MockInterviews />} />
+                <Route path="/technical-community" element={<TechnicalCommunity />} />
                 
                 {/* Admin Login Route */}
                 <Route 

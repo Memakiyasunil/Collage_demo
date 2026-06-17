@@ -102,36 +102,61 @@ const ServicesPage = () => {
   return (
     <div className="bg-[#0b1120] min-h-screen font-sans overflow-hidden">
       {/* Hero Section */}
-      <div className="relative pt-32 pb-24 px-8 flex items-center justify-center text-center min-h-[60vh]">
+      <div className="relative pt-32 pb-24 px-8 bg-[#060b14] overflow-hidden min-h-[60vh] flex items-center">
         {/* Abstract Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
           <motion.div variants={floatAnimation} initial="hidden" animate="visible" className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-sky-600/20 rounded-full blur-[120px] mix-blend-screen" />
           <motion.div variants={floatAnimation} initial="hidden" animate="visible" style={{ animationDelay: '2s' }} className="absolute top-1/2 -left-40 w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] mix-blend-screen" />
         </div>
 
-        <motion.div 
-          className="relative z-10 max-w-5xl mx-auto"
-          initial="hidden" animate="visible" variants={fadeInUp}
-        >
-          <motion.div variants={floatAnimation} className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-800/50 backdrop-blur-md border border-slate-700/50 mb-8 shadow-xl">
-            <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-            <span className="text-sky-300 text-sm font-bold tracking-widest uppercase">Our Expertise</span>
+        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div 
+            initial="hidden" animate="visible" variants={slideInLeft}
+          >
+            <motion.div variants={floatAnimation} className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-800/50 backdrop-blur-md border border-slate-700/50 mb-8 shadow-xl">
+              <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+              <span className="text-sky-300 text-sm font-bold tracking-widest uppercase">Our Expertise</span>
+            </motion.div>
+            
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
+              Empowering Future Professionals Through <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 relative">
+                Technology & Education
+                <svg className="absolute w-full h-4 -bottom-1 left-0 text-sky-500" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 50 Q 50 100 100 50" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/>
+                </svg>
+              </span>
+            </h1>
+            <p className="text-xl text-slate-400 leading-relaxed font-medium mt-8 max-w-lg">
+              Transforming knowledge into career success. We bridge the gap between academic learning and industry innovation.
+            </p>
           </motion.div>
-          
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
-            Empowering Future Professionals Through <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-500 relative">
-              Technology & Education
-              <svg className="absolute w-full h-4 -bottom-1 left-0 text-sky-500" preserveAspectRatio="none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 50 Q 50 100 100 50" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/>
-              </svg>
-            </span>
-          </h1>
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-medium mt-8">
-            Transforming knowledge into career success. We bridge the gap between academic learning and industry innovation.
-          </p>
-        </motion.div>
+
+          <motion.div 
+            initial="hidden" animate="visible" variants={slideInRight}
+            className="relative hidden lg:block"
+          >
+            <div className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] aspect-[4/3] group">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80" alt="Professional Training" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060b14] via-transparent to-transparent opacity-60" />
+            </div>
+            
+            <motion.div 
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-8 -left-8 bg-slate-900/90 backdrop-blur-xl border border-slate-700 p-6 rounded-3xl shadow-2xl flex items-center gap-5"
+            >
+              <div className="w-16 h-16 bg-sky-500/20 rounded-2xl flex items-center justify-center text-sky-400">
+                <LucideIcons.Award size={32} />
+              </div>
+              <div>
+                <p className="text-white font-bold text-lg mb-1">Top Rated</p>
+                <p className="text-slate-400 text-sm">Industry Excellence</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Services Grid Section */}
