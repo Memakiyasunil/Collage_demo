@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   Users, Code, Cpu, Database, Globe, Shield, Layers, Smartphone,
-  Star, ArrowRight, Zap, Calendar, MessageSquare, Github, Twitter,
-  Linkedin, Award, TrendingUp, BookOpen, Play, ChevronRight, Heart, Flame
+  Star, ArrowRight, Zap, Calendar, MessageSquare, Award, TrendingUp, BookOpen, Play, ChevronRight, Heart, Flame
 } from 'lucide-react';
 import { staggerContainer, fadeInUp, slideInLeft, slideInRight, scaleUp } from '../utils/animations';
 
