@@ -84,7 +84,7 @@ function App() {
       {!showSplash && (
         <div className="min-h-screen flex flex-col">
           {!isAdminRoute && <Navbar />}
-          
+
           <main className="flex-1">
             <Suspense fallback={<PageLoader />}>
               <Routes>
@@ -119,55 +119,55 @@ function App() {
                 <Route path="/resume-building" element={<ResumeBuilding />} />
                 <Route path="/mock-interviews" element={<MockInterviews />} />
                 <Route path="/technical-community" element={<TechnicalCommunity />} />
-                
+
                 {/* Admin Login Route */}
-                <Route 
-                  path="/admin/login" 
+                <Route
+                  path="/admin/login"
                   element={
                     isAuthenticated ? <Navigate to="/admin" replace /> : <AdminLogin onLogin={() => setIsAuthenticated(true)} />
-                  } 
+                  }
                 />
-                
+
                 {/* Protected Admin Routes */}
-                <Route 
-                  path="/admin" 
+                <Route
+                  path="/admin"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                       <AdminDashboard onLogout={() => setIsAuthenticated(false)} />
                     </ProtectedRoute>
-                  } 
+                  }
                 />
-                <Route 
-                  path="/admin/courses" 
+                <Route
+                  path="/admin/courses"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                       <AdminCourses onLogout={() => setIsAuthenticated(false)} />
                     </ProtectedRoute>
-                  } 
+                  }
                 />
-                <Route 
-                  path="/admin/services" 
+                <Route
+                  path="/admin/services"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                       <AdminServices onLogout={() => setIsAuthenticated(false)} />
                     </ProtectedRoute>
-                  } 
+                  }
                 />
-                <Route 
-                  path="/admin/footer" 
+                <Route
+                  path="/admin/footer"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                       <AdminFooter onLogout={() => setIsAuthenticated(false)} />
                     </ProtectedRoute>
-                  } 
+                  }
                 />
-                <Route 
-                  path="/admin/partners" 
+                <Route
+                  path="/admin/partners"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                       <AdminPartners onLogout={() => setIsAuthenticated(false)} />
                     </ProtectedRoute>
-                  } 
+                  }
                 />
               </Routes>
             </Suspense>

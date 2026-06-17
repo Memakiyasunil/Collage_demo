@@ -17,9 +17,40 @@ const Hero = () => {
         <motion.div style={{ y: y1 }} className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen"></motion.div>
         <motion.div style={{ y: y2 }} className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/15 rounded-full blur-[100px] mix-blend-screen"></motion.div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-500/10 rounded-full blur-[150px]"></div>
+        
+        {/* Floating Particles */}
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className={`absolute rounded-full mix-blend-screen ${i % 2 === 0 ? 'bg-amber-400' : 'bg-sky-400'}`}
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+            }}
+            animate={{
+              y: [0, Math.random() * -60 - 20, 0],
+              x: [0, Math.random() * 40 - 20, 0],
+              scale: [1, Math.random() * 1.5 + 1, 1],
+              opacity: [0.1, 0.6, 0.1],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <motion.div 
+        className="container mx-auto px-6 lg:px-12 relative z-10"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Left Text Content */}
@@ -151,7 +182,8 @@ const Hero = () => {
             {/* Center Main Card */}
             <motion.div 
               variants={rotateIn}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-[420px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-slate-700/50 z-20 flex flex-col justify-between"
+              whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-[420px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-3xl p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-slate-700/50 z-20 flex flex-col justify-between cursor-default transition-transform duration-300"
             >
               <div className="w-full h-48 bg-slate-700 rounded-2xl overflow-hidden mb-6 relative group">
                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop" alt="Students" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -213,7 +245,7 @@ const Hero = () => {
 
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
