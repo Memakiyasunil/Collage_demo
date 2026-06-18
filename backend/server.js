@@ -14,10 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Database Connection
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/swarnim_edutech', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/employee_db')
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.log('MongoDB connection error: ', err));
 
@@ -26,6 +23,7 @@ app.use('/api/course', require('./routes/courseRoutes'));
 app.use('/api/inquiry', require('./routes/inquiryRoutes'));
 app.use('/api/contact', require('./routes/contactRoutes'));
 app.use('/api/services', require('./routes/serviceRoutes'));
+app.use('/api/partners', require('./routes/partnerRoutes'));
 // app.use('/api/auth', require('./routes/authRoutes'));
 
 

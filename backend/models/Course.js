@@ -5,25 +5,49 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: String, // Cloudinary URL
-  },
-  duration: {
+  type: {
     type: String,
-    required: true,
+    enum: ['UG', 'PG', 'INT'],
+    default: 'UG',
+  },
+  image: {
+    type: String, // Cloudinary URL or path
   },
   description: {
     type: String,
     required: true,
   },
-  category: {
+  duration: {
     type: String,
     required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  }
-});
+  eligibility: {
+    type: String,
+  },
+  totalSeats: {
+    type: String,
+  },
+  format: {
+    type: String,
+  },
+  status: {
+    type: String,
+    default: 'Accepting Applications',
+  },
+  overview: {
+    type: String,
+  },
+  category: {
+    type: String,
+  },
+  careerStats: {
+    jobsInIndia: { type: String },
+    avgSalary: { type: String },
+    companiesHiring: { type: String },
+  },
+  universities: [{ type: String }],
+  eligibilityChecklist: [{ type: String }],
+  salaryInsights: [{ type: String }],
+}, { timestamps: true });
 
 module.exports = mongoose.model('Course', courseSchema);

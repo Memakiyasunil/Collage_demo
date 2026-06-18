@@ -5,18 +5,20 @@ const Course = require('../models/Course');
 // @access  Private/Admin
 exports.createCourse = async (req, res) => {
   try {
-    const { title, image, duration, description, category } = req.body;
-    
-    if (!title || !duration || !description || !category) {
-      return res.status(400).json({ message: 'All fields are required' });
+    const {
+      title, type, image, duration, description, category,
+      eligibility, totalSeats, format, status, overview,
+      careerStats, universities, eligibilityChecklist, salaryInsights
+    } = req.body;
+
+    if (!title || !duration || !description) {
+      return res.status(400).json({ message: 'Title, duration and description are required' });
     }
 
     const course = await Course.create({
-      title,
-      image,
-      duration,
-      description,
-      category
+      title, type, image, duration, description, category,
+      eligibility, totalSeats, format, status, overview,
+      careerStats, universities, eligibilityChecklist, salaryInsights
     });
 
     res.status(201).json({
@@ -65,7 +67,7 @@ exports.updateCourse = async (req, res) => {
       new: true,
       runValidators: true
     });
-    
+
     if (!course) {
       return res.status(404).json({ message: 'Course not found' });
     }
@@ -84,7 +86,7 @@ exports.deleteCourse = async (req, res) => {
     if (!course) {
       return res.status(404).json({ message: 'Course not found' });
     }
-    
+
     await course.deleteOne();
     res.status(200).json({ success: true, message: 'Course deleted' });
   } catch (error) {

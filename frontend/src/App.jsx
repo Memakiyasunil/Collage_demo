@@ -44,7 +44,6 @@ const TechnicalCommunity = lazy(() => import('./pages/TechnicalCommunity'));
 
 // Lazy Loaded Admin Pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
-const AdminPages = lazy(() => import('./pages/admin/AdminPages'));
 
 // Create wrappers to extract specific components from the AdminPages bundle
 const AdminDashboard = lazy(() => import('./pages/admin/AdminPages').then(module => ({ default: module.AdminDashboard })));
@@ -52,6 +51,8 @@ const AdminCourses = lazy(() => import('./pages/admin/AdminPages').then(module =
 const AdminServices = lazy(() => import('./pages/admin/AdminPages').then(module => ({ default: module.AdminServices })));
 const AdminFooter = lazy(() => import('./pages/admin/AdminPages').then(module => ({ default: module.AdminFooter })));
 const AdminPartners = lazy(() => import('./pages/admin/AdminPages').then(module => ({ default: module.AdminPartners })));
+const AdminInquiries = lazy(() => import('./pages/admin/AdminPages').then(module => ({ default: module.AdminInquiries })));
+const AdminContacts = lazy(() => import('./pages/admin/AdminPages').then(module => ({ default: module.AdminContacts })));
 
 // Simple Protected Route wrapper
 const ProtectedRoute = ({ isAuthenticated, children }) => {
@@ -166,6 +167,22 @@ function App() {
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                       <AdminPartners onLogout={() => setIsAuthenticated(false)} />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/inquiries"
+                  element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                      <AdminInquiries onLogout={() => setIsAuthenticated(false)} />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/contacts"
+                  element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                      <AdminContacts onLogout={() => setIsAuthenticated(false)} />
                     </ProtectedRoute>
                   }
                 />
