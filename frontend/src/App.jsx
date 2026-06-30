@@ -42,6 +42,9 @@ const ResumeBuilding = lazy(() => import('./pages/ResumeBuilding'));
 const MockInterviews = lazy(() => import('./pages/MockInterviews'));
 const TechnicalCommunity = lazy(() => import('./pages/TechnicalCommunity'));
 
+// Auth Pages
+const Login = lazy(() => import('./pages/Login'));
+const Register = lazy(() => import('./pages/Register'));
 // Skill Swap Module Pages
 const SkillSwapDashboard = lazy(() => import('./pages/skill-swap/SkillSwapDashboard'));
 const MySkills = lazy(() => import('./pages/skill-swap/MySkills'));
@@ -138,6 +141,10 @@ function App() {
                 <Route path="/resume-building" element={<ResumeBuilding />} />
                 <Route path="/mock-interviews" element={<MockInterviews />} />
                 <Route path="/technical-community" element={<TechnicalCommunity />} />
+
+                {/* Auth Routes */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
 
                 {/* ── Skill Swap Module ─────────────────────────── */}
                 <Route path="/skill-swap" element={<SkillSwapDashboard />} />

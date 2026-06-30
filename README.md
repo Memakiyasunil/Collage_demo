@@ -35,3 +35,27 @@ Create a complete responsive Education Institute Website Clone using the MERN St
    npm run dev
    ```
    *The React app should now be running in your browser.*
+
+### 3. Login & Authentication Access
+
+To easily test the application, you can seed the database with default users and categories by running the following commands in the `backend` folder (after MongoDB connects):
+```bash
+node seedCategories.js
+node seedUsers.js
+```
+
+The application includes two separate authentication portals:
+
+**1. Skill Swap Portal (User)**
+- **Registration URL:** `http://localhost:5173/register`
+- **Login URL:** `http://localhost:5173/login`
+- **Details:** Users can create an account using their Full Name, Email, and Password. Once logged in, they can access the Skill Swap Dashboard.
+- **Default Seed Accounts:**
+  - **Email:** `john@example.com` | **Password:** `password123`
+  - **Email:** `jane@example.com` | **Password:** `password123`
+
+**2. Admin Dashboard**
+- **Admin Login URL:** `http://localhost:5173/admin/login`
+- **Details:** This route is protected. Only administrators can access this area to manage courses, categories, system settings, and view reports.
+- **Default Seed Account:**
+  - **Username:** `admin` | **Password:** `adminpassword`

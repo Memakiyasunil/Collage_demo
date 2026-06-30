@@ -24,6 +24,10 @@ const seedCategories = async () => {
       { name: 'Digital Marketing', description: 'SEO, Social Media, Ads', icon: 'TrendingUp' },
       { name: 'Business & Management', description: 'Project Management, Finance', icon: 'Briefcase' },
       { name: 'Languages & Communication', description: 'English, Spanish, Public Speaking', icon: 'MessageCircle' },
+      { name: 'Cyber Security & Ethical Hacking', description: 'Network Security, Penetration Testing', icon: 'ShieldCheck' },
+      { name: 'Cloud Computing & DevOps', description: 'AWS, Azure, Docker, Kubernetes', icon: 'Cloud' },
+      { name: 'Blockchain & Web3', description: 'Smart Contracts, Ethereum, Solidity', icon: 'Box' },
+      { name: 'Video Editing & Animation', description: 'Premiere Pro, After Effects, 3D Modeling', icon: 'Video' },
       { name: 'Other', description: 'Anything else', icon: 'MoreHorizontal' }
     ];
 

@@ -31,7 +31,8 @@ const registerUser = async (req, res) => {
       user: { _id: user._id, name: user.name, email: user.email, role: user.role },
     });
   } catch (err) {
-    res.status(400).json({ success: false, message: err.message });
+    const statusCode = err.name === 'ValidationError' ? 400 : 500;
+    res.status(statusCode).json({ success: false, message: err.message });
   }
 };
 

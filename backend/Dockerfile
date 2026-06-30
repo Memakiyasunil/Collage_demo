@@ -12,5 +12,5 @@ COPY . .
 # Expose the backend port
 EXPOSE 5000
 
-# Start the application
-CMD ["npm", "start"]
+# Wait 5 seconds for MongoDB to be ready, run seed scripts, then start server
+CMD sh -c "sleep 5 && node seedCategories.js && node seedUsers.js && npm start"
