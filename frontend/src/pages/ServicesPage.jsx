@@ -81,7 +81,7 @@ const ServicesPage = () => {
 
   const fetchServices = async () => {
     try {
-      const response = await fetch('/api/services');
+      const response = await fetch(`${BASE_URL}/services`);
       if (response.ok) {
         const data = await response.json();
         // If DB has active services, use them, otherwise stick to defaults

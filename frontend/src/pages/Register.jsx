@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { UserPlus, User, Lock, Mail, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+import { BASE_URL } from '../services/skillSwapApi';
+
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -15,7 +17,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('/api/users/register', {
+      const response = await fetch(`${BASE_URL}/users/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

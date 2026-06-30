@@ -5,7 +5,7 @@ const { createAuditLog } = require('../middleware/auditLogger');
 const getCategories = async (req, res) => {
   try {
     const isAdmin = req.user?.role === 'admin';
-    const filter = isAdmin ? {} : { isActive: true };
+    const filter = isAdmin ? {} : { isActive: { $ne: false } };
 
     const categories = await SkillCategory.find(filter)
       .sort({ displayOrder: 1, name: 1 })

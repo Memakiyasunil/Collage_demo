@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { LogIn, User, Lock, ArrowRight } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+import { BASE_URL } from '../services/skillSwapApi';
+
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -15,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch('/api/users/login', {
+      const response = await fetch(`${BASE_URL}/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

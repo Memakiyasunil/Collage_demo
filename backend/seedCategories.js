@@ -6,7 +6,8 @@ dotenv.config();
 const CategorySchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   description: { type: String },
-  icon: { type: String, default: 'Code' }
+  icon: { type: String, default: 'Code' },
+  isActive: { type: Boolean, default: true }
 });
 
 const Category = mongoose.models.SkillCategory || mongoose.model('SkillCategory', CategorySchema);
