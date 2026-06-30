@@ -22,7 +22,7 @@ const Register = () => {
       });
       const data = await response.json();
       if (data.success) {
-        localStorage.setItem('userToken', data.token);
+        localStorage.setItem('token', data.token);
         toast.success('Registration successful!');
         navigate('/skill-swap');
       } else {

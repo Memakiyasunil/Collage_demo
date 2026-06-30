@@ -84,10 +84,22 @@ const ProtectedRoute = ({ isAuthenticated, children }) => {
 };
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('isAdminAuthenticated') === 'true';
+  });
   const [showSplash, setShowSplash] = useState(true);
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+
+  const handleAdminLogin = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('isAdminAuthenticated', 'true');
+  };
+
+  const handleAdminLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('isAdminAuthenticated');
+  };
 
   // Ensure page scrolls to top on route change
   useEffect(() => {
@@ -169,7 +181,7 @@ function App() {
                 <Route
                   path="/admin/login"
                   element={
-                    isAuthenticated ? <Navigate to="/admin" replace /> : <AdminLogin onLogin={() => setIsAuthenticated(true)} />
+                    isAuthenticated ? <Navigate to="/admin" replace /> : <AdminLogin onLogin={handleAdminLogin} />
                   }
                 />
 
@@ -178,7 +190,7 @@ function App() {
                   path="/admin"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
-                      <AdminDashboard onLogout={() => setIsAuthenticated(false)} />
+                      <AdminDashboard onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
@@ -186,7 +198,7 @@ function App() {
                   path="/admin/courses"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
-                      <AdminCourses onLogout={() => setIsAuthenticated(false)} />
+                      <AdminCourses onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
@@ -194,7 +206,7 @@ function App() {
                   path="/admin/services"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
-                      <AdminServices onLogout={() => setIsAuthenticated(false)} />
+                      <AdminServices onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
@@ -202,7 +214,7 @@ function App() {
                   path="/admin/footer"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
-                      <AdminFooter onLogout={() => setIsAuthenticated(false)} />
+                      <AdminFooter onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
@@ -210,7 +222,7 @@ function App() {
                   path="/admin/partners"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
-                      <AdminPartners onLogout={() => setIsAuthenticated(false)} />
+                      <AdminPartners onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
@@ -218,7 +230,7 @@ function App() {
                   path="/admin/inquiries"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
-                      <AdminInquiries onLogout={() => setIsAuthenticated(false)} />
+                      <AdminInquiries onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
@@ -226,7 +238,7 @@ function App() {
                   path="/admin/contacts"
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
-                      <AdminContacts onLogout={() => setIsAuthenticated(false)} />
+                      <AdminContacts onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
