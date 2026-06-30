@@ -31,6 +31,7 @@ startSessionReminderScheduler(io);
 app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'));
 
 // ─── Database ─────────────────────────────────────────────────────
 mongoose
@@ -47,6 +48,7 @@ app.use('/api/inquiry', require('./routes/inquiryRoutes'));
 app.use('/api/contact', require('./routes/contactRoutes'));
 app.use('/api/services', require('./routes/serviceRoutes'));
 app.use('/api/partners', require('./routes/partnerRoutes'));
+app.use('/api/job-applications', require('./routes/jobApplicationRoutes'));
 
 // ─── User Auth Routes ─────────────────────────────────────────────
 app.use('/api/users', require('./routes/userRoutes'));

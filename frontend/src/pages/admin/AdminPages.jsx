@@ -116,7 +116,7 @@ const Toast = ({ message, type = 'success' }) => (
 );
 
 // ─── Admin Layout ───────────────────────────────────────────────────────────────
-const AdminLayout = ({ children, onLogout, activeSection }) => {
+export const AdminLayout = ({ children, onLogout, activeSection }) => {
   const navItems = [
     { to: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
     { to: '/admin/courses', icon: GraduationCap, label: 'Courses' },
@@ -124,6 +124,7 @@ const AdminLayout = ({ children, onLogout, activeSection }) => {
     { to: '/admin/partners', icon: Handshake, label: 'Partners' },
     { to: '/admin/inquiries', icon: Users, label: 'Inquiries' },
     { to: '/admin/contacts', icon: MessageSquare, label: 'Contacts' },
+    { to: '/admin/job-applications', icon: Briefcase, label: 'Job Applications' },
     { to: '/admin/footer', icon: Settings, label: 'Footer Setup' },
   ];
 

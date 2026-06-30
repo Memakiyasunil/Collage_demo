@@ -65,6 +65,7 @@ const AdminReports = lazy(() => import('./pages/skill-swap/admin/AdminReports'))
 
 // Lazy Loaded Admin Pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
+const AdminJobApplications = lazy(() => import('./pages/admin/AdminJobApplications'));
 
 // Create wrappers to extract specific components from the AdminPages bundle
 const AdminDashboard = lazy(() => import('./pages/admin/AdminPages').then(module => ({ default: module.AdminDashboard })));
@@ -191,6 +192,14 @@ function App() {
                   element={
                     <ProtectedRoute isAuthenticated={isAuthenticated}>
                       <AdminDashboard onLogout={handleAdminLogout} />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/job-applications"
+                  element={
+                    <ProtectedRoute isAuthenticated={isAuthenticated}>
+                      <AdminJobApplications onLogout={handleAdminLogout} />
                     </ProtectedRoute>
                   }
                 />
