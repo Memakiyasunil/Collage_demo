@@ -42,6 +42,24 @@ const ResumeBuilding = lazy(() => import('./pages/ResumeBuilding'));
 const MockInterviews = lazy(() => import('./pages/MockInterviews'));
 const TechnicalCommunity = lazy(() => import('./pages/TechnicalCommunity'));
 
+// Skill Swap Module Pages
+const SkillSwapDashboard = lazy(() => import('./pages/skill-swap/SkillSwapDashboard'));
+const MySkills = lazy(() => import('./pages/skill-swap/MySkills'));
+const AddEditSkill = lazy(() => import('./pages/skill-swap/AddEditSkill'));
+const WantedSkills = lazy(() => import('./pages/skill-swap/WantedSkills'));
+const SkillMatches = lazy(() => import('./pages/skill-swap/SkillMatches'));
+const SkillRequests = lazy(() => import('./pages/skill-swap/SkillRequests'));
+const SendRequest = lazy(() => import('./pages/skill-swap/SendRequest'));
+const Sessions = lazy(() => import('./pages/skill-swap/Sessions'));
+const ReviewForm = lazy(() => import('./pages/skill-swap/ReviewForm'));
+const Favorites = lazy(() => import('./pages/skill-swap/Favorites'));
+const LearningHistory = lazy(() => import('./pages/skill-swap/LearningHistory'));
+// Skill Swap Admin Pages
+const AdminSkillDashboard = lazy(() => import('./pages/skill-swap/admin/AdminSkillDashboard'));
+const AdminCategories = lazy(() => import('./pages/skill-swap/admin/AdminCategories'));
+const AdminSkillsPage = lazy(() => import('./pages/skill-swap/admin/AdminSkills'));
+const AdminReports = lazy(() => import('./pages/skill-swap/admin/AdminReports'));
+
 // Lazy Loaded Admin Pages
 const AdminLogin = lazy(() => import('./pages/admin/AdminLogin'));
 
@@ -120,6 +138,25 @@ function App() {
                 <Route path="/resume-building" element={<ResumeBuilding />} />
                 <Route path="/mock-interviews" element={<MockInterviews />} />
                 <Route path="/technical-community" element={<TechnicalCommunity />} />
+
+                {/* ── Skill Swap Module ─────────────────────────── */}
+                <Route path="/skill-swap" element={<SkillSwapDashboard />} />
+                <Route path="/skill-swap/skills" element={<MySkills />} />
+                <Route path="/skill-swap/skills/new" element={<AddEditSkill />} />
+                <Route path="/skill-swap/skills/edit/:id" element={<AddEditSkill />} />
+                <Route path="/skill-swap/wanted" element={<WantedSkills />} />
+                <Route path="/skill-swap/matches" element={<SkillMatches />} />
+                <Route path="/skill-swap/requests" element={<SkillRequests />} />
+                <Route path="/skill-swap/requests/send" element={<SendRequest />} />
+                <Route path="/skill-swap/sessions" element={<Sessions />} />
+                <Route path="/skill-swap/reviews/new" element={<ReviewForm />} />
+                <Route path="/skill-swap/favorites" element={<Favorites />} />
+                <Route path="/skill-swap/history" element={<LearningHistory />} />
+                {/* Skill Swap Admin */}
+                <Route path="/skill-swap/admin" element={<AdminSkillDashboard />} />
+                <Route path="/skill-swap/admin/categories" element={<AdminCategories />} />
+                <Route path="/skill-swap/admin/skills" element={<AdminSkillsPage />} />
+                <Route path="/skill-swap/admin/reports" element={<AdminReports />} />
 
                 {/* Admin Login Route */}
                 <Route

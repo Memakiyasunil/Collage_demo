@@ -75,6 +75,20 @@ const navLinks = [
   },
   { path: "/partners", label: "Partners" },
   { 
+    label: "Skill Swap", 
+    type: "dropdown",
+    items: [
+      { path: '/skill-swap', label: 'Dashboard' },
+      { path: '/skill-swap/skills', label: 'My Skills' },
+      { path: '/skill-swap/wanted', label: 'Wanted Skills' },
+      { path: '/skill-swap/matches', label: 'Find Matches' },
+      { path: '/skill-swap/requests', label: 'Swap Requests' },
+      { path: '/skill-swap/sessions', label: 'My Sessions' },
+      { path: '/skill-swap/favorites', label: 'Favorites' },
+      { path: '/skill-swap/history', label: 'Learning History' },
+    ]
+  },
+  { 
     label: "Resources", 
     type: "dropdown",
     items: [
