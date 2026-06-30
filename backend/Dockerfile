@@ -9,6 +9,9 @@ RUN npm install
 # Copy application files
 COPY . .
 
+# Create the uploads directory so it always exists
+RUN mkdir -p uploads/resumes
+
 # Expose the backend port
 EXPOSE 5000
 
