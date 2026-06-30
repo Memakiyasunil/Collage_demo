@@ -142,7 +142,7 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                    className="w-full px-4 py-2 bg-white text-slate-900 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
                     placeholder="John Doe"
                   />
                 </div>
@@ -156,7 +156,7 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                      className="w-full px-4 py-2 bg-white text-slate-900 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -168,7 +168,7 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                      className="w-full px-4 py-2 bg-white text-slate-900 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
@@ -181,7 +181,7 @@ const JobApplicationModal = ({ isOpen, onClose }) => {
                     value={formData.coverLetter}
                     onChange={handleChange}
                     rows="3"
-                    className="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 resize-none"
+                    className="w-full px-4 py-2 bg-white text-slate-900 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 resize-none"
                     placeholder="Tell us a bit about yourself and why you'd be a great fit..."
                   ></textarea>
                 </div>
