@@ -1,4 +1,4 @@
-import { Cpu, Cloud, TestTube, BrainCircuit, Atom, Glasses, Bot, Network, Sparkles } from 'lucide-react';
+import { Cpu, Cloud, TestTube, BrainCircuit, Atom, Glasses, Bot, Network, Sparkles, ShieldCheck, Layout, Smartphone, Database } from 'lucide-react';
 
 export const labsData = {
   "ai-ml": {
@@ -257,6 +257,146 @@ export const labsData = {
       "Understand the principles of quantum computing and programming",
       "Develop secure decentralized applications",
       "Analyze the societal impact of upcoming technological paradigms"
+    ]
+  },
+  "cyber-security": {
+    id: "cyber-security",
+    title: "Cyber Security Lab",
+    subtitle: "Ethical Hacking & Digital Defense",
+    icon: ShieldCheck,
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+    description: "Fortify your expertise in protecting digital assets. Our Cyber Security Lab provides a hands-on environment to practice ethical hacking, penetration testing, and building robust defense mechanisms against real-world cyber threats. Learn to think like an attacker to defend like a pro.",
+    offers: [
+      "Dedicated penetration testing sandboxes & CTF challenges",
+      "Network vulnerability assessment and scanning tools",
+      "Malware analysis in isolated virtual environments",
+      "SIEM setup and real-time threat monitoring labs",
+      "Web application security testing (OWASP Top 10)",
+      "Cryptography and secure communications workshops"
+    ],
+    technologies: [
+      "Kali Linux & Parrot OS",
+      "Metasploit Framework",
+      "Wireshark & Nmap",
+      "Burp Suite",
+      "Splunk & ELK Stack"
+    ],
+    methodology: [
+      { step: "1", title: "Threat Reconnaissance", desc: "Learning passive and active information gathering techniques." },
+      { step: "2", title: "Vulnerability Scanning", desc: "Identifying and analyzing security weaknesses in systems." },
+      { step: "3", title: "Exploitation & Testing", desc: "Safely exploiting vulnerabilities in controlled lab environments." },
+      { step: "4", title: "Defense & Mitigation", desc: "Implementing patches, firewalls, and security policies." }
+    ],
+    targetAudience: "Students aspiring to become security analysts, ethical hackers, SOC engineers, and network defenders.",
+    keyOutcomes: [
+      "Perform professional-grade penetration testing",
+      "Analyze and respond to real-world cyber incidents",
+      "Build and configure hardened network and application security"
+    ]
+  },
+  "web-development": {
+    id: "web-development",
+    title: "Web Development Lab",
+    subtitle: "Full-Stack & Modern Web Engineering",
+    icon: Layout,
+    image: "https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?auto=format&fit=crop&w=1200&q=80",
+    description: "Build stunning, high-performance web applications from the ground up. Our Web Development Lab covers the complete spectrum from pixel-perfect UI design to scalable backend architectures. Master the modern web ecosystem and ship production-ready projects.",
+    offers: [
+      "Project-based learning with real-world client briefs",
+      "Frontend workshops on React, Vue, and Next.js",
+      "Backend API design with Node.js, Django, and FastAPI",
+      "Database design, optimization, and ORMs",
+      "DevOps fundamentals: Docker, CI/CD, and deployment",
+      "Web performance, accessibility, and SEO best practices"
+    ],
+    technologies: [
+      "React, Next.js & TypeScript",
+      "Node.js & Express.js",
+      "PostgreSQL & MongoDB",
+      "Docker & GitHub Actions",
+      "Figma to Code Workflows"
+    ],
+    methodology: [
+      { step: "1", title: "UI/UX Design", desc: "Translating wireframes and designs into responsive layouts." },
+      { step: "2", title: "Frontend Development", desc: "Building interactive, component-driven user interfaces." },
+      { step: "3", title: "Backend & API Layer", desc: "Developing RESTful and GraphQL APIs with secure authentication." },
+      { step: "4", title: "Deployment & Scaling", desc: "Containerizing and deploying applications on cloud platforms." }
+    ],
+    targetAudience: "Aspiring full-stack developers, frontend specialists, UI/UX engineers, and startup founders building web products.",
+    keyOutcomes: [
+      "Build and deploy complete full-stack web applications",
+      "Master modern frontend frameworks and component architecture",
+      "Design scalable APIs and manage production databases"
+    ]
+  },
+  "mobile-app": {
+    id: "mobile-app",
+    title: "Mobile App Development Lab",
+    subtitle: "iOS, Android & Cross-Platform Engineering",
+    icon: Smartphone,
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80",
+    description: "From idea to App Store — master the art and science of mobile application development. Our Mobile App Lab provides the tools, frameworks, and mentorship needed to build native and cross-platform apps that delight millions of users.",
+    offers: [
+      "iOS development with Swift and Xcode environments",
+      "Android development with Kotlin and Jetpack Compose",
+      "Cross-platform app development using React Native & Flutter",
+      "App Store and Play Store submission walkthroughs",
+      "Mobile UI/UX design and prototyping with Figma",
+      "Push notifications, payments, and third-party API integration"
+    ],
+    technologies: [
+      "Flutter & Dart",
+      "React Native & Expo",
+      "Swift & SwiftUI",
+      "Kotlin & Jetpack Compose",
+      "Firebase & Supabase"
+    ],
+    methodology: [
+      { step: "1", title: "Product Design", desc: "Crafting intuitive user flows and high-fidelity prototypes." },
+      { step: "2", title: "Cross-Platform Build", desc: "Developing apps that run seamlessly on iOS and Android." },
+      { step: "3", title: "Native Feature Integration", desc: "Leveraging device hardware: camera, GPS, biometrics." },
+      { step: "4", title: "Testing & Launch", desc: "Automated testing, beta distribution, and app store submission." }
+    ],
+    targetAudience: "Aspiring iOS/Android developers, cross-platform engineers, indie app makers, and product builders.",
+    keyOutcomes: [
+      "Build and publish cross-platform apps to iOS and Android stores",
+      "Implement advanced native device features and hardware integrations",
+      "Design mobile-first UX that meets platform-specific design guidelines"
+    ]
+  },
+  "data-science": {
+    id: "data-science",
+    title: "Data Science Lab",
+    subtitle: "Analytics, Visualization & Predictive Modeling",
+    icon: Database,
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    description: "Transform raw data into powerful insights. Our Data Science Lab equips you with the statistical methods, analytical tools, and domain knowledge needed to extract value from complex datasets. From exploratory analysis to deploying predictive models, become a data-driven decision maker.",
+    offers: [
+      "Exploratory Data Analysis (EDA) and data wrangling workshops",
+      "Statistical modeling and hypothesis testing labs",
+      "Machine learning pipelines from ingestion to deployment",
+      "Interactive data visualization with Tableau and Power BI",
+      "Big data processing with Spark and Hadoop",
+      "Real-world business case studies and Kaggle competitions"
+    ],
+    technologies: [
+      "Python (Pandas, NumPy, SciPy)",
+      "Scikit-Learn & XGBoost",
+      "Tableau & Power BI",
+      "Apache Spark & Databricks",
+      "SQL & dbt"
+    ],
+    methodology: [
+      { step: "1", title: "Data Collection & Wrangling", desc: "Cleaning, transforming, and structuring raw data sources." },
+      { step: "2", title: "Exploratory Analysis", desc: "Identifying patterns, outliers, and statistical relationships." },
+      { step: "3", title: "Model Building", desc: "Selecting and training the right algorithms for the problem." },
+      { step: "4", title: "Deployment & Reporting", desc: "Serving models via APIs and creating business dashboards." }
+    ],
+    targetAudience: "Aspiring data scientists, business analysts, product managers, and researchers who want to make data-driven decisions.",
+    keyOutcomes: [
+      "Design end-to-end data science pipelines from raw data to insights",
+      "Build and evaluate predictive models for business problems",
+      "Create compelling dashboards and data stories for stakeholders"
     ]
   }
 };
