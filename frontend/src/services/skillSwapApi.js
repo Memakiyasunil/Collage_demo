@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const BASE_URL = import.meta.env.VITE_API_URL || 'http://13.53.122.32:5000/api';
+export const BASE_URL = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' ? 'http://localhost:5000/api' : 'http://13.53.122.32:5000/api');
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -12,6 +12,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
+    console.log('Intercepting request to:', config.url, '| Token found:', !!token);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
